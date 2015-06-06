@@ -1,0 +1,2 @@
+module EducationalMethodsHelper
+end

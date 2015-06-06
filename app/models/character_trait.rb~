@@ -1,0 +1,4 @@
+class CharacterTrait < ActiveRecord::Base
+  has_and_belongs_to_many :educational_methods
+  has_and_belongs_to_many :scouts
+end

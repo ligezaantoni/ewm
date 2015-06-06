@@ -1,0 +1,34 @@
+= form_for @school do |f|
+  - if @school.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@school.errors.count, "error")} prohibited this school from being saved:"
+      %ul
+        - @school.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :address
+    = f.text_field :address
+  .field
+    = f.label :team
+    = f.text_field :team
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :number
+    = f.number_field :number
+  .field
+    = f.label :patron
+    = f.text_field :patron
+  .field
+    = f.label :activity_room
+    = f.check_box :activity_room
+  .field
+    = f.label :equipment_storage
+    = f.check_box :equipment_storage
+  .field
+    = f.label :comments
+    = f.text_area :comments
+  .actions
+    = f.submit 'Save'

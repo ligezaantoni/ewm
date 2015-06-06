@@ -1,0 +1,3 @@
+class ActivityForm < ActiveRecord::Base
+  belongs_to :educational_method
+end

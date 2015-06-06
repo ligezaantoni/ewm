@@ -1,0 +1,16 @@
+= form_for @activity_form do |f|
+  - if @activity_form.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@activity_form.errors.count, "error")} prohibited this activity_form from being saved:"
+      %ul
+        - @activity_form.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :educational_method
+    = f.text_field :educational_method
+  .field
+    = f.label :description
+    = f.text_area :description
+  .actions
+    = f.submit 'Save'

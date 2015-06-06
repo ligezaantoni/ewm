@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Event:
+  = @activity.event
+%p
+  %b Activity form:
+  = @activity.activity_form
+%p
+  %b Description:
+  = @activity.description
+
+= link_to 'Edit', edit_activity_path(@activity)
+\|
+= link_to 'Back', activities_path

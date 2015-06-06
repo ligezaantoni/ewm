@@ -1,0 +1,23 @@
+%h1 Listing execution_reports
+
+%table
+  %thead
+    %tr
+      %th Activity
+      %th Content
+      %th
+      %th
+      %th
+
+  %tbody
+    - @execution_reports.each do |execution_report|
+      %tr
+        %td= execution_report.activity
+        %td= execution_report.content
+        %td= link_to 'Show', execution_report
+        %td= link_to 'Edit', edit_execution_report_path(execution_report)
+        %td= link_to 'Destroy', execution_report, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Execution report', new_execution_report_path

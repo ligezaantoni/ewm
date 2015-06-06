@@ -1,0 +1,25 @@
+= form_for @related_person do |f|
+  - if @related_person.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@related_person.errors.count, "error")} prohibited this related_person from being saved:"
+      %ul
+        - @related_person.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :first_name
+    = f.text_field :first_name
+  .field
+    = f.label :last_name
+    = f.text_field :last_name
+  .field
+    = f.label :phone_number
+    = f.text_field :phone_number
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :role
+    = f.number_field :role
+  .actions
+    = f.submit 'Save'

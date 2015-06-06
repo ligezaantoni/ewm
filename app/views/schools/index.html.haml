@@ -1,0 +1,35 @@
+%h1 Listing schools
+
+%table
+  %thead
+    %tr
+      %th Address
+      %th Team
+      %th Name
+      %th Number
+      %th Patron
+      %th Activity room
+      %th Equipment storage
+      %th Comments
+      %th
+      %th
+      %th
+
+  %tbody
+    - @schools.each do |school|
+      %tr
+        %td= school.address
+        %td= school.team
+        %td= school.name
+        %td= school.number
+        %td= school.patron
+        %td= school.activity_room
+        %td= school.equipment_storage
+        %td= school.comments
+        %td= link_to 'Show', school
+        %td= link_to 'Edit', edit_school_path(school)
+        %td= link_to 'Destroy', school, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New School', new_school_path

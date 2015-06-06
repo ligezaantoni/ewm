@@ -1,0 +1,55 @@
+= form_for @scout do |f|
+  - if @scout.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@scout.errors.count, "error")} prohibited this scout from being saved:"
+      %ul
+        - @scout.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :team
+    = f.text_field :team
+  .field
+    = f.label :address
+    = f.text_field :address
+  .field
+    = f.label :first_name
+    = f.text_field :first_name
+  .field
+    = f.label :last_name
+    = f.text_field :last_name
+  .field
+    = f.label :age
+    = f.number_field :age
+  .field
+    = f.label :birthplace
+    = f.text_field :birthplace
+  .field
+    = f.label :phone_number
+    = f.text_field :phone_number
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :allergies
+    = f.text_area :allergies
+  .field
+    = f.label :past_diseases
+    = f.text_area :past_diseases
+  .field
+    = f.label :vaccinations
+    = f.text_area :vaccinations
+  .field
+    = f.label :rank
+    = f.number_field :rank
+  .field
+    = f.label :position
+    = f.number_field :position
+  .field
+    = f.label :promise_made_on
+    = f.date_select :promise_made_on
+  .field
+    = f.label :patrol
+    = f.text_field :patrol
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  team_id: 
+  address_id: 
+  first_name: MyString
+  last_name: MyString
+  age: 1
+  birthplace: MyString
+  phone_number: MyString
+  email: MyString
+  allergies: MyText
+  past_diseases: MyText
+  vaccinations: MyText
+  rank: 1
+  position: 1
+  promise_made_on: 2015-06-06
+  patrol: MyString
+
+two:
+  team_id: 
+  address_id: 
+  first_name: MyString
+  last_name: MyString
+  age: 1
+  birthplace: MyString
+  phone_number: MyString
+  email: MyString
+  allergies: MyText
+  past_diseases: MyText
+  vaccinations: MyText
+  rank: 1
+  position: 1
+  promise_made_on: 2015-06-06
+  patrol: MyString
