@@ -15,10 +15,10 @@ ActiveRecord::Schema.define(version: 20150606082526) do
 
   create_table "abilities", force: :cascade do |t|
     t.string   "name"
-    t.integer  "level"
+    t.integer  "level",        default: 0
     t.text     "requirements"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "abilities_scouts", id: false, force: :cascade do |t|
@@ -59,9 +59,9 @@ ActiveRecord::Schema.define(version: 20150606082526) do
 
   create_table "character_traits", force: :cascade do |t|
     t.string   "name"
-    t.integer  "kind"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "kind",       default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "character_traits_scouts", id: false, force: :cascade do |t|
@@ -110,9 +110,9 @@ ActiveRecord::Schema.define(version: 20150606082526) do
     t.string   "last_name"
     t.string   "phone_number"
     t.string   "email"
-    t.integer  "role"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "role",         default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "schools", force: :cascade do |t|
@@ -151,12 +151,12 @@ ActiveRecord::Schema.define(version: 20150606082526) do
     t.text     "allergies"
     t.text     "past_diseases"
     t.text     "vaccinations"
-    t.integer  "rank"
-    t.integer  "position"
+    t.integer  "rank",            default: 0
+    t.integer  "position",        default: 0
     t.date     "promise_made_on"
     t.string   "patrol"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "scouts", ["address_id"], name: "index_scouts_on_address_id"
@@ -187,7 +187,7 @@ ActiveRecord::Schema.define(version: 20150606082526) do
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string   "role"
+    t.integer  "role",                   default: 0
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end

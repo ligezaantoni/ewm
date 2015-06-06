@@ -12,7 +12,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## Rememberable
       t.datetime :remember_created_at
 
-      t.string :role
+      t.integer :role, default: 0
 
       t.timestamps null: false
     end
