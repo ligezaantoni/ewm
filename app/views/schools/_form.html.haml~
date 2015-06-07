@@ -7,13 +7,21 @@
         - @school.errors.full_messages.each do |msg|
           %li= msg
 
+  = f.label :address
   = f.text_field :address
+  = f.label :team
   = f.text_field :team
+  = f.label :name
   = f.text_field :name
+  = f.label :number
   = f.number_field :number
+  = f.label :patron
   = f.text_field :patron
+  = f.label :activity_room
   = f.check_box :activity_room
+  = f.label :equipment_storage
   = f.check_box :equipment_storage
+  = f.label :comments
   = f.text_area :comments
 
   = f.submit 'Save'

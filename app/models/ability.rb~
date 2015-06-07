@@ -4,5 +4,9 @@ class Ability < ActiveRecord::Base
   has_and_belongs_to_many :scouts
   
   # Enums
-  enum level: %i(one_star two_stars three_stars master)
+  enum level: %i(not_classified one_star two_stars three_stars master)
+  
+  # Validations
+  validates :name, presence: true
+  
 end

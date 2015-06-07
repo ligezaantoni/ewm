@@ -2,7 +2,7 @@ class CreateCharacterTraits < ActiveRecord::Migration
   def change
     create_table :character_traits do |t|
       t.string :name
-      t.integer :kind
+      t.integer :kind, default: 0
 
       t.timestamps null: false
     end

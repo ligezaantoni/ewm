@@ -8,9 +8,13 @@
           %li= msg
 
 
+  = f.label :address
   = f.text_field :address
+  = f.label :name
   = f.text_field :name
+  = f.label :number
   = f.number_field :number
+  = f.label :patron
   = f.text_field :patron
 
   = f.submit 'Save'

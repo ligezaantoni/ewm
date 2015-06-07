@@ -5,4 +5,8 @@ class Address < ActiveRecord::Base
   has_many :teams
   has_many :schools
   
+  # Validations
+  validates :street_and_number, presence: true
+  validates :city, presence: true
+  
 end

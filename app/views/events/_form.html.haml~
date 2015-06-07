@@ -7,8 +7,13 @@
         - @event.errors.full_messages.each do |msg|
           %li= msg
 
+  = f.label :team
   = f.text_field :team
+
+  = f.label :starts_at
   = f.datetime_select :starts_at
+
+  = f.label :place
   = f.text_field :place
 
   = f.submit 'Save'

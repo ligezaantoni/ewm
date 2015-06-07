@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150606082526) do
+ActiveRecord::Schema.define(version: 20150607141103) do
 
   create_table "abilities", force: :cascade do |t|
     t.string   "name"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20150606082526) do
     t.text     "description"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "name"
+    t.time     "estimated_time"
   end
 
   add_index "activities", ["activity_form_id"], name: "index_activities_on_activity_form_id"
@@ -45,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150606082526) do
     t.text     "description"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.string   "name"
   end
 
   add_index "activity_forms", ["educational_method_id"], name: "index_activity_forms_on_educational_method_id"
@@ -175,8 +178,11 @@ ActiveRecord::Schema.define(version: 20150606082526) do
     t.string   "name"
     t.integer  "number"
     t.string   "patron"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "region"
+    t.integer  "kind",       default: 0
+    t.boolean  "trial"
   end
 
   add_index "teams", ["address_id"], name: "index_teams_on_address_id"

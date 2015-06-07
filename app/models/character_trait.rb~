@@ -5,5 +5,5 @@ class CharacterTrait < ActiveRecord::Base
   has_and_belongs_to_many :scouts
   
   # Enums
-  enum kind: %i(strength weakness)
+  enum kind: %i(neutral strength weakness)
 end
