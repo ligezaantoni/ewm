@@ -1,0 +1,3 @@
+class RelatedPersonPolicy < ApplicationPolicy
+
+end

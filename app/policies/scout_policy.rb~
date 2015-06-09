@@ -1,0 +1,3 @@
+class ScoutPolicy < ApplicationPolicy
+
+end

@@ -50,6 +50,6 @@ class ScoutsController < ApplicationController
   end
 
   def scout_params
-    params.require(:scout).permit(*policy(@scout || Scout).permitted_attributes)
+    params.require(:scout).permit(*policy(@address || Address).permitted_attributes)
   end
 end

@@ -51,6 +51,6 @@ class AbilitiesController < ApplicationController
   end
 
   def ability_params
-    params.require(:ability).permit(*policy(@ability || Ability).permitted_attributes)
+    params.require(:ability).permit(*policy(@address || Address).permitted_attributes)
   end
 end

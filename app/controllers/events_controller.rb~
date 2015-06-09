@@ -50,6 +50,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(*policy(@event || Event).permitted_attributes)
+    params.require(:event).permit(*policy(@address || Address).permitted_attributes)
   end
 end

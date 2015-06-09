@@ -26,7 +26,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 
 # Models
-gem "active_model_serializers"
+#gem "active_model_serializers"
 
 # Views
 gem "haml"

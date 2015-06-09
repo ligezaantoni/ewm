@@ -50,6 +50,6 @@ class RelatedPeopleController < ApplicationController
   end
 
   def related_person_params
-    params.require(:related_person).permit(*policy(@related_person || RelatedPerson).permitted_attributes)
+    params.require(:related_person).permit(*policy(@address || Address).permitted_attributes)
   end
 end

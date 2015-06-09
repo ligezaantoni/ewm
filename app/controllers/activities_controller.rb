@@ -1,28 +1,27 @@
 class ActivitiesController < ApplicationController
-  before_action :set_activity, only: [:show, :edit, :update, :destroy]
+  before_action :load_and_authorize_activity,
+    only: [:show, :edit, :update, :destroy]
 
-  # GET /activities
   def index
+    authorize Activity
     @activities = Activity.all
   end
 
-  # GET /activities/1
   def show
   end
 
-  # GET /activities/new
   def new
     @activity = Activity.new
+    authorize @activity
   end
 
-  # GET /activities/1/edit
   def edit
   end
 
-  # POST /activities
   def create
     @activity = Activity.new(activity_params)
-
+    authorize @activity
+    
     if @activity.save
       redirect_to @activity, notice: 'Activity was successfully created.'
     else
@@ -30,7 +29,6 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /activities/1
   def update
     if @activity.update(activity_params)
       redirect_to @activity, notice: 'Activity was successfully updated.'
@@ -39,20 +37,18 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  # DELETE /activities/1
   def destroy
     @activity.destroy
     redirect_to activities_url, notice: 'Activity was successfully destroyed.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_activity
-      @activity = Activity.find(params[:id])
-    end
+  def load_and_authorize_activity
+    @activity = Activity.find(params[:id])
+    authorize @activity
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def activity_params
-      params.require(:activity).permit(:event_id, :activity_form_id, :name, :description, :estimate_time)
-    end
+  def activity_params
+    params.require(:activity).permit(*policy(@activity || Activity).permitted_attributes)
+  end
 end

@@ -50,6 +50,6 @@ class ActivityFormsController < ApplicationController
   end
 
   def activity_form_params
-    params.require(:activity_form).permit(*policy(@activity_form || ActivityForm).permitted_attributes)
+    params.require(:activity_form).permit(*policy(@address || Address).permitted_attributes)
   end
 end

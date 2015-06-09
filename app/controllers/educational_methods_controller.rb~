@@ -50,6 +50,6 @@ class EducationalMethodsController < ApplicationController
   end
 
   def educational_method_params
-    params.require(:educational_method).permit(*policy(@educational_method || EducationalMethod).permitted_attributes)
+    params.require(:educational_method).permit(*policy(@address || Address).permitted_attributes)
   end
 end

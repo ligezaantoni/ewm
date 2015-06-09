@@ -50,6 +50,6 @@ class CharacterTraitsController < ApplicationController
   end
 
   def character_trait_params
-    params.require(:character_trait).permit(*policy(@character_trait || CharacterTrait).permitted_attributes)
+    params.require(:character_trait).permit(*policy(@address || Address).permitted_attributes)
   end
 end

@@ -50,6 +50,6 @@ class AddressesController < ApplicationController
   end
 
   def address_params
-    params.require(:address).permit(*policy(@address || Address).permitted_attributes)
+    params.require(:address).permit(:street_and_number, :postal_code, :city)
   end
 end
