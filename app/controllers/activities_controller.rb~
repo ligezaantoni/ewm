@@ -1,4 +1,5 @@
 class ActivitiesController < ApplicationController
+  before_filter :authenticate_user!
   before_action :load_and_authorize_activity,
     only: [:show, :edit, :update, :destroy]
 
@@ -49,6 +50,6 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(*policy(@address || Address).permitted_attributes)
+    params.require(:activity).permit(*policy(@activity || Activity).permitted_attributes)
   end
 end

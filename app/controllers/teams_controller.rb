@@ -1,21 +1,29 @@
 class TeamsController < ApplicationController
+  before_filter :set_breadcrumbs
   before_action :load_and_authorize_team,
     only: [:show, :edit, :update, :destroy]
 
   def index
     authorize Team
-    @teams = Team.all
+    @teams = Team.page(params[:page]).per(20)
+    @teams = PaginatingDecorator.decorate(@teams, with: TeamDecorator)
   end
   
   def show
+    @team = TeamDecorator.decorate(@team)
+    @scouts = PaginatingDecorator.decorate(@team.scouts, with: ScoutDecorator)
+    add_breadcrumb @team.short_name
   end
 
   def new
     @team = Team.new
+    @team.build_address
     authorize @team
+    add_breadcrumb t(".title")
   end
 
   def edit
+    add_breadcrumb t(".title")
   end
 
   def create
@@ -23,7 +31,7 @@ class TeamsController < ApplicationController
     authorize @team
 
     if @team.save
-      redirect_to @team, notice: 'Team was successfully created.'
+      redirect_to @team, notice: t(".notice")
     else
       render :new
     end
@@ -31,7 +39,7 @@ class TeamsController < ApplicationController
 
   def update
     if @team.update(team_params)
-      redirect_to @team, notice: 'Team was successfully updated.'
+      redirect_to @team, notice: t(".notice")
     else
       render :edit
     end
@@ -39,7 +47,7 @@ class TeamsController < ApplicationController
 
   def destroy
     @team.destroy
-    redirect_to teams_url, notice: 'Team was successfully destroyed.'
+    redirect_to teams_url, notice: t(".notice")
   end
 
   private
@@ -51,5 +59,9 @@ class TeamsController < ApplicationController
 
   def team_params
     params.require(:team).permit(*policy(@team || Team).permitted_attributes)
+  end
+    
+  def set_breadcrumbs
+    add_breadcrumb t("menu.registry"), teams_path
   end
 end

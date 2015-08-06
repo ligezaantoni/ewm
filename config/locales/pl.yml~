@@ -1,0 +1,26 @@
+pl:
+  website:
+    title: "Asystent pracy wychowawczej"
+  menu:
+    registry: "Ewidencja"
+    training: "Szkolenie"
+    planning: "Planowanie"
+    rating: "Ocena"
+  nav:
+    home: "Strona Główna"
+    send: "Wyślij"
+    back: "Wróć"
+    edit: "Edytuj"
+    create: "Stwórz"
+    delete: "Usuń"
+    show: "Pokaż"
+  views:
+    pagination:
+      previous: "&lt;"
+      next: "&gt;"
+      truncate: "..."
+  home:
+    registry_desc: "Zarzadzaj danymi osobowymi swoich podopiecznych i obserwuj czynione przez nich postepy."
+    training_desc: "Planuj zajecia odpowiednie do umiejetnosci druzyny i poznaj nowe metody pracy."
+    planning_desc: "Kontroluj swoj terminarz, aby miec pewnosc, ze masz wszystko dopiete na ostatni guzik."
+    rating_desc: "Oceniaj osiagniecia harcerzy i nagradzaj ich odpowiednio do czynionych przez nich wysilkow."

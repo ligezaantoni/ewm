@@ -1,0 +1,4 @@
+class ChangeAgeToPeselInScouts < ActiveRecord::Migration
+  def change
+  end
+end

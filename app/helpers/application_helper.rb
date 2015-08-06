@@ -1,2 +1,58 @@
 module ApplicationHelper
+
+  def menu_link_to(name, url, icon=nil, options={})
+    link_icon_tag = icon_tag(icon, align = "left") if icon
+    send :link_to, url, options do
+      safe_join([link_icon_tag, name], " ")
+    end
+  end
+  
+  def icon_link_to(url, icon, options={})
+    options[:class] ||= ""
+    send :link_to, url, options do
+      icon_tag(icon)
+    end
+  end
+  
+  def button_link_to(name, url, icon=nil, options={})
+    link_icon_tag = icon_tag(icon, align = "left") if icon
+    options[:class] ||= ""
+    options[:class] += " btn"
+    send :link_to, url, options do
+      safe_join([link_icon_tag, name], " ")
+    end
+  end
+  
+  def submit_button_for(name, icon = nil, options = {})
+    button_icon_tag = icon_tag(icon, align = "left") if icon
+    options[:class] ||= ""
+    options[:class] += " submit-button"
+    send :button_tag, options do
+      safe_join([button_icon_tag, name], " ")
+    end
+  end
+  
+  def label_for_nested(attribute, nested_model, model, options = {})
+    options[:class] ||= ""
+    options[:class] += " active" if model.send(nested_model).send(attribute).present?
+    send :label_tag, attribute, t(".#{attribute.to_s}"), options
+  end
+  
+  private
+  
+  def icon_tag(type, align = "")
+    content_tag(:i, type, class: "material-icons #{align}")
+  end
+end
+
+module ActionView
+  module Helpers
+    module FormHelper
+      def label(object_name, method, content_or_options = nil, options = nil, &block)
+        object = options[:object]
+        options[:class] << "active" if object.present? && object.send(method).present? && options[:active] != false
+        Tags::Label.new(object_name, method, self, content_or_options, options).render(&block)
+      end
+    end
+  end
 end

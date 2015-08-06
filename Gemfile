@@ -6,7 +6,7 @@ gem 'rails', '4.2.1'
 gem 'sqlite3'
 
 # Pagination
-#gem "kaminari"
+gem "kaminari"
 
 # Autorization and authentication
 gem "devise"
@@ -26,14 +26,18 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 
 # Models
+gem 'activepesel'
 #gem "active_model_serializers"
 
 # Views
 gem "haml"
 gem "haml-rails"
-gem "twitter-bootstrap-rails"
+gem 'bootstrap-sass', '~> 3.3.5'
+gem 'materialize-sass'
+gem 'material_icons'
+gem "breadcrumbs_on_rails"
 gem "simple_form"
-#gem 'draper', '~> 1.3'
+gem 'draper'
 #gem "actionview-encoded_mail_to"
 #gem "mustache"
 
@@ -49,6 +53,7 @@ gem "turbolinks"
 #gem "settingslogic"
 
 # I18n
+gem "i18n"
 #gem "polish"
 
 # Routing

@@ -1,0 +1,4 @@
+@import "mixins"
+
+body
+  background-color: $primary-color

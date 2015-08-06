@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
 
-  resources :teams
-  resources :schools
   resources :abilities
+  resources :activities
   resources :activity_forms
+  resources :addresses
   resources :character_traits
   resources :educational_methods
   resources :execution_reports
-  resources :activities
   resources :events
   resources :related_people
-  resources :addresses
-  resources :scouts
+  resources :schools
+  resources :teams do
+    resources :scouts
+  end
   root to: 'home#index'
 
   devise_for :users

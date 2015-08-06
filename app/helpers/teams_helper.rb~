@@ -1,0 +1,9 @@
+module TeamsHelper
+
+  def position_options_for_select
+    Scout.positions.keys.map do |key|
+      [I18n.t("enumerations.scout.position.#{key}"), key]
+    end
+  end
+
+end

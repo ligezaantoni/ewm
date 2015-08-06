@@ -1,7 +1,6 @@
-%h1 Editing scout
+- content_for :title do
+  = t(".title")
+- content_for :breadcrumbs do
+  = render_breadcrumbs
 
-= render 'form'
-
-= link_to 'Show', @scout
-\|
-= link_to 'Back', scouts_path
+= render 'form', url: team_scout_path(@team, @scout)

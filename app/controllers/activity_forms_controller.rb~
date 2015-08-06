@@ -1,4 +1,5 @@
 class ActivityFormsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :load_and_authorize_activity_form,
     only: [:show, :edit, :update, :destroy]
 
@@ -50,6 +51,6 @@ class ActivityFormsController < ApplicationController
   end
 
   def activity_form_params
-    params.require(:activity_form).permit(*policy(@address || Address).permitted_attributes)
+    params.require(:activity_form).permit(*policy(@activity_form || ActivityForm).permitted_attributes)
   end
 end

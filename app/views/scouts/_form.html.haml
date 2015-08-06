@@ -1,26 +1,81 @@
-= simple_form_for(@scout, html: { class: 'form-horizontal' }) do |f|
-
+= simple_form_for(@scout, url: url, html: { class: 'form-horizontal' }) do |f|
   - if @scout.errors.any?
     #error_explanation
       %h2= "#{pluralize(@scout.errors.count, "error")} prohibited this scout from being saved:"
       %ul
         - @scout.errors.full_messages.each do |msg|
           %li= msg
+          
+  .row  
+    .input-field.col.s5
+      = f.text_field :first_name
+      = f.label :first_name
+    .input-field.col.s5
+      = f.text_field :last_name
+      = f.label :last_name
+    .input-field.col.s2
+      = f.text_field :pesel
+      = f.label :pesel
+  .row
+    .input-field.col.s6
+      = f.text_field :birthplace
+      = f.label :birthplace
+  .row
+    .input-field.col.s4
+      = f.association :team, :collection => policy_scope(Team.all), :value_method => :id
+      = f.label :team
+    .input-field.col.s4
+      = f.text_field :patrol
+      = f.label :patrol
+    .input-field.col.s4
+      = f.select :position, position_options_for_select, include_blank: false
+      = f.label :position, active: false
+  .row
+    .input-field.col.s4
+      = f.select :rank, rank_options_for_select, include_blank: false
+      = f.label :rank, active: false
+    .input-field.col.s4
+      = f.text_field :promise_made_on, as: :date, class: 'datepicker'
+      = f.label :promise_made_on
+      
+  %h5 Informacje kontaktowe
+  .row
+    .input-field.col.s6
+      %i.material-icons.prefix
+        phone
+      = f.text_field :phone_number
+      = f.label :phone_number
+    .input-field.col.s6
+      %i.material-icons.prefix
+        email
+      = f.text_field :email
+      = f.label :email
+  .row
+    = f.simple_fields_for :address do |fa|
+      .input-field.col.s6
+        %i.material-icons.prefix
+          home
+        = fa.text_field :street_and_number
+        = label_for_nested(:street_and_number, :address, @scout)
+      .input-field.col.s2
+        = fa.text_field :postal_code
+        = label_for_nested(:postal_code, :address, @scout)
+      .input-field.col.s4
+        = fa.text_field :city
+        = label_for_nested(:city, :address, @scout)
 
-  = f.text_field :team
-  = f.text_field :address
-  = f.text_field :first_name
-  = f.text_field :last_name
-  = f.number_field :age
-  = f.text_field :birthplace
-  = f.text_field :phone_number
-  = f.text_field :email
-  = f.text_area :allergies
-  = f.text_area :past_diseases
-  = f.text_area :vaccinations
-  = f.select :rank, Scout.ranks.keys, include_blank: false
-  = f.select :position, Scout.positions.keys, include_blank: false
-  = f.date_select :promise_made_on
-  = f.text_field :patrol
+  %h5 Informacje zdrowotne
+  .row
+    .input-field.col.s4
+      = f.text_area :allergies, class: "materialize-textarea"
+      = f.label :allergies
+    .input-field.col.s4
+      = f.text_area :past_diseases, class: "materialize-textarea"
+      = f.label :past_diseases
+    .input-field.col.s4
+      = f.text_area :vaccinations, class: "materialize-textarea"
+      = f.label :vaccinations
 
-  = f.submit 'Save'
+  = submit_button_for t("nav.send"), icon="send"
+  
+

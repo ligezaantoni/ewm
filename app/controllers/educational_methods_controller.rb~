@@ -1,4 +1,5 @@
 class EducationalMethodsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :load_and_authorize_educational_method,
     only: [:show, :edit, :update, :destroy]
 
@@ -50,6 +51,6 @@ class EducationalMethodsController < ApplicationController
   end
 
   def educational_method_params
-    params.require(:educational_method).permit(*policy(@address || Address).permitted_attributes)
+    params.require(:educational_method).permit(*policy(@educational_method || EducationalMethod).permitted_attributes)
   end
 end

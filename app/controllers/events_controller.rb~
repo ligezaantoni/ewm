@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :load_and_authorize_event,
     only: [:show, :edit, :update, :destroy]
 
@@ -50,6 +51,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(*policy(@address || Address).permitted_attributes)
+    params.require(:event).permit(*policy(@event || Event).permitted_attributes)
   end
 end

@@ -54,7 +54,7 @@ class ApplicationPolicy
   private
   
   def signed_in?
-    user.present? && !user.require_password_change? # można dodać !user.blocked?
+    user.present?
   end
   
 #  def owner?

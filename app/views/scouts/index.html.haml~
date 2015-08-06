@@ -1,0 +1,35 @@
+- content_for :title do
+  = t(".title")
+- content_for :action_button do
+  = icon_link_to new_team_path, "add", 
+    class: "action-button waves-effect"
+- content_for :notice do
+  = notice
+- content_for :breadcrumbs do
+  = render_breadcrumbs
+
+%table.table
+  %thead
+    %tr
+      %th= t(".ordinal")
+      %th= t(".full_name_reversed")
+      %th= t(".age")
+      %th= t(".rank")
+      %th= t(".position")
+      %th= t(".patrol")
+      %th= icon_link_to("#", "edit", class: "inactive")
+      %th= icon_link_to("#", "delete", class: "inactive")
+
+  %tbody
+    - @scouts.each_with_index do |scout, i|
+      %tr
+        %td= i+1
+        %td= link_to scout.full_name_reversed, scout_path(scout)
+        %td= scout.age
+        %td= scout.rank
+        %td= scout.position
+        %td= scout.patrol
+        %td= icon_link_to(edit_scout_path(scout), "edit")
+        %td= icon_link_to(scout, "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger")
+        
+= paginate @scouts

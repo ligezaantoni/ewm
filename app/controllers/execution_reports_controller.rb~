@@ -1,4 +1,5 @@
 class ExecutionReportsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :load_and_authorize_execution_report,
     only: [:show, :edit, :update, :destroy]
 
@@ -50,6 +51,6 @@ class ExecutionReportsController < ApplicationController
   end
 
   def execution_report_params
-    params.require(:execution_report).permit(*policy(@address || Address).permitted_attributes)
+    params.require(:execution_report).permit(*policy(@execution_report || ExecutionReport).permitted_attributes)
   end
 end

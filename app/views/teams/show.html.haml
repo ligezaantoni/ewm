@@ -1,18 +1,20 @@
-%p#notice= notice
+- content_for :notice do
+  = notice
+- content_for :action_button do
+  = icon_link_to new_team_scout_path(@team), "add",
+    class: "action-button waves-effect"
+- content_for :breadcrumbs do
+  = render_breadcrumbs
 
-%p
-  %b Address:
-  = @team.address
-%p
-  %b Name:
-  = @team.name
-%p
-  %b Number:
-  = @team.number
-%p
-  %b Patron:
-  = @team.patron
+.card-panel
+  .right
+    = menu_link_to(t("nav.edit"), edit_team_path(@team), "edit", class: "info btn-flat")
+    = menu_link_to(t("nav.delete"), @team, "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger btn-flat")
+  %h5= @team.short_name_with_patron
+  - if @team.address.present?
+    %i.material-icons.left
+      business
+    = @team.address
 
-= link_to 'Edit', edit_team_path(@team)
-\|
-= link_to 'Back', teams_path
+- if @scouts.present?
+  =render partial: "scouts", locals: {team: @team, scouts: @scouts}

@@ -1,0 +1,20 @@
+pl:
+  simple_form:
+    "yes": 'Tak'
+    "no": 'Nie'
+    required:
+      text: 'wymagane'
+      mark: '*'
+    error_notification:
+      default_message: "Problemy:"
+  helpers:
+    submit:
+      team:
+        create: "Zapisz drużynę"
+        update: "Zaktualizuj drużynę"
+  actions:
+    show: "Pokaż"
+    edit: "Edytuj"
+    destroy: "Usuń"
+    back: "Wróć"
+

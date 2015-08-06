@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150607141103) do
+ActiveRecord::Schema.define(version: 20150804212556) do
 
   create_table "abilities", force: :cascade do |t|
     t.string   "name"
@@ -58,7 +58,11 @@ ActiveRecord::Schema.define(version: 20150607141103) do
     t.string   "city"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
   end
+
+  add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
 
   create_table "character_traits", force: :cascade do |t|
     t.string   "name"
@@ -119,7 +123,6 @@ ActiveRecord::Schema.define(version: 20150607141103) do
   end
 
   create_table "schools", force: :cascade do |t|
-    t.integer  "address_id"
     t.integer  "team_id"
     t.string   "name"
     t.integer  "number"
@@ -131,7 +134,6 @@ ActiveRecord::Schema.define(version: 20150607141103) do
     t.datetime "updated_at",        null: false
   end
 
-  add_index "schools", ["address_id"], name: "index_schools_on_address_id"
   add_index "schools", ["team_id"], name: "index_schools_on_team_id"
 
   create_table "schools_officials", id: false, force: :cascade do |t|
@@ -144,10 +146,8 @@ ActiveRecord::Schema.define(version: 20150607141103) do
 
   create_table "scouts", force: :cascade do |t|
     t.integer  "team_id"
-    t.integer  "address_id"
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "age"
     t.string   "birthplace"
     t.string   "phone_number"
     t.string   "email"
@@ -160,9 +160,9 @@ ActiveRecord::Schema.define(version: 20150607141103) do
     t.string   "patrol"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.string   "pesel"
   end
 
-  add_index "scouts", ["address_id"], name: "index_scouts_on_address_id"
   add_index "scouts", ["team_id"], name: "index_scouts_on_team_id"
 
   create_table "scouts_parents", id: false, force: :cascade do |t|
@@ -174,7 +174,6 @@ ActiveRecord::Schema.define(version: 20150607141103) do
   add_index "scouts_parents", ["scout_id"], name: "index_scouts_parents_on_scout_id"
 
   create_table "teams", force: :cascade do |t|
-    t.integer  "address_id"
     t.string   "name"
     t.integer  "number"
     t.string   "patron"
@@ -184,8 +183,6 @@ ActiveRecord::Schema.define(version: 20150607141103) do
     t.integer  "kind",       default: 0
     t.boolean  "trial"
   end
-
-  add_index "teams", ["address_id"], name: "index_teams_on_address_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

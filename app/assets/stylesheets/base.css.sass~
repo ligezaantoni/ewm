@@ -1,0 +1,175 @@
+@import "mixins"
+@import "materialize"
+  
+body
+  @extend .green.lighten-4
+  font-family: 'Comfortaa'
+  display: flex
+  min-height: 100vh
+  flex-direction: column
+
+header
+  @extend .green.darken-2
+
+nav
+  @extend .green
+  @extend .z-depth-3
+  height: 170px
+
+.brand-logo 
+  font-size: 16px
+  img
+    position: relative
+    top: 10px
+    left: -10px
+    width: 40px
+
+section
+  @extend .white
+  @extend .z-depth-2
+  width: 85%
+  margin: auto
+  
+  position: relative
+  top: -70px
+  padding: 25px 50px
+
+  .title
+    @extend h4
+    margin: 0px
+    padding: 10px 0px
+    
+  .notice
+    @extend .card-panel
+    @extend .blue.lighten-5
+
+.action-button
+  @extend .btn-floating 
+  @extend .btn-large 
+  @extend .waves-light
+  @extend .blue
+  @extend .accent-2
+    
+form
+  @extend .col.s12
+input
+  @extend .validate !optional
+
+.submit-button
+  @extend .btn
+  @extend .blue.accent-2
+  @extend .waves-effect
+  @extend .waves-light
+
+.pagination
+  height: 25px
+
+footer
+  @extend .grey.darken-1
+  
+  color: $white
+  a
+    margin-top: 8px
+    @extend .blue-text.text-lighten-3
+    
+main
+  flex: 1 0 auto
+    
+.action-button
+  @extend .right
+  position: relative
+  top: -28px
+  
+.danger
+  color: $red
+  background-color: $white
+.danger-inverted
+  color: $white
+  background-color: $red
+.info
+  color: $blue
+  background-color: $white
+.info-inverted
+  color: $white
+  background-color: $blue
+
+.inactive
+  color: $light-grey
+  cursor: default
+  
+.image-card-title
+  @extend .card-title
+  width: 100%
+  background: rgba(114, 114, 114, 0.6)
+
+.alt-card-content
+  @extend .card-content
+  background-color: $grey
+  color: $white
+
+.profile-image
+  height: 300px
+  
+.image-title
+  text-align: right
+  font-size: 20px
+
+.image-subtitle
+  text-align: right
+  font-size: 18px
+
+.image-description
+  font-size: 14px
+  
+ul.contact-information
+  margin: 0px
+  li
+    margin-bottom: 5px
+
+ul.actions
+  margin: 0px
+  li
+    display: inline-block
+    a
+      padding: 0px 10px
+
+td.prompt
+  font-size: 12px
+  color: $grey
+  width: 220px
+  padding: 0px 10px
+  
+body.homepage
+  @extend .green
+  
+  header
+    @extend .z-depth-3
+    height: 100px
+    color: $white
+    font-size: 40px
+
+  section
+    position: relative
+    top: 50px
+    margin-bottom: 50px
+  
+  .btn
+    @extend .btn
+    @extend .blue.accent-2
+    @extend .waves-effect
+    @extend .waves-light
+      
+.introduction
+  margin: 25px 0px 0px 0px
+  
+  li
+    margin-bottom: 20px
+  
+    h6
+      font-weight: bold
+      margin: 0px
+    p
+      margin: 0px
+  
+.introduction-divider
+  border-right: 1px solid $light-grey

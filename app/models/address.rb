@@ -1,12 +1,10 @@
 class Address < ActiveRecord::Base
 
   # Associations
-  has_many :scouts
-  has_many :teams
-  has_many :schools
+  belongs_to :addressable, polymorphic: true
   
   # Validations
-  validates :street_and_number, presence: true
-  validates :city, presence: true
-  
+  # validates :street_and_number, presence: true
+  # validates :city, presence: true
+    
 end

@@ -1,0 +1,19 @@
+ready = ->
+    
+  $('[data-role="datepicker-input"]').each (index, el) =>
+    if $(el).data("inline")
+      datepickerDiv = $("<div class='datepicker-div'/>")
+      $(el).parent().append(datepickerDiv)
+      options = $.extend $.datepicker.regional["fr"],
+        defaultDate: $(el).val()
+        dateFormat: "yy-mm-dd"
+        onSelect: (date, object) =>
+          $(el).val(date)
+      datepickerDiv.datepicker options
+      $(el).hide()
+    else
+      $(el).datepicker
+        dateFormat: "yy-mm-dd"     
+
+$(document).ready(ready)
+$(document).on('page:load', ready)

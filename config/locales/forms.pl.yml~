@@ -1,0 +1,7 @@
+pl:
+  forms:
+    send: "Wyślij"
+    back: "Wróć"
+    edit: "Edytuj"
+    create: "Stwórz"
+    delete: "Usuń"

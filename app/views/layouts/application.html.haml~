@@ -6,15 +6,120 @@
   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
   = csrf_meta_tags
+  %link{:href => "http://fonts.googleapis.com/css?family=Comfortaa&subset=latin,latin-ext", 
+    :rel => "stylesheet", :type => "text/css"}
+  %link{:href => "http://fonts.googleapis.com/css?family=Roboto&subset=latin,latin-ext", 
+    :rel => "stylesheet", :type => "text/css"}
+
+  %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-type"}
 
 %body
-  - if user_signed_in?
-    Signed in as 
-    = current_user.email
-    Not you?
-    = link_to "Sign out", destroy_user_session_path, :method => :delete
-  - else
-    = link_to "Sign up", new_user_registration_path
-    or
-    = link_to "sign in", new_user_session_path
-  = yield
+
+  %header
+    .container
+      %br
+      
+  - if user_signed_in?    
+    %ul#profile-dropdown.dropdown-content
+      %li
+        = menu_link_to "Edytuj profil", "#", icon = "account_circle"
+      %li.divider
+      %li
+        = menu_link_to t("devise.sign_out"), destroy_user_session_path, 
+        icon = "power_settings_new", :method => :delete
+    
+  %nav
+    .container
+      .nav-wrapper
+        %a.brand-logo{:href => root_path}
+          = image_tag("lil.png")
+          = t("website.title")
+          
+        - if user_signed_in?  
+          %ul#nav-mobile.right.hide-on-med-and-down
+            %li.tooltipped{"data-position"=>"bottom", "data-tooltip"=>t("menu.registry")}
+              = icon_link_to scouts_path, icon = "group"
+            %li.tooltipped{"data-position"=>"bottom", "data-tooltip"=>t("menu.training")}
+              = icon_link_to "#", icon = "school"
+            %li.tooltipped{"data-position"=>"bottom", "data-tooltip"=>t("menu.planning")}
+              = icon_link_to "#", icon = "event"
+            %li.tooltipped{"data-position"=>"bottom", "data-tooltip"=>t("menu.rating")}
+              = icon_link_to "#", icon = "star"
+            %li
+              %a.dropdown-button{"data-activates" => "profile-dropdown", :href => "#!"}
+                = current_user.email
+                %i.material-icons.right
+                  arrow_drop_down
+                
+          %ul#slide-out.side-nav
+            %li
+              %a{:href => "#"}
+                Edytuj profil
+                %i.material-icons.left
+                  account_circle
+            %li
+              = menu_link_to t("devise.sign_out"), destroy_user_session_path, 
+              icon = "power_settings_new", :method => :delete
+            %li.divider
+            %li
+              %a{:href => "#!"}
+                %i.material-icons.left
+                  group
+                Ewidencja
+            %li
+              %a{:href => "#!"}
+                %i.material-icons.left
+                  school
+                Szolenie
+            %li
+              %a{:href => "#!"}
+                %i.material-icons.left
+                  event
+                Planowanie
+            %li
+              %a{:href => "#!"}
+                %i.material-icons.left
+                  star
+                Ocena
+            
+          %a.button-collapse{"data-activates" => "slide-out", :href => "#"}
+            %i.mdi-navigation-menu
+          
+  %main.container
+    - if content_for :action_button
+      .floating-button
+        = yield :action_button
+    
+    %section      
+      - if content_for :breadcrumbs
+        .breadcrumbs
+          = yield :breadcrumbs
+      - if content_for :notice
+        .notice
+          = yield :notice
+      - if content_for :title
+        .title
+          = yield :title
+      .content
+        = yield
+  
+%footer.page-footer
+  .container
+    .row
+      .col.l6.s12
+        %h5
+          Educational Work Management System
+        %p
+          Projekt stworzony w ramach pracy magisterskiej.
+      .col.l4.offset-l2.s12
+        %h5 Przydatne linki
+        %ul
+          %li
+            %a{:href => "#!"} Praca magisterska
+  .footer-copyright
+    .container
+      Antoni Ligęza &nbsp;|&nbsp; Elektroniczne Przetwarzanie Informacji 2015
+      %a.btn-flat.white-text.right{:href => "#!"}
+        Zarządzaj
+        %i.material-icons.left
+          settings

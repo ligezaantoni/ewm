@@ -1,10 +1,12 @@
 class Team < ActiveRecord::Base
 
   # Associations
-  belongs_to :address
+  has_one :address, as: :addressable, dependent: :destroy
   has_many :scouts
   has_many :schools
   has_many :events
+  
+  accepts_nested_attributes_for :address
   
   # Validations
   validates :name, presence: true

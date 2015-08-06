@@ -6,7 +6,9 @@ class TeamPolicy < ApplicationPolicy
     attributes = []
       if user.present?
         attributes += [ 
-          :address_id, :name, :number, :patron
+          :name, :number, :patron, :trial, :region, :kind, address_attributes: [
+            :street_and_number, :postal_code, :city
+          ]
         ]
       end
     attributes

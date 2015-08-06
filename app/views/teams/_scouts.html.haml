@@ -1,0 +1,24 @@
+%table.table
+  %thead
+    %tr
+      %th= t(".ordinal")
+      %th= t(".full_name_reversed")
+      %th= t(".age")
+      %th= t(".rank")
+      %th= t(".position")
+      %th= t(".patrol")
+      %th= icon_link_to("#", "edit", class: "inactive")
+      %th= icon_link_to("#", "delete", class: "inactive")
+
+  %tbody
+    - @scouts.each_with_index do |scout, i|
+      %tr
+        %td= i+1
+        %td= link_to scout.full_name_reversed, team_scout_path(team, scout)
+        %td= scout.age
+        %td= scout.rank
+        %td= scout.position
+        %td= scout.patrol
+        %td= icon_link_to(edit_team_scout_path(team, scout), "edit")
+        %td= icon_link_to(team_scout_path(team, scout), "delete", method: :delete, 
+          data: { confirm: t(".confirm_destroy") }, class: "danger")

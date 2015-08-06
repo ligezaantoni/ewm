@@ -1,0 +1,5 @@
+module FormBuildersHelper < ActionView::Helpers::FormBuilder
+  def label(method, text = nil, options = {}, kijwi = nil)
+    @template.label(@object_name, method, text, objectify_options(options))
+  end
+end

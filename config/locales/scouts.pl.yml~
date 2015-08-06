@@ -1,0 +1,78 @@
+pl:
+  activerecord:
+    attributes:
+      scout:  &scout_attributes
+        abilities: "sprawności"
+        last_name: "nazwisko"
+        first_name: "imię"
+        pesel: "PESEL"
+        position: "funkcja"
+        rank: "stopień"
+        patrol: "zastęp"
+        birthplace: "miejsce urodzenia"
+        phone_number: "numer telefonu"
+        email: "email"
+        allergies: "alergie"
+        past_diseases: "przebyte choroby"
+        vaccinations: "szczepienia"
+        promise_made_on: "data złożenia przyrzeczenia"
+        team: "drużyna"
+        
+        ordinal: "Lp"
+        age: "wiek"
+        full_name_reversed: "nazwiso i imię"
+        school_name: "nazwa"
+        school_address: "adres"
+        school_class: "klasa"
+        strengths: "zalety"
+        weaknesses: "wady"
+        opportunities: "możliwości"
+        threats: "zagrożenia"
+        street_and_number: "ulica i numer"
+        postal_code: "kod pocztowy"
+        city: "miasto"
+        
+  enumerations:
+    scout: 
+      rank:
+        youngster: "młodzik"
+        scout: "wywiadowca"
+        pioneer: "ćwik"
+        eagle_scout: "HO"
+        scout_of_the_republic: "HR"
+      position:
+        no_position: "szeregowy"
+        songster: "pieśniarz"
+        chronicler: "kronikarz"
+        photographer: "fotograf"
+        pennant_bearer: "chorąży"
+        patrol_leader: "zastępowy"
+        adjutant: "przyboczny"
+      
+  scouts:
+    index:
+      title: "Harcerze"
+      confirm_destroy: "Usunąć profil harcerza?"
+      <<: *scout_attributes
+    show:
+      title: Profil harcerza
+      confirm_destroy: "Usunąć profil harcerza?"
+      age_unit: "lat(a)"
+      scouting_information: "Wtajemniczenie harcerskie"
+      school_information: "Informacje o szkole"
+      characteristic: "Charakterystyka"
+      health_information: "Informacje zdrowotne"
+      guardians: "opiekunowie"
+      <<: *scout_attributes
+    form:
+      <<: *scout_attributes
+    edit:
+      title: "Edycja profilu harcerza"
+    update:
+      notice: "Profil harcerza został zaktualizowany."
+    new:
+      title: "Tworzenie profilu harcerza"
+    create:
+      notice: "Profil harcerza został utworzony."
+    destroy:
+      notice: "Profil harcerza został usunięty."

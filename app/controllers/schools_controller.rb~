@@ -1,4 +1,5 @@
 class SchoolsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :load_and_authorize_school,
     only: [:show, :edit, :update, :destroy]
 
@@ -50,6 +51,6 @@ class SchoolsController < ApplicationController
   end
 
   def school_params
-    params.require(:school).permit(*policy(@address || Address).permitted_attributes)
+    params.require(:school).permit(*policy(@school || School).permitted_attributes)
   end
 end

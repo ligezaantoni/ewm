@@ -1,0 +1,36 @@
+pl:
+  simple_form:
+    "yes": 'Tak'
+    "no": 'Nie'
+    required:
+      text: 'wymagane'
+      mark: '*'
+    error_notification:
+      default_message: "Problemy:"
+    options:
+      scout:
+        rank:
+        youngster: "młodzik"
+        scout: "wywiadowca"
+        pioneer: "ćwik"
+        eagle_scout: "HO"
+        scout_of_the_republic: "HR"
+      position:
+        no_position: "szeregowy"
+        songster: "pieśniarz"
+        chronicler: "kronikarz"
+        photographer: "fotograf"
+        pennant_bearer: "chorąży"
+        patrol_leader: "zastępowy"
+        adjutant: "przyboczny"
+  helpers:
+    submit:
+      team:
+        create: "Zapisz drużynę"
+        update: "Zaktualizuj drużynę"
+  actions:
+    show: "Pokaż"
+    edit: "Edytuj"
+    destroy: "Usuń"
+    back: "Wróć"
+

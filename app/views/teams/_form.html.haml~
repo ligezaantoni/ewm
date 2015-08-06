@@ -7,14 +7,36 @@
         - @team.errors.full_messages.each do |msg|
           %li= msg
 
-
-  = f.label :address
-  = f.text_field :address
-  = f.label :name
-  = f.text_field :name
-  = f.label :number
-  = f.number_field :number
-  = f.label :patron
-  = f.text_field :patron
-
-  = f.submit 'Save'
+  .row
+    .input-field.col.s12
+      .checkbox
+        %input{:name => "team[trial]", :type => "hidden", :value => "0"}/
+        %input#team_trial{:name => "team[trial]", :type => "checkbox", :value => "1", 
+          :checked => (@team.trial? ? "checked" : nil) }/
+        %label{:for => "team_trial"}= t(".trial")
+  .row
+    .input-field.col.s1
+      = f.input :number
+    .input-field.col.s3
+      = f.input :region
+    .input-field.col.s3
+      = f.select :kind, kind_options_for_select, include_blank: false
+    .input-field.col.s5
+      = f.input :name
+  .row
+    .input-field.col.s12
+      = f.input :patron
+  .row
+    = f.simple_fields_for :address do |fa|
+      .input-field.col.s6
+        %i.material-icons.prefix
+          home
+        = fa.text_field :street_and_number
+        = label_for_nested(:street_and_number, :address, @team)
+      .input-field.col.s2
+        = fa.text_field :postal_code
+        = label_for_nested(:postal_code, :address, @team)
+      .input-field.col.s4
+        = fa.text_field :city
+        = label_for_nested(:city, :address, @team)
+  = f.submit

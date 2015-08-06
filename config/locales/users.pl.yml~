@@ -1,0 +1,27 @@
+pl:
+  activerecord:
+    attributes:
+      user:  &user_attributes
+        email: "Email"
+        password: "Hasło"
+        remember_me: "Pamiętaj mnie"
+        role: "Rola"
+        
+  users:
+    index:
+      title: "Harcerze"
+      confirm_destroy: "Usunąć profil harcerza?"
+      <<: *user_attributes
+    show:
+      title: Profil harcerza
+      confirm_destroy: "Usunąć profil harcerza?"
+    edit:
+      title: "Edycja profilu harcerza"
+    update:
+      notice: "Profil harcerza został zaktualizowany."
+    new:
+      title: "Tworzenie profilu harcerza"
+    create:
+      notice: "Profil harcerza został utworzony."
+    destroy:
+      notice: "Profil harcerza został usunięty."

@@ -1,0 +1,58 @@
+pl:
+  activerecord:
+    attributes:
+      team: &team_attributes
+        name: "nazwa"
+        address: "adres"
+        number: "numer"
+        patron: "imienia"
+        trial: "próbna"
+        region: "region działania"
+        kind: "rodzaj"
+        
+        full_name: "pełna nazwa"
+        patron_prefix: "im."
+        trial: "próbna"
+        street_and_number: "ulica i numer"
+        postal_code: "kod pocztowy"
+        city: "miasto"
+        
+      scout:  &scout_attributes
+        position: "funkcja"
+        rank: "stopień"
+        patrol: "zastęp" 
+        ordinal: "Lp"
+        age: "wiek"
+        full_name_reversed: "nazwiso i imię"
+        
+  enumerations:
+    team: 
+      kind:
+        scout: "Drużyna Harcerzy"
+        cub_scout: "Gromada Zuchowa"
+        wanderer: "Drużyna Wędrowników"
+        
+  teams:
+    index:
+      title: "Ewidencja"
+      confirm_destroy: "Usunąć drużynę?"
+      <<: *team_attributes
+    show:
+      title: "Drużyna"
+      confirm_destroy: "Usunąć drużynę?"
+      <<: *team_attributes
+    form:
+      <<: *team_attributes
+    edit:
+      title: "Edycja drużyny"
+    update:
+      notice: "Informacje o drużynie zostały zaktualizowane."
+    new:
+      title: "Tworzenie drużyny"
+    create:
+      notice: "Drużyna została utworzona."
+    destroy:
+      notice: "Drużyna została usunięta."
+    scouts:
+      confirm_destroy: "Usunąć profil harcerza?"
+      <<: *scout_attributes

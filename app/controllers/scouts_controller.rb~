@@ -1,21 +1,30 @@
 class ScoutsController < ApplicationController
+  before_action :load_and_authorize_team,
+    only: [:show, :new, :create, :edit, :update, :destroy]
   before_action :load_and_authorize_scout,
     only: [:show, :edit, :update, :destroy]
+  before_filter :set_breadcrumbs
 
   def index
     authorize Scout
-    @scouts = Scout.all
+    @scouts = Scout.page(params[:page]).per(20)
+    @scouts = PaginatingDecorator.decorate(@scouts, with: ScoutDecorator)
   end
 
   def show
+    @scout = ScoutDecorator.decorate(@scout)
+    add_breadcrumb t(".title")
   end
 
   def new
-    @scout = Scout.new
+    @scout = @team.scouts.build
+    @scout.build_address
     authorize @scout
+    add_breadcrumb t(".title")
   end
 
   def edit
+    add_breadcrumb t(".title")
   end
 
   def create
@@ -23,7 +32,7 @@ class ScoutsController < ApplicationController
     authorize @scout
 
     if @scout.save
-      redirect_to @scout, notice: 'Scout was successfully created.'
+      redirect_to team_scout_path(@team, @scout), notice: t(".notice")
     else
       render :new
     end
@@ -31,7 +40,7 @@ class ScoutsController < ApplicationController
 
   def update
     if @scout.update(scout_params)
-      redirect_to @scout, notice: 'Scout was successfully updated.'
+      redirect_to team_scout_path(@team, @scout), notice: t(".notice")
     else
       render :edit
     end
@@ -39,7 +48,7 @@ class ScoutsController < ApplicationController
 
   def destroy
     @scout.destroy
-    redirect_to scouts_url, notice: 'Scout was successfully destroyed.'
+    redirect_to team_url(@team), notice: t(".notice")
   end
 
   private
@@ -48,8 +57,19 @@ class ScoutsController < ApplicationController
     @scout = Scout.find(params[:id])
     authorize @scout
   end
+  
+  def load_and_authorize_team
+    @team = Team.find(params[:team_id])
+    @team = TeamDecorator.decorate(@team)
+    authorize @team
+  end
 
   def scout_params
-    params.require(:scout).permit(*policy(@address || Address).permitted_attributes)
+    params.require(:scout).permit(*policy(@scout || Scout).permitted_attributes)
+  end
+  
+  def set_breadcrumbs
+    add_breadcrumb t("menu.registry"), teams_path
+#    add_breadcrumb @team.short_name, team_path(@team)
   end
 end

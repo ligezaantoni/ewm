@@ -1,51 +1,127 @@
-%p#notice= notice
+- content_for :notice do
+  = notice
+- content_for :action_button do
+  = icon_link_to "#", "insert_chart", 
+    class: "action-button waves-effect"
+- content_for :breadcrumbs do
+  = render_breadcrumbs
+  
+.row
+  .col.s7
+    .card-panel
+      %table
+        %thead
+          %tr
+            %td{colspan: "2"}
+              = t(".scouting_information")
+        %tbody
+          %tr
+            %td.prompt= t(".patrol")
+            %td= @scout.patrol
+          %tr
+            %td.prompt= t(".position")
+            %td= @scout.position
+          %tr
+            %td.prompt= t(".rank")
+            %td= @scout.rank
+          %tr
+            %td.prompt= t(".promise_made_on")
+            %td= @scout.promise_made_on
+          %tr
+            %td.prompt= t(".abilities")
+            %td
+    .card-panel
+      %table
+        %thead
+          %tr
+            %td{colspan: "2"}
+              = t(".school_information")
+        %tbody
+          %tr
+            %td.prompt= t(".school_name")
+            %td
+          %tr
+            %td.prompt= t(".school_address")
+            %td
+          %tr
+            %td.prompt= t(".school_class")
+            %td
 
-%p
-  %b Team:
-  = @scout.team
-%p
-  %b Address:
-  = @scout.address
-%p
-  %b First name:
-  = @scout.first_name
-%p
-  %b Last name:
-  = @scout.last_name
-%p
-  %b Age:
-  = @scout.age
-%p
-  %b Birthplace:
-  = @scout.birthplace
-%p
-  %b Phone number:
-  = @scout.phone_number
-%p
-  %b Email:
-  = @scout.email
-%p
-  %b Allergies:
-  = @scout.allergies
-%p
-  %b Past diseases:
-  = @scout.past_diseases
-%p
-  %b Vaccinations:
-  = @scout.vaccinations
-%p
-  %b Rank:
-  = @scout.rank
-%p
-  %b Position:
-  = @scout.position
-%p
-  %b Promise made on:
-  = @scout.promise_made_on
-%p
-  %b Patrol:
-  = @scout.patrol
+    .card-panel
+      %table
+        %thead
+          %tr
+            %td{colspan: "2"}
+              = t(".characteristic")
+        %tbody
+          %tr
+            %td.prompt= t(".strengths")
+            %td
+          %tr
+            %td.prompt= t(".weaknesses")
+            %td
+          %tr
+            %td.prompt= t(".opportunities")
+            %td
+          %tr
+            %td.prompt= t(".threats")
+            %td
 
-= link_to 'Edit', edit_scout_path(@scout)
-\|
-= link_to 'Back', scouts_path
+    .card-panel
+      %table
+        %thead
+          %tr
+            %td{colspan: "2"}
+              = t(".health_information")
+        %tbody
+          %tr
+            %td.prompt= t(".allergies")
+            %td= @scout.allergies
+          %tr
+            %td.prompt= t(".past_diseases")
+            %td= @scout.past_diseases
+          %tr
+            %td.prompt= t(".vaccinations")
+            %td= @scout.vaccinations
+
+  .col.s5
+    .card
+      .card-image
+        = image_tag("lil.png")
+        %span.image-card-title
+          .image-title
+            = @scout.full_name
+          .image-subtitle
+            = @scout.age_with_unit
+          .image-description
+            %b= t(".pesel")
+            = @scout.pesel
+          .image-description
+            %b= t(".birthplace")
+            = @scout.birthplace
+      .card-content
+        %ul.contact-information
+          - if @scout.phone_number.present?
+            %li
+              %i.material-icons.left
+                phone
+              = @scout.phone_number
+          - if @scout.email.present?
+            %li
+              %i.material-icons.left
+                email
+              = @scout.email
+          - if @scout.street_and_number.present? || @scout.city_with_postal_code.present?
+            %li
+              %i.material-icons.left
+                home
+              = @scout.street_and_number
+              %br
+              = @scout.city_with_postal_code
+      .alt-card-content
+        = t(".guardians")
+      .card-content.center-align
+        %ul.actions
+          %li= menu_link_to(t("nav.edit"), edit_team_scout_path(@team, @scout), "edit", class: "info btn-flat")
+          %li= menu_link_to(t("nav.delete"), team_scout_path(@team, @scout), "delete", method: :delete, 
+            data: { confirm: t(".confirm_destroy") }, class: "danger btn-flat")
