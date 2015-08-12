@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804212556) do
+ActiveRecord::Schema.define(version: 20150809214315) do
 
   create_table "abilities", force: :cascade do |t|
     t.string   "name"
@@ -117,14 +117,17 @@ ActiveRecord::Schema.define(version: 20150804212556) do
     t.string   "last_name"
     t.string   "phone_number"
     t.string   "email"
-    t.integer  "role",         default: 0
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "role",           default: 0
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "relatable_id"
+    t.string   "relatable_type"
   end
+
+  add_index "related_people", ["relatable_type", "relatable_id"], name: "index_related_people_on_relatable_type_and_relatable_id"
 
   create_table "schools", force: :cascade do |t|
     t.integer  "team_id"
-    t.string   "name"
     t.integer  "number"
     t.string   "patron"
     t.boolean  "activity_room"
@@ -132,17 +135,10 @@ ActiveRecord::Schema.define(version: 20150804212556) do
     t.text     "comments"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "kind"
   end
 
   add_index "schools", ["team_id"], name: "index_schools_on_team_id"
-
-  create_table "schools_officials", id: false, force: :cascade do |t|
-    t.integer "school_id"
-    t.integer "official_id"
-  end
-
-  add_index "schools_officials", ["official_id"], name: "index_schools_officials_on_official_id"
-  add_index "schools_officials", ["school_id"], name: "index_schools_officials_on_school_id"
 
   create_table "scouts", force: :cascade do |t|
     t.integer  "team_id"
@@ -154,24 +150,20 @@ ActiveRecord::Schema.define(version: 20150804212556) do
     t.text     "allergies"
     t.text     "past_diseases"
     t.text     "vaccinations"
-    t.integer  "rank",            default: 0
-    t.integer  "position",        default: 0
+    t.integer  "rank",                default: 0
+    t.integer  "position",            default: 0
     t.date     "promise_made_on"
     t.string   "patrol"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "pesel"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "scouts", ["team_id"], name: "index_scouts_on_team_id"
-
-  create_table "scouts_parents", id: false, force: :cascade do |t|
-    t.integer "scout_id"
-    t.integer "parent_id"
-  end
-
-  add_index "scouts_parents", ["parent_id"], name: "index_scouts_parents_on_parent_id"
-  add_index "scouts_parents", ["scout_id"], name: "index_scouts_parents_on_scout_id"
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"

@@ -20,6 +20,9 @@
     .input-field.col.s6
       = f.text_field :birthplace
       = f.label :birthplace
+    .input-field.col.s6
+      = f.input :avatar, input_html: { class: "image-input-button" }, label: false
+      = f.label :avatar, active: true
   .row
     .input-field.col.s4
       = f.association :team, :collection => policy_scope(Team.all), :value_method => :id

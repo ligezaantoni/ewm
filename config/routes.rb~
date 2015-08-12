@@ -8,11 +8,13 @@ Rails.application.routes.draw do
   resources :educational_methods
   resources :execution_reports
   resources :events
-  resources :related_people
-  resources :schools
-  resources :scouts
   resources :teams do
-    resources :scouts
+    resources :schools do
+      resources :officials
+    end
+    resources :scouts do
+      resources :related_people
+    end
   end
   root to: 'home#index'
 

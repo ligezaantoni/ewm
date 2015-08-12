@@ -13,7 +13,7 @@ class TeamDecorator < Draper::Decorator
   end
   
   def patron
-    "#{h.t(".patron_prefix")} #{model.patron}"
+    "#{h.t(".patron_prefix")} #{model.patron}" if model.patron.present?
   end
   
   def short_name
@@ -42,7 +42,7 @@ class TeamDecorator < Draper::Decorator
         model.address.postal_code, 
         model.address.city, 
         model.address.street_and_number
-      ].reject(&:empty?).join(', ')
+      ].reject(&:nil?).join(', ')
     end
   end
   

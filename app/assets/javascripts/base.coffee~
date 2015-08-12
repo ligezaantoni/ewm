@@ -2,7 +2,8 @@ ready = ->
   $('.datepicker').pickadate 
     selectMonths: true 
     selectYears: 15
-    formatSubmit: new Hash('promise_made_on', 'yyyy/mm/dd')
+    formatSubmit: 'yyyy/mm/dd'
+    hiddenName: true
     labelMonthNext: 'Następny miesiąc'
     labelMonthPrev: 'Poprzedni miesiąc'
     labelMonthSelect: 'Wybierz miesiąc'
@@ -68,7 +69,9 @@ ready = ->
   $('.button-collapse').sideNav()
   $('.dropdown-button').dropdown()
   $('select').material_select()
-  $('.tooltipped').alert "" //powinno być .tooltip()
+  $('.collapsible').collapsible(accordion: false)
+  $('.tooltipped').tooltip() //powinno być .tooltip()
   
+
 $(document).ready(ready)
 $(document).on('page:load', ready)

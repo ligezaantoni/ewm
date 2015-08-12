@@ -87,7 +87,12 @@
   .col.s5
     .card
       .card-image
-        = image_tag("lil.png")
+        - if @scout.avatar.present?
+          = image_tag @scout.avatar.url(:medium)
+        - else
+          .default-avatar
+            %i.material-icons.enormous
+              person
         %span.image-card-title
           .image-title
             = @scout.full_name
@@ -101,10 +106,11 @@
             = @scout.birthplace
       .card-content
         %ul.contact-information
-          %li
-            %i.material-icons.left
-              phone
-            = @scout.phone_number
+          - if @scout.phone_number.present?
+            %li
+              %i.material-icons.left
+                phone
+              = @scout.phone_number
           - if @scout.email.present?
             %li
               %i.material-icons.left
@@ -118,7 +124,28 @@
               %br
               = @scout.city_with_postal_code
       .alt-card-content
-        = t(".guardians")
+        %b= t(".guardians")
+        %ul.contact-information
+          - @parents.each do |parent|
+            %li
+              = parent.full_name_with_role
+              .right
+                = icon_link_to(edit_team_scout_parent_path(@team, @scout, parent), "edit", class: "blend-in")
+                = icon_link_to(team_scout_path(@team, @scout), "delete", method: :delete,
+                  data: { confirm: t(".confirm_destroy") }, class: "blend-in")
+              %ul.contact-information
+                - if parent.phone_number.present?
+                  %li
+                    %i.material-icons.left
+                      phone
+                    = parent.phone_number
+                - if parent.email.present?
+                  %li
+                    %i.material-icons.left
+                      email
+                    = parent.email
+        .right-align
+          = menu_link_to t("nav.add"), new_team_scout_parent_path(@team, @scout), "add", class: "blend-in btn-flat"
       .card-content.center-align
         %ul.actions
           %li= menu_link_to(t("nav.edit"), edit_team_scout_path(@team, @scout), "edit", class: "info btn-flat")

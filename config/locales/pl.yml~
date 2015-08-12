@@ -20,6 +20,7 @@ pl:
       next: "&gt;"
       truncate: "..."
   home:
+    introduction: "Witaj na stronie EWM, systemu wspomagajacego pracę wychowawczą"
     registry_desc: "Zarzadzaj danymi osobowymi swoich podopiecznych i obserwuj czynione przez nich postepy."
     training_desc: "Planuj zajecia odpowiednie do umiejetnosci druzyny i poznaj nowe metody pracy."
     planning_desc: "Kontroluj swoj terminarz, aby miec pewnosc, ze masz wszystko dopiete na ostatni guzik."

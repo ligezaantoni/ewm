@@ -1,7 +1,6 @@
-%h1 Editing school
+- content_for :title do
+  = t(".title")
+- content_for :breadcrumbs do
+  = render_breadcrumbs
 
-= render 'form'
-
-= link_to 'Show', @school
-\|
-= link_to 'Back', schools_path
+= render 'form', url: team_school_path(@team, @school)

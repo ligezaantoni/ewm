@@ -1,0 +1,9 @@
+module ParentsHelper
+
+  def parent_role_options_for_select
+    RelatedPerson.roles.slice(:father, :mother, :educator)keys.map do |key|
+      [I18n.t("enumerations.related_person.role.#{key}"), key]
+    end
+  end
+  
+end

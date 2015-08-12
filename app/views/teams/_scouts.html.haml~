@@ -20,5 +20,5 @@
         %td= scout.position
         %td= scout.patrol
         %td= icon_link_to(edit_team_scout_path(team, scout), "edit")
-        %td= icon_link_to(team_scout(team, scout), "delete", method: :delete, 
+        %td= icon_link_to(team_scout_path(team, scout), "delete", method: :delete, 
           data: { confirm: t(".confirm_destroy") }, class: "danger")

@@ -1,12 +1,18 @@
 class School < ActiveRecord::Base
 
   # Associations
-  has_one :address, as: :addressable
+  has_one :address, as: :addressable, dependent: :destroy
   belongs_to :team
-  has_and_belongs_to_many :officials, class_name: "RelatedPerson",
-    join_table: "schools_officials", association_foreign_key: "official_id"
+  has_many :officials, as: :relatable, class_name: "RelatedPerson"
+#  has_and_belongs_to_many :officials, class_name: "RelatedPerson",
+#    join_table: "schools_officials", association_foreign_key: "official_id"
+  
+  accepts_nested_attributes_for :address
   
   # Validations
-  validates :name, presence: true
+  validates :number, presence: true
+  
+  # Enums
+  enum kind: %i(primary_school secondary_school high_school)
   
 end

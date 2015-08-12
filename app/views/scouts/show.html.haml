@@ -87,7 +87,12 @@
   .col.s5
     .card
       .card-image
-        = image_tag("lil.png")
+        - if @scout.avatar.present?
+          = image_tag @scout.avatar.url(:medium)
+        - else
+          .default-avatar
+            %i.material-icons.enormous
+              person
         %span.image-card-title
           .image-title
             = @scout.full_name
@@ -119,7 +124,7 @@
               %br
               = @scout.city_with_postal_code
       .alt-card-content
-        = t(".guardians")
+        = render "parents", team: @team, scout: @scout, parents: @parents
       .card-content.center-align
         %ul.actions
           %li= menu_link_to(t("nav.edit"), edit_team_scout_path(@team, @scout), "edit", class: "info btn-flat")

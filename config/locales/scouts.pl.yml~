@@ -55,7 +55,7 @@ pl:
       confirm_destroy: "Usunąć profil harcerza?"
       <<: *scout_attributes
     show:
-      title: Profil harcerza
+      title: "Profil harcerza"
       confirm_destroy: "Usunąć profil harcerza?"
       age_unit: "lat(a)"
       scouting_information: "Wtajemniczenie harcerskie"
@@ -76,3 +76,8 @@ pl:
       notice: "Profil harcerza został utworzony."
     destroy:
       notice: "Profil harcerza został usunięty."
+    parents:
+      title: "Opiekunowie"
+      confirm_destroy: "Usunąć opiekuna?"
+      add: "Dodaj opiekuna"
+      <<: *scout_attributes

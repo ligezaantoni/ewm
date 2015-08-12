@@ -14,10 +14,10 @@ module ApplicationHelper
     end
   end
   
-  def button_link_to(name, url, icon=nil, options={})
+  def button_link_to(name, url, icon=nil, flat=false, options={})
     link_icon_tag = icon_tag(icon, align = "left") if icon
     options[:class] ||= ""
-    options[:class] += " btn"
+    options[:class] += flat ? " btn-flat" : " btn"
     send :link_to, url, options do
       safe_join([link_icon_tag, name], " ")
     end
@@ -50,7 +50,10 @@ module ActionView
     module FormHelper
       def label(object_name, method, content_or_options = nil, options = nil, &block)
         object = options[:object]
-        options[:class] << "active" if object.present? && object.send(method).present? && options[:active] != false
+        if (object.present? && object.send(method).present? && options[:active] != false) ||
+          options[:active] == true
+          options[:class] << "active"
+        end
         Tags::Label.new(object_name, method, self, content_or_options, options).render(&block)
       end
     end

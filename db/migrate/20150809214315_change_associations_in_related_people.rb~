@@ -1,0 +1,10 @@
+class ChangeAssociationsInRelatedPeople < ActiveRecord::Migration
+  def change
+    change_table :related_people do |t|
+      t.integer :relatable_id
+      t.string :relatable_type
+      add_index :related_people, [:relatable_type, :relatable_id]
+    end
+    drop_table :scouts_parents
+  end
+end

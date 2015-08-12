@@ -1,0 +1,56 @@
+pl:
+  activerecord:
+    attributes:
+      school: &school_attributes
+        address: "adres"
+        number: "numer"
+        patron: "imienia"
+        region: "region działania"
+        kind: "rodzaj"
+        activity_room: "harcówka"
+        equipment_storage: "magazyn"
+        comments: "uwagi"
+        
+        full_name: "pełna nazwa"
+        number_prefix: "nr"
+        patron_prefix: "im."
+        street_and_number: "ulica i numer"
+        postal_code: "kod pocztowy"
+        city: "miasto"
+        team: "drużyna"
+        possession_values:
+          true: "posiada"
+          false: "brak"
+        
+  enumerations:
+    school: 
+      kind:
+        primary_school: "Szkoła Podstawowa"
+        secondary_school: "Gimnazjum"
+        high_school: "Liceum"
+      short_kind:
+        primary_school: "SP"
+        secondary_school: "Gim"
+        high_school: "LO"
+        
+  schools:
+    index:
+      title: "Szkoły"
+      confirm_destroy: "Usunąć szkołę?"
+      <<: *school_attributes
+    show:
+      title: "Szkoła"
+      confirm_destroy: "Usunąć szkołę?"
+      <<: *school_attributes
+    form:
+      <<: *school_attributes
+    edit:
+      title: "Edycja szkoły"
+    update:
+      notice: "Informacje o szkole zostały zaktualizowane."
+    new:
+      title: "Tworzenie szkoły"
+    create:
+      notice: "Szkoła została utworzona."
+    destroy:
+      notice: "Szkoła została usunięta."

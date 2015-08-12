@@ -31,7 +31,7 @@ class TeamsController < ApplicationController
     authorize @team
 
     if @team.save
-      redirect_to @team, notice: 'Team was successfully created.'
+      redirect_to @team, notice: t(".notice")
     else
       render :new
     end
@@ -39,7 +39,7 @@ class TeamsController < ApplicationController
 
   def update
     if @team.update(team_params)
-      redirect_to @team, notice: 'Team was successfully updated.'
+      redirect_to @team, notice: t(".notice")
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class TeamsController < ApplicationController
 
   def destroy
     @team.destroy
-    redirect_to teams_url, notice: 'Team was successfully destroyed.'
+    redirect_to teams_url, notice: t(".notice")
   end
 
   private

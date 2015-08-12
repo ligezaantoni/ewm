@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Address:
+  = @school.address
+%p
+  %b Team:
+  = @school.team
+%p
+  %b Number:
+  = @school.number
+%p
+  %b Patron:
+  = @school.patron
+%p
+  %b Activity room:
+  = @school.activity_room
+%p
+  %b Equipment storage:
+  = @school.equipment_storage
+%p
+  %b Comments:
+  = @school.comments
+
+= link_to 'Edit', edit_school_path(@school)
+\|
+= link_to 'Back', schools_path

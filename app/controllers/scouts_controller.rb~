@@ -13,6 +13,7 @@ class ScoutsController < ApplicationController
 
   def show
     @scout = ScoutDecorator.decorate(@scout)
+    @parents = @scout.parents
     add_breadcrumb t(".title")
   end
 
@@ -70,6 +71,6 @@ class ScoutsController < ApplicationController
   
   def set_breadcrumbs
     add_breadcrumb t("menu.registry"), teams_path
-#    add_breadcrumb @team.short_name, team_path(@team)
+    add_breadcrumb @team.short_name, team_path(@team)
   end
 end

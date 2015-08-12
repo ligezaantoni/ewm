@@ -20,6 +20,9 @@
     .input-field.col.s6
       = f.text_field :birthplace
       = f.label :birthplace
+    .input-field.col.s6
+      = f.input :avatar, input_html: { class: "image-input-button" }
+      = f.label :avatar, active: true
   .row
     .input-field.col.s4
       = f.association :team, :collection => policy_scope(Team.all), :value_method => :id
@@ -59,10 +62,10 @@
         = label_for_nested(:street_and_number, :address, @scout)
       .input-field.col.s2
         = fa.text_field :postal_code
-        = label_tag :postal_code, t(".postal_code")
+        = label_for_nested(:postal_code, :address, @scout)
       .input-field.col.s4
         = fa.text_field :city
-        = label_tag :city, t(".city")
+        = label_for_nested(:city, :address, @scout)
 
   %h5 Informacje zdrowotne
   .row

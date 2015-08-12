@@ -1,0 +1,6 @@
+- content_for :title do
+  = t(".title")
+- content_for :breadcrumbs do
+  = render_breadcrumbs
+  
+= render 'form', url: team_school_official_path(@team, @school, @official)

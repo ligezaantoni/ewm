@@ -1,5 +1,5 @@
-@import "mixins"
 @import "materialize"
+@import "mixins"
   
 body
   @extend .green.lighten-4
@@ -54,15 +54,35 @@ form
   @extend .col.s12
 input
   @extend .validate !optional
-
+  
+.image-input-button
+  margin-top: 10px
+  
 .submit-button
   @extend .btn
   @extend .blue.accent-2
   @extend .waves-effect
   @extend .waves-light
 
+.nested-model
+  padding: 20px 0px
+
+.collapsible-body
+  @extend .collapsible-body
+  padding: 20px
+
 .pagination
   height: 25px
+  
+.default-avatar 
+  @extend .green.darken-1
+  height: 400px
+  width: 100%
+  color: $white
+  text-align: center
+  
+.enormous
+  font-size: 17rem
 
 footer
   @extend .grey.darken-1
@@ -92,6 +112,11 @@ main
 .info-inverted
   color: $white
   background-color: $blue
+  
+.blend-in
+  color: $white
+  
+.blend-in-inverted
 
 .inactive
   color: $light-grey

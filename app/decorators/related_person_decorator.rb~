@@ -1,0 +1,12 @@
+class RelatedPersonDecorator < Draper::Decorator
+  delegate_all
+
+  def full_name_with_role
+    "#{model.last_name} #{model.first_name} (#{role})"
+  end
+  
+  def role
+    h.t("enumerations.related_person.role.#{model.role}")
+  end
+
+end

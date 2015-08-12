@@ -14,6 +14,7 @@ pl:
     create: "Stwórz"
     delete: "Usuń"
     show: "Pokaż"
+    add: "Dodaj"
   views:
     pagination:
       previous: "&lt;"

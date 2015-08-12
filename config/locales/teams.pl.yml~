@@ -11,11 +11,13 @@ pl:
         kind: "rodzaj"
         
         full_name: "pełna nazwa"
+        number_prefix: "nr"
         patron_prefix: "im."
-        trial: "próbna"
         street_and_number: "ulica i numer"
         postal_code: "kod pocztowy"
         city: "miasto"
+        scouts: "harcerze:"
+        schools: "szkoły:"
         
       scout:  &scout_attributes
         position: "funkcja"
@@ -24,6 +26,36 @@ pl:
         ordinal: "Lp"
         age: "wiek"
         full_name_reversed: "nazwiso i imię"
+       
+      school: &school_attributes
+        address: "adres"
+        number: "numer"
+        patron: "imienia"
+        region: "region działania"
+        kind: "rodzaj"
+        activity_room: "harcówka"
+        equipment_storage: "magazyn"
+        comments: "uwagi"
+        
+        full_name: "pełna nazwa"
+        number_prefix: "nr"
+        patron_prefix: "im."
+        street_and_number: "ulica i numer"
+        postal_code: "kod pocztowy"
+        city: "miasto"
+        team: "drużyna"
+        possession_value:
+          "true": "posiada"
+          "false": "brak"
+          
+      official: &official_attributes
+        last_name: "nazwisko"
+        first_name: "imię"
+        phone_number: "numer telefonu"
+        email: "email"
+        role: "rola"
+        
+        full_name_reversed: "Nazwisko i imię"
         
   enumerations:
     team: 
@@ -40,6 +72,8 @@ pl:
     show:
       title: "Drużyna"
       confirm_destroy: "Usunąć drużynę?"
+      school:
+        confirm_destroy: "Usunąć szkołę?"
       <<: *team_attributes
     form:
       <<: *team_attributes
@@ -54,5 +88,15 @@ pl:
     destroy:
       notice: "Drużyna została usunięta."
     scouts:
+      title: "Harcerze"
       confirm_destroy: "Usunąć profil harcerza?"
       <<: *scout_attributes
+    schools:
+      title: "Szkoły"
+      confirm_destroy: "Usunąć szkołę?"
+      add: "Dodaj szkołę"
+      <<: *school_attributes
+    officials:
+      title: "Przedstawiciele"
+      confirm_destroy: "Usunąć przedstawiciela?"
+      add: "Dodaj przedstawiciela"

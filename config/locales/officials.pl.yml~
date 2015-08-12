@@ -1,0 +1,37 @@
+pl:
+  activerecord:
+    attributes:
+      related_person:  &related_person_attributes
+        last_name: "nazwisko"
+        first_name: "imię"
+        phone_number: "numer telefonu"
+        email: "email"
+        role: "rola"
+        
+  enumerations:
+    related_person: 
+      role:
+        school_principal: "dyrektor szkoły"
+        school_representative: "reprezentant szkoły"
+      
+  parents:
+    index:
+      title: "Przedstawiciele szkoły"
+      confirm_destroy: "Usunąć przedstawiciela?"
+      <<: *related_person_attributes
+    show:
+      title: "Przedstawiciel szkoły"
+      confirm_destroy: "Usunąć przedstawiciea?"
+      <<: *related_person_attributes
+    form:
+      <<: *related_person_attributes
+    edit:
+      title: "Edycja przedstawiciela"
+    update:
+      notice: "Przedstawiciel został zaktualizowany."
+    new:
+      title: "Tworzenie przedstawiciela"
+    create:
+      notice: "Przedstawiciel został utworzony."
+    destroy:
+      notice: "Przedstawiciel został usunięty."

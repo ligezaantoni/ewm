@@ -19,8 +19,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 
 # Uploads
-#gem "carrierwave"
-#gem "mini_magick"
+gem "carrierwave"
+gem "mini_magick"
+gem "paperclip", "~> 4.3"
 
 # Javascripts
 gem 'jquery-rails'

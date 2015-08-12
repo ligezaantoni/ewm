@@ -69,7 +69,9 @@ ready = ->
   $('.button-collapse').sideNav()
   $('.dropdown-button').dropdown()
   $('select').material_select()
-  $('.tooltipped').alert "" //powinno być .tooltip()
+  $('.collapsible').collapsible(accordion: false)
+  $('.tooltipped').tooltip()
   
+
 $(document).ready(ready)
 $(document).on('page:load', ready)

@@ -76,3 +76,7 @@ pl:
       notice: "Profil harcerza został utworzony."
     destroy:
       notice: "Profil harcerza został usunięty."
+    parents:
+      title: "Opiekunowie"
+      confirm_destroy: "Usunąć opiekuna?"
+      add: "Dodaj opiekuna"

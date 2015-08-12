@@ -1,0 +1,40 @@
+.right
+  = button_link_to t(".add"), new_team_school_path(@team), "add", true
+%h5
+  = t(".title")
+  
+- if schools.present?
+  %ul.contact-information.collapsible{"data-collapsible" => "accordion"}
+    - schools.each do |school|
+      %li
+        .collapsible-header
+          .right
+            = icon_link_to(edit_team_school_path(team, school), "edit")
+            = icon_link_to(team_school_path(team, school), "delete", method: :delete, 
+              data: { confirm: t(".confirm_destroy") }, class: "danger")
+          %i.material-icons.left
+            arrow_drop_down
+          = school.full_name
+        .collapsible-body
+          %ul.contact-information
+            %li
+              .row
+                .col.s7
+                  %i.material-icons.left
+                    place
+                  = school.address
+                .col.s3
+                  %b
+                    = "#{t(".activity_room")}:"
+                  = school.activity_room
+                .col.s2
+                  %b
+                    = "#{t(".equipment_storage")}:"
+                  = school.equipment_storage
+            %li
+              = render "officials", team: team, school: school, officials: school.officials
+            %li
+              %dt
+                %b= t(".comments")
+              %dd= school.comments
+

@@ -6,7 +6,7 @@ class RelatedPersonPolicy < ApplicationPolicy
     attributes = []
       if user.present?
         attributes += [ 
-          :first_name, :last_name, :phone_number, :email, :role
+          :first_name, :last_name, :phone_number, :email, :role, :relatable_id, :relatable_type
         ]
       end
     attributes

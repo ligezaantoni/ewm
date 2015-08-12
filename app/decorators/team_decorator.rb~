@@ -42,7 +42,7 @@ class TeamDecorator < Draper::Decorator
         model.address.postal_code, 
         model.address.city, 
         model.address.street_and_number
-      ].join(', ')
+      ].reject(&:nil?).join(', ')
     end
   end
   

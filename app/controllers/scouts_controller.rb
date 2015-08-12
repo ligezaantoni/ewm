@@ -13,6 +13,7 @@ class ScoutsController < ApplicationController
 
   def show
     @scout = ScoutDecorator.decorate(@scout)
+    @parents = PaginatingDecorator.decorate(@scout.parents, with: RelatedPersonDecorator)
     add_breadcrumb t(".title")
   end
 

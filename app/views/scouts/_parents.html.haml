@@ -1,0 +1,22 @@
+%b= t(".title")
+%ul.contact-information
+  - parents.each do |parent|
+    %li
+      = parent.full_name_with_role
+      .right
+        = icon_link_to(edit_team_scout_parent_path(team, scout, parent), "edit", class: "blend-in")
+        = icon_link_to(team_scout_parent_path(team, scout, parent), "delete", method: :delete,
+          data: { confirm: t(".confirm_destroy") }, class: "blend-in")
+      %ul.contact-information
+        - if parent.phone_number.present?
+          %li
+            %i.material-icons.left
+              phone
+            = parent.phone_number
+        - if parent.email.present?
+          %li
+            %i.material-icons.left
+              email
+            = parent.email
+.right-align
+  = menu_link_to t(".add"), new_team_scout_parent_path(@team, @scout), "add", class: "blend-in btn-flat"

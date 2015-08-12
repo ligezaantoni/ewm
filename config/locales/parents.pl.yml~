@@ -1,0 +1,38 @@
+pl:
+  activerecord:
+    attributes:
+      related_person:  &related_person_attributes
+        last_name: "nazwisko"
+        first_name: "imię"
+        phone_number: "numer telefonu"
+        email: "email"
+        role: "rola"
+        
+  enumerations:
+    parent: 
+      role:
+        educator: "opiekun/ wychowawca"
+        mother: "matka"
+        father: "ojciec"
+      
+  parents:
+    index:
+      title: "Prawni opiekunowie"
+      confirm_destroy: "Usunąć opiekuna?"
+      <<: *related_person_attributes
+    show:
+      title: "Opiekun prawny"
+      confirm_destroy: "Usunąć opiekuna?"
+      <<: *related_person_attributes
+    form:
+      <<: *related_person_attributes
+    edit:
+      title: "Edycja opiekuna"
+    update:
+      notice: "Opiekun został zaktualizowany."
+    new:
+      title: "Tworzenie opiekuna"
+    create:
+      notice: "Opiekun został utworzony."
+    destroy:
+      notice: "Opieun został usunięty."

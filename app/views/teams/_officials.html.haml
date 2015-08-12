@@ -1,0 +1,28 @@
+%table.table  
+  %thead
+    %tr
+      %th= t(".title")
+      %th= t(".role")
+      %th
+        %i.material-icons.left
+          phone
+        = t(".phone_number")
+      %th
+        %i.material-icons.left
+          email
+        = t(".email")
+      %th= icon_link_to("#", "edit", class: "inactive")
+      %th= icon_link_to("#", "delete", class: "inactive")
+
+  %tbody
+    - officials.each do |official|
+      %tr
+        %td= official.full_name_reversed
+        %td= official.role
+        %td= official.phone_number
+        %td= official.email
+        %td= icon_link_to(edit_team_school_official_path(team, school, official), "edit")
+        %td= icon_link_to(team_school_official_path(team, school, official), "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger")
+
+.right-align
+  = menu_link_to t(".add"), new_team_school_official_path(team, school), "add", class: "btn-flat"

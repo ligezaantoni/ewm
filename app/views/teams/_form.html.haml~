@@ -9,11 +9,8 @@
 
   .row
     .input-field.col.s12
-      .checkbox
-        %input{:name => "team[trial]", :type => "hidden", :value => "0"}/
-        %input#team_trial{:name => "team[trial]", :type => "checkbox", :value => "1", 
-          :checked => (@team.trial? ? "checked" : nil) }/
-        %label{:for => "team_trial"}= t(".trial")
+      = f.check_box :trial
+      = f.label :trial
   .row
     .input-field.col.s1
       = f.input :number
@@ -39,4 +36,4 @@
       .input-field.col.s4
         = fa.text_field :city
         = label_for_nested(:city, :address, @team)
-  = f.submit
+  = submit_button_for t("nav.send"), icon="send"

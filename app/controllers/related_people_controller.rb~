@@ -1,22 +1,37 @@
 class RelatedPeopleController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :load_and_authorize_team,
+    only: [:show, :new, :create, :edit, :update, :destroy]
+  before_action :load_and_authorize_master_instance,
+    only: [:show, :new, :create, :edit, :update, :destroy]
   before_action :load_and_authorize_related_person,
     only: [:show, :edit, :update, :destroy]
+  before_filter :set_breadcrumbs
 
   def index
     authorize RelatedPerson
-    @related_people = RelatedPerson.all
+    @related_people = RelatedPerson.page(params[:page]).per(20)
+    @related_people = PaginatingDecorator.decorate(@related_people, with: RelatedPersonDecorator)
   end
 
   def show
+    @related_person = RelatedPersonDecorator.decorate(@related_person)
+    add_breadcrumb t(".title")
   end
 
   def new
-    @related_person = RelatedPerson.new
+    @submit_url = send "team_#{@master.class.name.underscore}_related_people_path", @team, @master
+    @related_person = if @master.respond_to?(:officials)
+      @master.officials.build
+    elsif @master.respond_to?(:parents)
+      @master.parents.build
+    end
     authorize @related_person
+    add_breadcrumb t(".title")
   end
 
   def edit
+    add_breadcrumb t(".title")
+    @submit_url = related_person_path(@master)
   end
 
   def create
@@ -24,7 +39,7 @@ class RelatedPeopleController < ApplicationController
     authorize @related_person
 
     if @related_person.save
-      redirect_to @related_person, notice: 'Related person was successfully created.'
+      redirect_to master_path(@master), notice: t(".notice")
     else
       render :new
     end
@@ -32,7 +47,7 @@ class RelatedPeopleController < ApplicationController
 
   def update
     if @related_person.update(related_person_params)
-      redirect_to @related_person, notice: 'Related person was successfully updated.'
+      redirect_to master_path(@master), notice: t(".notice")
     else
       render :edit
     end
@@ -40,7 +55,7 @@ class RelatedPeopleController < ApplicationController
 
   def destroy
     @related_person.destroy
-    redirect_to related_people_url, notice: 'Related person was successfully destroyed.'
+    redirect_to master_path(@master), notice: t(".notice")
   end
 
   private
@@ -49,8 +64,39 @@ class RelatedPeopleController < ApplicationController
     @related_person = RelatedPerson.find(params[:id])
     authorize @related_person
   end
+  
+  def load_and_authorize_master_instance
+    if params[:school_id].present?
+      @master = School.find(params[:school_id])
+      authorize @master
+    elsif params[:scout_id].present?
+      @master = Scout.find(params[:scout_id])
+      @master = ScoutDecorator.decorate(@scout)
+      authorize @master
+    end
+  end
+  
+  def load_and_authorize_team
+    @team = Team.find(params[:team_id])
+    @team = TeamDecorator.decorate(@team)
+    authorize @team
+  end
 
   def related_person_params
     params.require(:related_person).permit(*policy(@related_person || RelatedPerson).permitted_attributes)
+  end
+  
+  def set_breadcrumbs
+    add_breadcrumb t("menu.registry"), teams_path
+
+  end
+  
+  def related_person_path(master)
+    send "team_#{master.class.name.underscore}_related_person_path",
+      @team, @master, @related_person
+  end
+  
+  def master_path(master)
+    send "team_#{master.class.name.underscore}_path".to_i, @team, master
   end
 end
