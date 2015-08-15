@@ -9,7 +9,6 @@ class ActivitiesController < ApplicationController
     @activities = @event.activities.ordered.page(params[:page]).per(20)
     @activities = PaginatingDecorator.decorate(@activities, with: ActivityDecorator)
     add_breadcrumb t(".title")
-    # TODO: Dodać generowanie dokumentu przez axlsx_rails
   end
 
   def show

@@ -1,8 +1,6 @@
 - content_for :title do
   = t(".title")
 - content_for :action_button do
-  = icon_link_to new_team_path, "file_download", 
-    class: "action-button waves-effect"
 - content_for :notice do
   = notice
 - content_for :breadcrumbs do
@@ -31,7 +29,7 @@
     - @activities.each do |activity|
       %tr
         %td
-          = activity.name
+          %b= activity.name
           %br
           = activity.description
         %td= activity.execution_report_content

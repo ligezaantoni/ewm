@@ -38,7 +38,7 @@
               = t(".school_information")
         %tbody
           %tr
-            %td.prompt= link_to t(".school_name")
+            %td.prompt= t(".school_name")
             %td= @scout.school.full_name
           %tr
             %td.prompt= t(".school_address")

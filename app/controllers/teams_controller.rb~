@@ -1,7 +1,7 @@
 class TeamsController < ApplicationController
-  before_filter :set_breadcrumbs
   before_action :load_and_authorize_team,
     only: [:show, :edit, :update, :destroy]
+  before_action :set_breadcrumbs
 
   def index
     authorize Team

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150815195728) do
+ActiveRecord::Schema.define(version: 20150815214214) do
 
   create_table "abilities", force: :cascade do |t|
     t.string   "name"
@@ -85,6 +85,14 @@ ActiveRecord::Schema.define(version: 20150815195728) do
 
   add_index "character_traits_scouts", ["character_trait_id"], name: "index_character_traits_scouts_on_character_trait_id"
   add_index "character_traits_scouts", ["scout_id"], name: "index_character_traits_scouts_on_scout_id"
+
+  create_table "character_traits_teams", id: false, force: :cascade do |t|
+    t.integer "character_trait_id"
+    t.integer "team_id"
+  end
+
+  add_index "character_traits_teams", ["character_trait_id"], name: "index_character_traits_teams_on_character_trait_id"
+  add_index "character_traits_teams", ["team_id"], name: "index_character_traits_teams_on_team_id"
 
   create_table "educational_methods", force: :cascade do |t|
     t.string   "name"

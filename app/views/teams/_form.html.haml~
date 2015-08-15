@@ -36,4 +36,19 @@
       .input-field.col.s4
         = fa.text_field :city
         = label_for_nested(:city, :address, @team)
+        
+  %h5 Charakterystyka
+  .row
+    .input-field.col.s6
+      .success= t(".opportunities")
+      .collection-check-boxes
+        = collection_check_boxes :scout, :character_trait_ids, 
+        CharacterTrait.opportunity.order(:name), :id, :name
+        
+    .input-field.col.s6
+      .danger= t(".threats")
+      .collection-check-boxes
+        = collection_check_boxes :scout, :character_trait_ids, 
+        CharacterTrait.threat.order(:name), :id, :name
+        
   = submit_button_for t("nav.send"), icon="send"

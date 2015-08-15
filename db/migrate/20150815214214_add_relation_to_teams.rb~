@@ -1,0 +1,8 @@
+class AddRelationToTeams < ActiveRecord::Migration
+  def change
+    create_table :methods_traits, id: false do |t|
+      t.belongs_to :educational_method, index: true
+      t.belongs_to :character_trait, index: true
+    end
+  end
+end

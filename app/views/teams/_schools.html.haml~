@@ -32,8 +32,9 @@
                     = "#{t(".equipment_storage")}:"
                   = school.equipment_storage
             %li
+              = render "officials", team: team, school: school, officials: school.officials
+            %li
               %dt
                 %b= t(".comments")
               %dd= school.comments
-          = render "officials", team: team, school: school, officials: school.officials
 

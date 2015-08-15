@@ -1,3 +1,8 @@
+.right
+  = button_link_to t(".add"), new_team_scout_path(team), "person_add", true
+%h5
+  = t(".title")
+  
 %table.table
   %thead
     %tr

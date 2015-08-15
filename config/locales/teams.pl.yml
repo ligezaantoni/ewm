@@ -72,10 +72,15 @@ pl:
     show:
       title: "Drużyna"
       confirm_destroy: "Usunąć drużynę?"
+      characteristic: "Charakterystyka"
+      opportunities: "Szanse"
+      threats: "Zagrożenia"
       school:
         confirm_destroy: "Usunąć szkołę?"
       <<: *team_attributes
     form:
+      opportunities: "Szanse"
+      threats: "Zagrożenia"
       <<: *team_attributes
     edit:
       title: "Edycja drużyny"
@@ -90,6 +95,7 @@ pl:
     scouts:
       title: "Harcerze"
       confirm_destroy: "Usunąć profil harcerza?"
+      add: "Dodaj harcerza"
       <<: *scout_attributes
     schools:
       title: "Szkoły"

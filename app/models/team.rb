@@ -5,6 +5,7 @@ class Team < ActiveRecord::Base
   has_many :scouts
   has_many :schools
   has_many :events
+  has_and_belongs_to_many :character_traits
   
   accepts_nested_attributes_for :address
   
