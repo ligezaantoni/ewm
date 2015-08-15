@@ -1,4 +1,4 @@
-= simple_form_for(@activity, html: { class: 'form-horizontal' }) do |f|
+= simple_form_for(@activity, url: url, html: { class: 'form-horizontal' }) do |f|
 
   - if @activity.errors.any?
     #error_explanation
@@ -6,12 +6,39 @@
       %ul
         - @activity.errors.full_messages.each do |msg|
           %li= msg
+          
+  = f.association :event, :collection => policy_scope(Event.all), :value_method => :id, as: :hidden
+  
+  .row
+    .input-field.col.s8
+      = f.text_field :name
+      = f.label :name
+    .input-field.col.s4
+      = f.text_field :estimated_time
+      = f.label :estimated_time
+      
+  %h5 Charakterystyka
+  .row
+    .input-field.col.s4
+      .collection-check-boxes
+        = collection_check_boxes :activity, :activity_form_ids, 
+        ActivityForm.order(:name), :id, :name
+        
+  .row
+    .input-field.col.s4
+      = f.select :activity_form_id, activity_form_options_for_select, include_blank: false
+  .row
+    .input-field.col.s12
+      = f.text_area :description, class: "materialize-textarea"
+      = f.label :description
+      
+  %h5 Raport
+  .row
+    = f.simple_fields_for :execution_report do |fa|
+      .input-field.col.s12
+        %i.material-icons.prefix
+          report
+        = fa.text_area :content, class: "materialize-textarea"
+        = label_for_nested(:content, :execution_report, @activity)
 
-  = f.label :event
-  = f.text_field :event
-  = f.label :activity_form
-  = f.text_field :activity_form
-  = f.label :description
-  = f.text_area :description
-
-  = f.submit 'Save'
+  = submit_button_for t("nav.send"), icon="send"

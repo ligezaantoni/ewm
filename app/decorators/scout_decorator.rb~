@@ -22,11 +22,13 @@ class ScoutDecorator < Draper::Decorator
   end
   
   def street_and_number
-    model.address.street_and_number.present? ? model.address.street_and_number : nil
+    if model.address.present? && model.address.street_and_number.present?
+      model.address.street_and_number
+    end
   end
 
   def city_with_postal_code
-    if model.address.city.present?
+    if model.address.present? && model.address.city.present?
       [
         model.address.postal_code, 
         model.address.city

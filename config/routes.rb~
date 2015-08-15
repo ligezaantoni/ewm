@@ -1,21 +1,27 @@
 Rails.application.routes.draw do
 
   resources :abilities
-  resources :activities
   resources :activity_forms
-  resources :addresses
-  resources :character_traits
   resources :educational_methods
-  resources :execution_reports
-  resources :events
+  
+  # resources :addresses
+  # resources :character_traits
+  
+  resources :events do
+    resources :execution_reports, only: :index
+    resources :activities do
+      resources :execution_reports, except: :index
+    end
+  end
   resources :teams do
     resources :schools do
       resources :officials
     end
     resources :scouts do
-      resources :related_people
+      resources :parents
     end
   end
+  
   root to: 'home#index'
 
   devise_for :users

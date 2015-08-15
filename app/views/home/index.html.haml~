@@ -1,3 +1,6 @@
+- content_for :notice do
+  = notice
+
 .row.valign-wrapper
   .col.s8.introduction-divider
     %h5

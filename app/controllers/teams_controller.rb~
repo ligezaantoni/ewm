@@ -12,6 +12,7 @@ class TeamsController < ApplicationController
   def show
     @team = TeamDecorator.decorate(@team)
     @scouts = PaginatingDecorator.decorate(@team.scouts, with: ScoutDecorator)
+    @schools = PaginatingDecorator.decorate(@team.schools, with: SchoolDecorator)
     add_breadcrumb @team.short_name
   end
 

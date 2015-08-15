@@ -12,13 +12,13 @@
       = f.check_box :trial
       = f.label :trial
   .row
-    .input-field.col.s1
+    .input-field.col.s2
       = f.input :number
     .input-field.col.s3
       = f.input :region
     .input-field.col.s3
       = f.select :kind, kind_options_for_select, include_blank: false
-    .input-field.col.s5
+    .input-field.col.s4
       = f.input :name
   .row
     .input-field.col.s12

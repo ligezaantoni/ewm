@@ -52,9 +52,16 @@ section
     
 form
   @extend .col.s12
+  
 input
   @extend .validate !optional
   
+.collection-check-boxes
+  input, label
+    display: inline-block
+    float: left
+    width: 155px
+    
 .image-input-button
   margin-top: 10px
   
@@ -84,6 +91,15 @@ input
 .enormous
   font-size: 17rem
 
+.tile
+  display: inline-block
+  width: 140px
+  padding: 2px 5px
+  margin: 2px 0px
+  text-align: center
+  vertical-align: baseline
+  border-radius: 0.25em
+
 footer
   @extend .grey.darken-1
   
@@ -106,6 +122,13 @@ main
 .danger-inverted
   color: $white
   background-color: $red
+  
+.success
+  color: $green
+  background-color: $white
+.success-inverted
+  color: $white
+  background-color: $green
 .info
   color: $blue
   background-color: $white
@@ -150,7 +173,7 @@ main
 ul.contact-information
   margin: 0px
   li
-    margin-bottom: 5px
+    margin: 0px 10px 5px 0px
 
 ul.actions
   margin: 0px
@@ -172,7 +195,10 @@ body.homepage
     @extend .z-depth-3
     height: 100px
     color: $white
-    font-size: 40px
+    
+    .brand-logo
+      @extend .brand-logo
+      font-size: 36px
 
   section
     position: relative

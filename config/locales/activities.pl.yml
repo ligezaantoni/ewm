@@ -1,0 +1,38 @@
+pl:
+  activerecord:
+    attributes:
+      activity:  &activity_attributes
+        name: "nazwa"
+        activity_form: "forma pracy"
+        description: "opis"
+        estimated_time: "szacowany czas"
+        estimated_time_short: "czas"
+        execution_report: "opis wykonania"
+        plan_description: "plan"
+        
+      execution_report:  &execution_report_attributes
+        activity: "aktywność"
+        content: "wykonanie"
+           
+  activities:
+    index:
+      title: "Raport"
+      confirm_destroy: "Usunąć aktywność?"
+      <<: *activity_attributes
+    show:
+      title: "Aktywność"
+      confirm_destroy: "Usunąć aktywność?"
+      <<: *activity_attributes
+    form:
+      <<: *activity_attributes
+      <<: *execution_report_attributes
+    edit:
+      title: "Edycja aktywności"
+    update:
+      notice: "Aktywność została zaktualizowana."
+    new:
+      title: "Tworzenie aktywności"
+    create:
+      notice: "Aktywność została utworzona."
+    destroy:
+      notice: "Aktywność została usunięta."

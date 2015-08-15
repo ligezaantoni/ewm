@@ -4,6 +4,7 @@ class Scout < ActiveRecord::Base
 
   # Associations
   belongs_to :team
+  belongs_to :school
   has_one :address, as: :addressable, dependent: :destroy
   has_and_belongs_to_many :abilities
   has_and_belongs_to_many :character_traits

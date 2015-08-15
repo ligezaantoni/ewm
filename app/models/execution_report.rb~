@@ -4,6 +4,6 @@ class ExecutionReport < ActiveRecord::Base
   belongs_to :activity
   
   # Validations
-  validates :name, presence: true
+  # validates :activity, presence: true
   
 end

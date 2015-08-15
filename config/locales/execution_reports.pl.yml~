@@ -1,0 +1,28 @@
+pl:
+  activerecord:
+    attributes:
+      execution_report:  &execution_report_attributes
+        activity: "aktywność"
+        execution_report_form: "forma pracy"
+           
+  execution_reports:
+    index:
+      title: "Raporty"
+      confirm_destroy: "Usunąć raport?"
+      <<: *execution_report_attributes
+    show:
+      title: "Raport"
+      confirm_destroy: "Usunąć raport?"
+      <<: *execution_report_attributes
+    form:
+      <<: *execution_report_attributes
+    edit:
+      title: "Edycja raportu"
+    update:
+      notice: "Raport został zaktualizowany."
+    new:
+      title: "Tworzenie raportu"
+    create:
+      notice: "Raport został utworzony."
+    destroy:
+      notice: "Raport został usunięty."

@@ -38,7 +38,7 @@
         - if user_signed_in?  
           %ul#nav-mobile.right.hide-on-med-and-down
             %li.tooltipped{"data-position"=>"bottom", "data-tooltip"=>t("menu.registry")}
-              = icon_link_to scouts_path, icon = "group"
+              = icon_link_to teams_path, icon = "group"
             %li.tooltipped{"data-position"=>"bottom", "data-tooltip"=>t("menu.training")}
               = icon_link_to "#", icon = "school"
             %li.tooltipped{"data-position"=>"bottom", "data-tooltip"=>t("menu.planning")}

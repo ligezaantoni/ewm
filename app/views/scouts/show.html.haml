@@ -39,13 +39,13 @@
         %tbody
           %tr
             %td.prompt= t(".school_name")
-            %td
+            %td= @scout.school.full_name
           %tr
             %td.prompt= t(".school_address")
-            %td
+            %td= @scout.school.address
           %tr
             %td.prompt= t(".school_class")
-            %td
+            %td= @scout.grade
 
     .card-panel
       %table
@@ -57,9 +57,13 @@
           %tr
             %td.prompt= t(".strengths")
             %td
+              - @scout.character_traits.strength.each do |s|
+                .tile.success-inverted= s.name
           %tr
             %td.prompt= t(".weaknesses")
             %td
+              - @scout.character_traits.weakness.each do |w|
+                .tile.danger-inverted= w.name
           %tr
             %td.prompt= t(".opportunities")
             %td

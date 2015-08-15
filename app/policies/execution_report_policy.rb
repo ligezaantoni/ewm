@@ -6,7 +6,7 @@ class ExecutionReportPolicy < ApplicationPolicy
     attributes = []
       if user.present?
         attributes += [ 
-          :activity_id, :content
+          :id, :activity_id, :content
         ]
       end
     attributes

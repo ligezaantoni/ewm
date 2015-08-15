@@ -1,0 +1,67 @@
+pl:
+  activerecord:
+    attributes:
+      event: &event_attributes
+        team: "drużyna"
+        starts_at: "godzina rozpoczęcia"
+        starts_on: "data"
+        place: "miejsce"
+        
+        start_time: "data zbiórki"
+        team_name: "nazwa drużyny"
+        hour: "godz."
+        
+      team: &team_attributes
+        name: "nazwa"
+        address: "adres"
+        number: "numer"
+        patron: "imienia"
+        trial: "próbna"
+        region: "region działania"
+        kind: "rodzaj"
+        
+        full_name: "pełna nazwa"
+        number_prefix: "nr"
+        patron_prefix: "im."
+        street_and_number: "ulica i numer"
+        postal_code: "kod pocztowy"
+        city: "miasto"
+        scouts: "harcerze:"
+        schools: "szkoły:"
+        
+      activity:  &activity_attributes
+        name: "nazwa"
+        activity_form: "forma pracy"
+        description: "opis"
+        estimated_time: "szacowany czas"
+        estimated_time_short: "czas"
+        
+  events:
+    index:
+      title: "Planowanie"
+      confirm_destroy: "Usunąć zbiórkę?"
+      <<: *event_attributes
+      <<: *team_attributes
+    show:
+      title: "Drużyna"
+      confirm_destroy: "Usunąć zbiórkę?"
+      show_report: "Pokaż raport"
+      <<: *event_attributes
+      <<: *team_attributes
+    form:
+      <<: *event_attributes
+    edit:
+      title: "Edycja drużyny"
+    update:
+      notice: "Informacje o zbiórce zostały zaktualizowane."
+    new:
+      title: "Tworzenie zbiórki"
+    create:
+      notice: "Zbiórka została utworzona."
+    destroy:
+      notice: "Zbiórka została usunięta."
+    activities:
+      title: "Aktywności"
+      confirm_destroy: "Usunąć aktywność?"
+      <<: *activity_attributes
+

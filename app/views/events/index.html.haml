@@ -1,25 +1,29 @@
-%h1 Listing events
+- content_for :title do
+  = t(".title")
+- content_for :action_button do
+  = icon_link_to new_event_path, "note_add", 
+    class: "action-button waves-effect"
+- content_for :notice do
+  = notice
+- content_for :breadcrumbs do
+  = render_breadcrumbs
 
 %table
   %thead
     %tr
-      %th Team
-      %th Starts at
-      %th Place
+      %th= t(".start_time")
+      %th= t(".team_name")
       %th
-      %th
-      %th
+      %th= icon_link_to("#", "edit", class: "inactive")
+      %th= icon_link_to("#", "delete", class: "inactive")
 
   %tbody
     - @events.each do |event|
       %tr
-        %td= event.team
-        %td= event.starts_at
-        %td= event.place
-        %td= link_to 'Show', event
-        %td= link_to 'Edit', edit_event_path(event)
-        %td= link_to 'Destroy', event, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Event', new_event_path
+        %td= link_to event.start_time, event_path(event)
+        %td= link_to event.team.short_name, team_path(event.team)
+        %td
+        %td= icon_link_to(edit_event_path(event), "edit")
+        %td= icon_link_to(event, "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger")
+        
+= paginate @events

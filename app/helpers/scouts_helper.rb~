@@ -12,8 +12,8 @@ module ScoutsHelper
     end
   end
   
-  def user_icon
-    content_tag(:i, "user", class: "material-icons large")
+  def scout_school_collection(scout)
+    scout.team.schools
   end
   
 end

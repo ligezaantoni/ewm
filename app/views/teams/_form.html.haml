@@ -36,4 +36,5 @@
       .input-field.col.s4
         = fa.text_field :city
         = label_for_nested(:city, :address, @team)
+        
   = submit_button_for t("nav.send"), icon="send"

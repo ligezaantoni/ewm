@@ -1,5 +1,6 @@
-%h1 New execution_report
+- content_for :title do
+  = t(".title")
+- content_for :breadcrumbs do
+  = render_breadcrumbs
 
-= render 'form'
-
-= link_to 'Back', execution_reports_path
+= render 'form', url: event_activity_execution_reports_path(@event, @activity)

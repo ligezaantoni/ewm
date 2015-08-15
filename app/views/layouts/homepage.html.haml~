@@ -15,7 +15,7 @@
 
 %body.homepage
 
-  %header.container.valign-wrapper
+  %header.valign-wrapper
     .container
       .brand-logo
         = image_tag("lil.png")
@@ -35,11 +35,11 @@
       .floating-button
         = yield :action_button
     
-    %section      
-      - if content_for :notice
-        .notice
-          = yield :notice
-      = yield
+
+    - if content_for :notice
+      .notice
+        = yield :notice
+    = yield
 
   
 %footer.page-footer

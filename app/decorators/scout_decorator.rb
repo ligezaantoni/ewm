@@ -1,6 +1,8 @@
 class ScoutDecorator < Draper::Decorator
   delegate_all
   
+  decorates_association :school, :with => SchoolDecorator
+  
   def age_with_unit
     "#{model.age} #{h.t('.age_unit')}"
   end

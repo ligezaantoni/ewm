@@ -2,8 +2,10 @@ class Activity < ActiveRecord::Base
 
   # Associations
   belongs_to :event
-  belongs_to :activity_form
-  has_one :execution_reports
+  has_and_belongs_to_many :activity_forms, join_table: "activity_forms_activities"
+  has_one :execution_report, dependent: :destroy
+  
+  accepts_nested_attributes_for :execution_report
   
   # Validations
   validates :event, presence: true

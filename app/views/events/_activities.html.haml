@@ -1,0 +1,24 @@
+%h5= t(".title")
+
+%table
+  %thead
+    %tr
+      %th= t(".name")
+      %th= t(".activity_form")
+      %th= t(".description")
+      %th= t(".estimated_time_short")
+      %th= icon_link_to("#", "edit", class: "inactive")
+      %th= icon_link_to("#", "delete", class: "inactive")
+
+  %tbody
+    - activities.each do |activity|
+      %tr
+        %td= activity.name
+        %td
+          - activity.activity_forms.each do |af|
+            .tile.info-inverted= af.name
+        %td= activity.description
+        %td= activity.estimated_time
+        %td= icon_link_to(edit_event_activity_path(event, activity), "edit")
+        %td= icon_link_to(event_activity_path(event, activity), "delete", method: :delete, 
+          data: { confirm: t(".confirm_destroy") }, class: "danger")

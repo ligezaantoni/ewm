@@ -4,8 +4,6 @@ class School < ActiveRecord::Base
   has_one :address, as: :addressable, dependent: :destroy
   belongs_to :team
   has_many :officials, as: :relatable, class_name: "RelatedPerson"
-#  has_and_belongs_to_many :officials, class_name: "RelatedPerson",
-#    join_table: "schools_officials", association_foreign_key: "official_id"
   
   accepts_nested_attributes_for :address
   

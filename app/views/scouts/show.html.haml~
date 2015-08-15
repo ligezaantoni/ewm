@@ -38,14 +38,14 @@
               = t(".school_information")
         %tbody
           %tr
-            %td.prompt= t(".school_name")
-            %td
+            %td.prompt= link_to t(".school_name")
+            %td= @scout.school.full_name
           %tr
             %td.prompt= t(".school_address")
-            %td
+            %td= @scout.school.address
           %tr
             %td.prompt= t(".school_class")
-            %td
+            %td= @scout.grade
 
     .card-panel
       %table
@@ -57,9 +57,13 @@
           %tr
             %td.prompt= t(".strengths")
             %td
+              - @scout.character_traits.strength.each do |s|
+                .tile.success-inverted= s.name
           %tr
             %td.prompt= t(".weaknesses")
             %td
+              - @scout.character_traits.weakness.each do |w|
+                .tile.danger-inverted= w.name
           %tr
             %td.prompt= t(".opportunities")
             %td
@@ -124,28 +128,7 @@
               %br
               = @scout.city_with_postal_code
       .alt-card-content
-        %b= t(".guardians")
-        %ul.contact-information
-          - @parents.each do |parent|
-            %li
-              = parent.full_name_with_role
-              .right
-                = icon_link_to(edit_team_scout_parent_path(@team, @scout, parent), "edit", class: "blend-in")
-                = icon_link_to(team_scout_path(@team, @scout), "delete", method: :delete,
-                  data: { confirm: t(".confirm_destroy") }, class: "blend-in")
-              %ul.contact-information
-                - if parent.phone_number.present?
-                  %li
-                    %i.material-icons.left
-                      phone
-                    = parent.phone_number
-                - if parent.email.present?
-                  %li
-                    %i.material-icons.left
-                      email
-                    = parent.email
-        .right-align
-          = menu_link_to t("nav.add"), new_team_scout_parent_path(@team, @scout), "add", class: "blend-in btn-flat"
+        = render "parents", team: @team, scout: @scout, parents: @parents
       .card-content.center-align
         %ul.actions
           %li= menu_link_to(t("nav.edit"), edit_team_scout_path(@team, @scout), "edit", class: "info btn-flat")

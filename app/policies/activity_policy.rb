@@ -6,7 +6,9 @@ class ActivityPolicy < ApplicationPolicy
     attributes = []
       if user.present?
         attributes += [ 
-          :event_id, :activity_form_id, :name, :description, :estimate_time
+          :id, :event_id, :activity_form_id, :name, :description, :estimated_time, 
+          activity_form_ids: [],
+          :execution_report_attributes => [:content]
         ]
       end
     attributes

@@ -17,6 +17,8 @@ pl:
         vaccinations: "szczepienia"
         promise_made_on: "data złożenia przyrzeczenia"
         team: "drużyna"
+        school: "szkoła"
+        grade: "klasa"
         
         ordinal: "Lp"
         age: "wiek"
@@ -31,6 +33,24 @@ pl:
         street_and_number: "ulica i numer"
         postal_code: "kod pocztowy"
         city: "miasto"
+        
+      school: &school_attributes
+        address: "adres"
+        number: "numer"
+        patron: "imienia"
+        region: "region działania"
+        kind: "rodzaj"
+        activity_room: "harcówka"
+        equipment_storage: "magazyn"
+        comments: "uwagi"
+        
+        full_name: "pełna nazwa"
+        number_prefix: "nr"
+        patron_prefix: "im."
+        street_and_number: "ulica i numer"
+        postal_code: "kod pocztowy"
+        city: "miasto"
+        team: "drużyna"
         
   enumerations:
     scout: 
@@ -66,6 +86,10 @@ pl:
       <<: *scout_attributes
     form:
       <<: *scout_attributes
+      <<: *school_attributes
+      strengths: "Zalety"
+      neutrals: "Cechy neutralne"
+      weaknesses: "Wady"
     edit:
       title: "Edycja profilu harcerza"
     update:
@@ -80,4 +104,3 @@ pl:
       title: "Opiekunowie"
       confirm_destroy: "Usunąć opiekuna?"
       add: "Dodaj opiekuna"
-      <<: *scout_attributes

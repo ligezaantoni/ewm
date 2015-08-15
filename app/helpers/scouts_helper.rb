@@ -12,4 +12,8 @@ module ScoutsHelper
     end
   end
   
+  def scout_school_collection(scout)
+    PaginatingDecorator.decorate(scout.team.schools, with: SchoolDecorator)
+  end
+  
 end

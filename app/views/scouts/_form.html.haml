@@ -66,7 +66,37 @@
       .input-field.col.s4
         = fa.text_field :city
         = label_for_nested(:city, :address, @scout)
-
+        
+  %h5 Informacje o szkole
+  .row
+    .input-field.col.s8
+      = f.association :school, :collection => scout_school_collection(@scout), 
+      :value_method => :id, label_method: :full_name, label: false
+      = f.label :school, active: true
+    .input-field.col.s4
+      = f.text_field :grade
+      = f.label :grade 
+      
+  %h5 Charakterystyka
+  .row
+    .input-field.col.s4
+      .success= t(".strengths")
+      .collection-check-boxes
+        = collection_check_boxes :scout, :character_trait_ids, 
+        CharacterTrait.strength.order(:name), :id, :name
+        
+    .input-field.col.s4
+      .info= t(".neutrals")
+      .collection-check-boxes
+        = collection_check_boxes :scout, :character_trait_ids, 
+        CharacterTrait.neutral.order(:name), :id, :name
+        
+    .input-field.col.s4
+      .danger= t(".weaknesses")
+      .collection-check-boxes
+        = collection_check_boxes :scout, :character_trait_ids, 
+        CharacterTrait.weakness.order(:name), :id, :name
+  
   %h5 Informacje zdrowotne
   .row
     .input-field.col.s4

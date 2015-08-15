@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150809214315) do
+ActiveRecord::Schema.define(version: 20150815192017) do
 
   create_table "abilities", force: :cascade do |t|
     t.string   "name"
@@ -31,15 +31,13 @@ ActiveRecord::Schema.define(version: 20150809214315) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "event_id"
-    t.integer  "activity_form_id"
     t.text     "description"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "name"
-    t.time     "estimated_time"
+    t.integer  "estimated_time"
   end
 
-  add_index "activities", ["activity_form_id"], name: "index_activities_on_activity_form_id"
   add_index "activities", ["event_id"], name: "index_activities_on_event_id"
 
   create_table "activity_forms", force: :cascade do |t|
@@ -51,6 +49,14 @@ ActiveRecord::Schema.define(version: 20150809214315) do
   end
 
   add_index "activity_forms", ["educational_method_id"], name: "index_activity_forms_on_educational_method_id"
+
+  create_table "activity_forms_activities", id: false, force: :cascade do |t|
+    t.integer "activity_form_id"
+    t.integer "activity_id"
+  end
+
+  add_index "activity_forms_activities", ["activity_form_id"], name: "index_activity_forms_activities_on_activity_form_id"
+  add_index "activity_forms_activities", ["activity_id"], name: "index_activity_forms_activities_on_activity_id"
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street_and_number"
@@ -87,10 +93,11 @@ ActiveRecord::Schema.define(version: 20150809214315) do
 
   create_table "events", force: :cascade do |t|
     t.integer  "team_id"
-    t.datetime "starts_at"
     t.string   "place"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "starts_at"
+    t.date     "starts_on"
   end
 
   add_index "events", ["team_id"], name: "index_events_on_team_id"
@@ -161,8 +168,11 @@ ActiveRecord::Schema.define(version: 20150809214315) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "school_id"
+    t.string   "grade"
   end
 
+  add_index "scouts", ["school_id"], name: "index_scouts_on_school_id"
   add_index "scouts", ["team_id"], name: "index_scouts_on_team_id"
 
   create_table "teams", force: :cascade do |t|
