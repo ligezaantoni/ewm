@@ -4,4 +4,5 @@ class ActivityDecorator < Draper::Decorator
   def execution_report_content
     model.execution_report.content
   end
+  
 end

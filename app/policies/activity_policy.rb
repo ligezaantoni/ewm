@@ -6,11 +6,15 @@ class ActivityPolicy < ApplicationPolicy
     attributes = []
       if user.present?
         attributes += [ 
-          :id, :event_id, :activity_form_id, :name, :description, :estimated_time, 
+          :id, :event_id, :activity_form_id, :name, :description, :estimated_time, :position,
           activity_form_ids: [],
           :execution_report_attributes => [:content]
         ]
       end
     attributes
+  end
+  
+  def sort_order?
+    manage?
   end
 end

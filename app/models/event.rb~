@@ -5,6 +5,10 @@ class Event < ActiveRecord::Base
   has_many :activities
   
   # Validations
-  validates :name, presence: true
+  validates :starts_at, presence: true
+  
+  def duration
+    activities.sum(:estimated_time)
+  end
   
 end

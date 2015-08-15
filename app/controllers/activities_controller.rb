@@ -6,7 +6,7 @@ class ActivitiesController < ApplicationController
 
   def index
     authorize Activity
-    @activities = Activity.page(params[:page]).per(20)
+    @activities = @event.activities.ordered.page(params[:page]).per(20)
     @activities = PaginatingDecorator.decorate(@activities, with: ActivityDecorator)
     add_breadcrumb t(".title")
     # TODO: Dodać generowanie dokumentu przez axlsx_rails
@@ -31,6 +31,7 @@ class ActivitiesController < ApplicationController
   def create
     puts "\n\n>>#{activity_params}\n\n"
     @activity = Activity.new(activity_params)
+    set_position
     authorize @activity
     
     if @activity.save
@@ -54,6 +55,11 @@ class ActivitiesController < ApplicationController
   end
 
   private
+  
+  def set_position
+    last_position = @event.activities.pluck(:position).sort.last || 0
+    @activity.position = last_position + 1
+  end
   
   def load_and_authorize_activity
     @activity = Activity.find(params[:id])

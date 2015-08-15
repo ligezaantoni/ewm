@@ -169,7 +169,22 @@ main
 
 .image-description
   font-size: 14px
-  
+
+.hint
+  font-style: italic
+.sortable-list
+
+  li
+    @extend .z-depth-3
+    @extend .white
+    display: block
+    padding: 20px
+    margin-bottom: 30px
+    cursor: grab
+    
+    i
+      transform: rotate(90deg)
+
 ul.contact-information
   margin: 0px
   li
@@ -198,7 +213,7 @@ body.homepage
     
     .brand-logo
       @extend .brand-logo
-      font-size: 40px
+      font-size: 36px
 
   section
     position: relative

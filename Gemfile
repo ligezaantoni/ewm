@@ -25,6 +25,7 @@ gem "paperclip", "~> 4.3"
 
 # Javascripts
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Models
 gem 'activepesel'

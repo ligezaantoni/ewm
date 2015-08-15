@@ -1,0 +1,19 @@
+- content_for :title do
+  = t(".title")
+- content_for :breadcrumbs do
+  = render_breadcrumbs
+  
+= form_tag event_sort_activities_order_path, method: :patch do |f|
+  .text-content
+    %p Przeciągaj elementy aby ustawić ich kolejność.
+  
+    %ul.sortable-list{ data: { role: "sortable-list" } }
+      - @activities.each do |a|
+        %li
+          = a.name
+          = hidden_field_tag "activities[]", a.id
+          %i.material-icons.right
+            code
+          
+  .form-actions   
+    = submit_button_for t("nav.send"), icon="send"

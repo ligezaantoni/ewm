@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # resources :character_traits
   
   resources :events do
+    resource :sort_activities_order, only: [:edit, :update], controller: 'activities/sort_order'
     resources :activities do
       resources :execution_reports
     end

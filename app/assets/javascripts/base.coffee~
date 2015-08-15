@@ -66,11 +66,18 @@ ready = ->
     today: 'Dzisiaj'
     clear: 'Wyczyść'
     close: 'X'
+  
+  element = $("[data-role~=sortable-list]")
+  itemsSelector = element.data("items-selector") || "li"
+  
+  element.sortable()
+    items: itemsSelector
+    
   $('.button-collapse').sideNav()
   $('.dropdown-button').dropdown()
   $('select').material_select()
   $('.collapsible').collapsible(accordion: false)
-  $('.tooltipped').tooltip() //powinno być .tooltip()
+  $('.tooltipped').tooltip()
   
 
 $(document).ready(ready)

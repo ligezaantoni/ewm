@@ -7,4 +7,8 @@ class Event < ActiveRecord::Base
   # Validations
   validates :starts_at, presence: true
   
+  def duration
+    activities.sum(:estimated_time).minutes
+  end
+  
 end

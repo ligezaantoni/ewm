@@ -62,6 +62,7 @@ pl:
       notice: "Zbiórka została usunięta."
     activities:
       title: "Aktywności"
+      sort_order: "Ustaw kolejność"
       confirm_destroy: "Usunąć aktywność?"
       <<: *activity_attributes
 

@@ -8,16 +8,30 @@
 - content_for :breadcrumbs do
   = render_breadcrumbs
   
+%h5= @event.duration_time
+.card-content
+  %ul.contact-information
+    - if @event.place.present?
+      %li.left
+        %i.material-icons.left
+          place
+        = @event.place
+    - if @event.team.present?
+      %li.left
+      %i.material-icons.left
+        flag
+      = @event.team.short_name
 %table
   %thead
     %tr
-      %th= t(".name")
       %th= t(".plan_description")
       %th= t(".execution_report")
 
   %tbody
     - @activities.each do |activity|
       %tr
-        %td= activity.name
-        %td= activity.description
+        %td
+          %b= activity.name
+          %br
+          = activity.description
         %td= activity.execution_report_content

@@ -12,4 +12,7 @@ class Activity < ActiveRecord::Base
   validates :name, presence: true
   validates :estimated_time, presence: true
   
+  # Scopes
+  scope :ordered, -> { order("position") }
+  
 end

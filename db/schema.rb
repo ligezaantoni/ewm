@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150815192017) do
+ActiveRecord::Schema.define(version: 20150815195728) do
 
   create_table "abilities", force: :cascade do |t|
     t.string   "name"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20150815192017) do
     t.datetime "updated_at",     null: false
     t.string   "name"
     t.integer  "estimated_time"
+    t.integer  "position"
   end
 
   add_index "activities", ["event_id"], name: "index_activities_on_event_id"

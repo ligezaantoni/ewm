@@ -45,6 +45,7 @@ pl:
     show:
       title: "Drużyna"
       confirm_destroy: "Usunąć zbiórkę?"
+      show_report: "Pokaż raport"
       <<: *event_attributes
       <<: *team_attributes
     form:

@@ -1,3 +1,12 @@
 class ActivityDecorator < Draper::Decorator
   delegate_all
+  
+  def estimated_time
+    "#{model.estimated_time} min"
+  end
+  
+  def execution_report_content
+    model.execution_report.content
+  end
+  
 end
