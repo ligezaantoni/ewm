@@ -1,0 +1,20 @@
+- content_for :title do
+  = t(".title")
+- content_for :breadcrumbs do
+  = render_breadcrumbs
+
+= render 'form', url: team_goals_path(@team,)
+
+- if @traits_hint.present?
+  %br
+  .card-panel.hint
+    .row
+      .col.s4
+        %h5= t(".hint")
+      .col.s8
+        %dl
+          %b= t(".description")
+          %dd= @task.activity_form.description
+          %b= t(".character_traits")
+          %dd= @traits_hint.join(", ")
+

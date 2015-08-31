@@ -1,0 +1,10 @@
+- if traits.present?
+  %ul.contact-information.collapsible{"data-collapsible" => "accordion"}
+    %li
+      .collapsible-header
+        %i.material-icons.left
+          arrow_drop_down
+        = t(".title")
+      .collapsible-body
+        - traits.opportunity.each do |opportunity|
+          .tile.success-inverted= opportunity.name

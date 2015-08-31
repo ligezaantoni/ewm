@@ -1,0 +1,8 @@
+class ChangeAssociationsInTasks < ActiveRecord::Migration
+  def change
+    change_table :schools do |t|
+      t.remove :scout_id, :integer
+      t.integer :kind
+    end
+  end
+end

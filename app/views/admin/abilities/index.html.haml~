@@ -1,0 +1,27 @@
+- content_for :title do
+  = t(".title")
+- content_for :action_button do
+  = icon_link_to new_admin_ability_path, "add", 
+    class: "action-button waves-effect"
+- content_for :notice do
+  = notice
+- content_for :breadcrumbs do
+  = render_breadcrumbs
+  
+%table
+  %thead
+    %tr
+      %th= t(".name")
+      %th= t(".level")
+      %th= icon_link_to("#", "edit", class: "inactive")
+      %th= icon_link_to("#", "delete", class: "inactive")
+
+  %tbody
+    - @abilities.each do |ability|
+      %tr
+        %td= ability.name
+        %td= ability.level
+        %td= icon_link_to edit_admin_ability_path(ability), "edit"
+        %td= icon_link_to(admin_ability_path(ability), "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger")
+        
+= paginate @abilities

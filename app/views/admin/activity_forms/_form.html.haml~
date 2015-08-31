@@ -1,0 +1,17 @@
+= simple_form_for(@activity_form, url: url, html: { class: 'form-horizontal' }) do |f|
+
+  - if @activity_form.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@activity_form.errors.count, "error")} prohibited this activity_form from being saved:"
+      %ul
+        - @activity_form.errors.full_messages.each do |msg|
+          %li= msg
+  .row
+    .input-field.col.s4
+      = f.association :educational_method, :collection => policy_scope(EducationalMethod.all), :value_method => :id, label: false, , include_blank: false
+      = f.label :educational_method, active: true
+    .input-field.col.s8
+      = f.text_area :description, class: "materialize-textarea"
+      = f.label :description
+
+  = submit_button_for t("nav.send"), icon="send"

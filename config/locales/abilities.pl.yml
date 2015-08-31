@@ -1,0 +1,46 @@
+pl:
+  activerecord:
+    attributes:
+      ability: &ability_attributes
+        name: "nazwa"
+        level: "poziom trudności"
+        requirements: "wymagania"
+        
+  enumerations:
+    ability: 
+      full_level:
+        not_classified: "-"
+        one_star: "jednogwiazdkowa (*)"
+        two_stars: "dwugwiazdkowa (**)"
+        three_stars: "trzygwiazdkowa (***)"
+        master: "miestrzowska (M)"
+      level:
+        not_classified: "-"
+        one_star: "*"
+        two_stars: "**"
+        three_stars: "***"
+        master: "M"
+      
+  admin:
+    abilities:
+      index:
+        title: "Sprawności"
+        confirm_destroy: "Usunąć sprawność?"
+        <<: *ability_attributes
+      show:
+        title: "Sprawność"
+        confirm_destroy: "Usunąć sprawność?"
+        <<: *ability_attributes
+      form:
+        <<: *ability_attributes
+      new:
+        title: "Tworzenie sprawności"
+      edit:
+        title: "Edycja sprawności"
+      update:
+        notice: "Sprawność została zaktualizowana."
+      create:
+        notice: "Sprawność została utworzona."
+      destroy:
+        notice: "Sprawność została usunięta."
+

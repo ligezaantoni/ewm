@@ -9,5 +9,5 @@ class CharacterTrait < ActiveRecord::Base
   validates :name, presence: true
   
   # Enums
-  enum kind: %i(neutral strength weakness)
+  enum kind: %i(neutral strength weakness opportunity threat)
 end

@@ -1,0 +1,39 @@
+pl:
+  activerecord:
+    attributes:
+      character_trait: &character_trait_attributes
+        name: "nazwa"
+        kind: "rodzaj"
+        
+  enumerations:
+    character_trait: 
+      kind:
+        neutral: "cecha neutralna"
+        strength: "zaleta"
+        weakness: "wada"
+        opportunity: "szansa"
+        threat: "zagrożenie"
+      
+  admin:  
+    character_traits:
+      index:
+        title: "Cechy charakteru"
+        confirm_destroy: "Usunąć cechę?"
+        <<: *character_trait_attributes
+      show:
+        title: "Sprawność"
+        confirm_destroy: "Usunąć cechę?"
+        <<: *character_trait_attributes
+      form:
+        <<: *character_trait_attributes
+      new:
+        title: "Tworzenie cechy"
+      edit:
+        title: "Edycja cechy"
+      update:
+        notice: "Cecha została zaktualizowana."
+      create:
+        notice: "Cecha została utworzona."
+      destroy:
+        notice: "Cecha została usunięta."
+

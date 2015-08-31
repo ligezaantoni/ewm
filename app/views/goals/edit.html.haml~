@@ -1,0 +1,6 @@
+- content_for :title do
+  = t(".title")
+- content_for :breadcrumbs do
+  = render_breadcrumbs
+  
+= render 'form', url: team_scout_task_path(@team, @scout, @task)

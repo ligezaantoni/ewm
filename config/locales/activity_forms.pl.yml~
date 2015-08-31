@@ -1,0 +1,31 @@
+pl:
+  activerecord:
+    attributes:
+      activity_form: &activity_form_attributes
+        method: "metoda"
+        description: "opis"
+        name: "nazwa"
+      
+  admin: 
+    activity_forms:
+      index:
+        title: "Formy pracy"
+        confirm_destroy: "Usunąć formę pracy?"
+        <<: *activity_form_attributes
+      show:
+        title: "Forma pracy"
+        confirm_destroy: "Usunąć formę pracy?"
+        <<: *activity_form_attributes
+      form:
+        <<: *activity_form_attributes
+      new:
+        title: "Tworzenie formy pracy"
+      edit:
+        title: "Edycja formy pracy"
+      update:
+        notice: "Forma pracy została zaktualizowana."
+      create:
+        notice: "Forma pracy została utworzona."
+      destroy:
+        notice: "Forma pracy została usunięta."
+

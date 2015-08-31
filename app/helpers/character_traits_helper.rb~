@@ -1,0 +1,7 @@
+module CharacterTraitsHelper
+
+  def character_trait_kind_options_for_select
+  
+  end
+
+end

@@ -22,7 +22,7 @@
   - if user_signed_in?    
     %ul#profile-dropdown.dropdown-content
       %li
-        = menu_link_to "Edytuj profil", "#", icon = "account_circle"
+        = menu_link_to current_user.email, "#", icon = "account_circle", class: "inactive"
       %li.divider
       %li
         = menu_link_to t("devise.sign_out"), destroy_user_session_path, 
@@ -33,20 +33,17 @@
       .nav-wrapper
         %a.brand-logo{:href => root_path}
           = image_tag("lil.png")
-          = t("website.title")
           
         - if user_signed_in?  
           %ul#nav-mobile.right.hide-on-med-and-down
-            %li.tooltipped{"data-position"=>"bottom", "data-tooltip"=>t("menu.registry")}
-              = icon_link_to teams_path, icon = "group"
-            %li.tooltipped{"data-position"=>"bottom", "data-tooltip"=>t("menu.training")}
-              = icon_link_to "#", icon = "school"
-            %li.tooltipped{"data-position"=>"bottom", "data-tooltip"=>t("menu.planning")}
-              = icon_link_to "#", icon = "event"
-            %li.tooltipped{"data-position"=>"bottom", "data-tooltip"=>t("menu.rating")}
-              = icon_link_to "#", icon = "star"
+            %li
+              = menu_link_to t("menu.registry"), teams_path, icon = "group"
+            %li
+              = menu_link_to t("menu.planning"), events_path, icon = "event"
             %li
               %a.dropdown-button{"data-activates" => "profile-dropdown", :href => "#!"}
+                %i.material-icons.left
+                  account_circle
                 = current_user.email
                 %i.material-icons.right
                   arrow_drop_down
@@ -69,18 +66,8 @@
             %li
               %a{:href => "#!"}
                 %i.material-icons.left
-                  school
-                Szolenie
-            %li
-              %a{:href => "#!"}
-                %i.material-icons.left
                   event
                 Planowanie
-            %li
-              %a{:href => "#!"}
-                %i.material-icons.left
-                  star
-                Ocena
             
           %a.button-collapse{"data-activates" => "slide-out", :href => "#"}
             %i.mdi-navigation-menu
@@ -119,7 +106,7 @@
   .footer-copyright
     .container
       Antoni Ligęza &nbsp;|&nbsp; Elektroniczne Przetwarzanie Informacji 2015
-      %a.btn-flat.white-text.right{:href => "#!"}
-        Zarządzaj
+      %a.btn-flat.white-text.right{:href => admin_path}
+        Zarządzaj globalnie
         %i.material-icons.left
           settings

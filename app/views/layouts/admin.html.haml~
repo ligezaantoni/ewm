@@ -1,0 +1,118 @@
+!!! 5
+
+%head
+  %title
+    Ewm
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = csrf_meta_tags
+  %link{:href => "http://fonts.googleapis.com/css?family=Comfortaa&subset=latin,latin-ext", 
+    :rel => "stylesheet", :type => "text/css"}
+  %link{:href => "http://fonts.googleapis.com/css?family=Roboto&subset=latin,latin-ext", 
+    :rel => "stylesheet", :type => "text/css"}
+
+  %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-type"}
+
+%body.admin
+
+  %header.admin
+    .container
+      %br
+      
+  - if user_signed_in?    
+    %ul#profile-dropdown.dropdown-content
+      %li
+        = menu_link_to "Edytuj profil", "#", icon = "account_circle"
+      %li.divider
+      %li
+        = menu_link_to t("devise.sign_out"), destroy_user_session_path, 
+        icon = "power_settings_new", :method => :delete
+    
+  %nav.admin
+    .container
+      .nav-wrapper
+        %a.brand-logo{:href => admin_path}
+          = image_tag("lil.png")
+          = t("admin.title")
+          
+        - if user_signed_in?  
+          %ul#nav-mobile.right.hide-on-med-and-down
+            %li
+              = menu_link_to t("menu.abilities"), admin_abilities_path, icon = "directions_bike"
+            %li
+              = menu_link_to t("menu.character_traits"), admin_character_traits_path, icon = "mood"
+            %li
+              = menu_link_to t("menu.activity_forms"), admin_activity_forms_path, icon = "fullscreen"
+            %li
+              %a.dropdown-button{"data-activates" => "profile-dropdown", :href => "#!"}
+                = current_user.email
+                %i.material-icons.right
+                  arrow_drop_down
+                
+          %ul#slide-out.side-nav
+            %li
+              %a{:href => "#"}
+                Edytuj profil
+                %i.material-icons.left
+                  account_circle
+            %li
+              = menu_link_to t("devise.sign_out"), destroy_user_session_path, 
+              icon = "power_settings_new", :method => :delete
+            %li.divider
+            %li
+              %a{:href => admin_abilities_path}
+                %i.material-icons.left
+                  directions_bike
+                t("menu.abilities")
+            %li
+              %a{:href => admin_character_traits_path}
+                %i.material-icons.left
+                  mood
+                t("menu.character_traits")
+            %li
+              %a{:href => admin_activity_forms_path}
+                %i.material-icons.left
+                  fullscreen
+                t("menu.activity_forms")
+            
+          %a.button-collapse{"data-activates" => "slide-out", :href => "#"}
+            %i.mdi-navigation-menu
+          
+  %main.container
+    - if content_for :action_button
+      .floating-button
+        = yield :action_button
+    
+    %section.admin
+      - if content_for :breadcrumbs
+        .breadcrumbs
+          = yield :breadcrumbs
+      - if content_for :notice
+        .notice
+          = yield :notice
+      - if content_for :title
+        .title
+          = yield :title
+      .content
+        = yield
+  
+%footer.page-footer
+  .container
+    .row
+      .col.l6.s12
+        %h5
+          Educational Work Management System
+        %p
+          Projekt stworzony w ramach pracy magisterskiej.
+      .col.l4.offset-l2.s12
+        %h5 Przydatne linki
+        %ul
+          %li
+            %a{:href => "#!"} Praca magisterska
+  .footer-copyright
+    .container
+      Antoni Ligęza &nbsp;|&nbsp; Elektroniczne Przetwarzanie Informacji 2015
+      %a.btn-flat.white-text.right{:href => root_url}
+        Zarządzaj lokalnie
+        %i.material-icons.left
+          keyboard_return

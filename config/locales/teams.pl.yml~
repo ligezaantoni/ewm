@@ -72,6 +72,9 @@ pl:
     show:
       title: "Drużyna"
       confirm_destroy: "Usunąć drużynę?"
+      characteristic: "Charakterystyka"
+      opportunities: "Szanse"
+      threats: "Zagrożenia"
       school:
         confirm_destroy: "Usunąć szkołę?"
       <<: *team_attributes
@@ -99,6 +102,8 @@ pl:
       confirm_destroy: "Usunąć szkołę?"
       add: "Dodaj szkołę"
       <<: *school_attributes
+    traits:
+      title: "Charakterystyka"
     officials:
       title: "Przedstawiciele"
       confirm_destroy: "Usunąć przedstawiciela?"

@@ -1,0 +1,21 @@
+- if traits.present?
+  %ul.contact-information.collapsible{"data-collapsible" => "accordion"}
+    %li
+      .collapsible-header
+        %i.material-icons.left
+          arrow_drop_down
+        = t(".title")
+      .collapsible-body
+        %table
+          %thead
+            %tr
+              %th.prompt= t(".opportunities")
+              %th.prompt= t(".threats")
+          %tbody
+            %tr
+              %td
+                - @team.character_traits.opportunity.each do |o|
+                  .tile.success-inverted= o.name
+              %td
+                - @team.character_traits.threat.each do |t|
+                  .tile.danger-inverted= t.name

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150815214214) do
+ActiveRecord::Schema.define(version: 20150828134624) do
 
   create_table "abilities", force: :cascade do |t|
     t.string   "name"
@@ -58,6 +58,14 @@ ActiveRecord::Schema.define(version: 20150815214214) do
 
   add_index "activity_forms_activities", ["activity_form_id"], name: "index_activity_forms_activities_on_activity_form_id"
   add_index "activity_forms_activities", ["activity_id"], name: "index_activity_forms_activities_on_activity_id"
+
+  create_table "activity_forms_traits", id: false, force: :cascade do |t|
+    t.integer "activity_form_id"
+    t.integer "character_trait_id"
+  end
+
+  add_index "activity_forms_traits", ["activity_form_id"], name: "index_activity_forms_traits_on_activity_form_id"
+  add_index "activity_forms_traits", ["character_trait_id"], name: "index_activity_forms_traits_on_character_trait_id"
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street_and_number"
@@ -120,14 +128,6 @@ ActiveRecord::Schema.define(version: 20150815214214) do
 
   add_index "execution_reports", ["activity_id"], name: "index_execution_reports_on_activity_id"
 
-  create_table "methods_traits", id: false, force: :cascade do |t|
-    t.integer "educational_method_id"
-    t.integer "character_trait_id"
-  end
-
-  add_index "methods_traits", ["character_trait_id"], name: "index_methods_traits_on_character_trait_id"
-  add_index "methods_traits", ["educational_method_id"], name: "index_methods_traits_on_educational_method_id"
-
   create_table "related_people", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -183,6 +183,18 @@ ActiveRecord::Schema.define(version: 20150815214214) do
 
   add_index "scouts", ["school_id"], name: "index_scouts_on_school_id"
   add_index "scouts", ["team_id"], name: "index_scouts_on_team_id"
+
+  create_table "tasks", force: :cascade do |t|
+    t.integer "activity_form_id"
+    t.date    "deadline"
+    t.text    "description"
+    t.integer "status"
+    t.integer "taskable_id"
+    t.string  "taskable_type"
+  end
+
+  add_index "tasks", ["activity_form_id"], name: "index_tasks_on_activity_form_id"
+  add_index "tasks", ["taskable_type", "taskable_id"], name: "index_tasks_on_taskable_type_and_taskable_id"
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"

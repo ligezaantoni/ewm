@@ -1,0 +1,25 @@
+- content_for :title do
+  = t(".title")
+- content_for :action_button do
+  = icon_link_to new_admin_educational_method_path, "add", 
+    class: "action-button waves-effect"
+- content_for :notice do
+  = notice
+- content_for :breadcrumbs do
+  = render_breadcrumbs
+
+%table
+  %thead
+    %tr
+      %th= t(".name")
+      %th= icon_link_to("#", "edit", class: "inactive")
+      %th= icon_link_to("#", "delete", class: "inactive")
+
+  %tbody
+    - @educational_methods.each do |educational_method|
+      %tr
+        %td= link_to educational_method.name, admin_educational_method_path(educational_method)
+        %td= icon_link_to edit_admin_educational_method_path(educational_method), "edit"
+        %td= icon_link_to(admin_educational_method_path(educational_method), "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger")
+
+= paginate @educational_methods

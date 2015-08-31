@@ -55,7 +55,7 @@ section
   text-align: center
   display: inline-block
   float: right
-  width: 250px
+  width: 230px
   position: relative
   top: -30px
   
@@ -211,6 +211,11 @@ td.prompt
   color: $grey
   width: 220px
   padding: 0px 10px
+
+td.overlined
+  border-top: 1px solid #D0D0D0
+  font-size: 16px
+  padding: 10px 0px
   
 body.homepage
   @extend .green
@@ -249,3 +254,46 @@ body.homepage
   
 .introduction-divider
   border-right: 1px solid $light-grey
+  
+  
+body.admin
+  @extend .light-blue.lighten-4
+  font-family: 'Comfortaa'
+  display: flex
+  min-height: 100vh
+  flex-direction: column
+
+header.admin
+  @extend .light-blue.darken-2
+
+nav.admin
+  @extend .light-blue
+  @extend .z-depth-3
+  height: 170px
+
+.brand-logo 
+  font-size: 16px
+  img
+    position: relative
+    top: 10px
+    left: -10px
+    width: 40px
+
+section.admin
+  @extend .white
+  @extend .z-depth-2
+  width: 85%
+  margin: auto
+  
+  position: relative
+  top: -70px
+  padding: 25px 50px
+
+  .title
+    @extend h4
+    margin: 0px
+    padding: 10px 0px
+    
+  .notice
+    @extend .card-panel
+    @extend .green.lighten-5

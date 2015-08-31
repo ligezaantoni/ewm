@@ -102,6 +102,10 @@ pl:
       confirm_destroy: "Usunąć szkołę?"
       add: "Dodaj szkołę"
       <<: *school_attributes
+    traits:
+      title: "Charakterystyka"
+      opportunities: "Szanse"
+      threats: "Zagrożenia"
     officials:
       title: "Przedstawiciele"
       confirm_destroy: "Usunąć przedstawiciela?"

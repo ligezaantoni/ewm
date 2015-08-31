@@ -1,0 +1,27 @@
+pl:
+  activerecord:
+    attributes:
+      educational_method: &educational_method_attributes
+        name: "nazwa"
+       
+  admin:
+    educational_methods:
+      index:
+        title: "Metody"
+        confirm_destroy: "Usunąć metodę?"
+      show:
+        title: "Metoda"
+        confirm_destroy: "Usunąć metodę?"
+      form:
+        <<: *educational_method_attributes
+      new:
+        title: "Tworzenie metody"
+      edit:
+        title: "Edycja sprawności"
+      update:
+        notice: "Metoda została zaktualizowana."
+      create:
+        notice: "Metoda została utworzona."
+      destroy:
+        notice: "Metoda została usunięta."
+

@@ -1,0 +1,14 @@
+- content_for :notice do
+  = notice
+- content_for :breadcrumbs do
+  = render_breadcrumbs
+
+.card-panel
+  .right
+    = menu_link_to(t("nav.edit"), edit_admin_educational_method_path(@educational_method), "edit", class: "info btn-flat")
+    = menu_link_to(t("nav.delete"), admin_educational_method_path(@educational_method), "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger btn-flat")
+
+  %h5= @educational_method.name
+  .card-content
+    %ul.contact-information
+      %br

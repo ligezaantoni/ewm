@@ -1,0 +1,22 @@
+- content_for :notice do
+  = notice
+- content_for :breadcrumbs do
+  = render_breadcrumbs
+  
+.card-panel
+  .right
+    = menu_link_to(t("nav.edit"), edit_team_scout_task_path(@team, @scout, @task), "edit", class: "info btn-flat")
+    = menu_link_to(t("nav.delete"), team_scout_task_path(@team, @scout, @task), "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger btn-flat")
+  %h5= @task.start_time
+  .card-content
+    %ul.contact-information
+      - if @task.activity_form.present?
+        %li.left
+          %i.material-icons.left
+            local_library
+          = @task.activity_form_name
+      - if @task.status.present?
+        %li.left
+        %i.material-icons.left
+          flag
+        = @task.status

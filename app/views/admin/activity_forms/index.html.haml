@@ -1,0 +1,29 @@
+- content_for :title do
+  = t(".title")
+- content_for :action_button do
+  = icon_link_to new_admin_activity_form_path, "add", 
+    class: "action-button waves-effect"
+- content_for :notice do
+  = notice
+- content_for :breadcrumbs do
+  = render_breadcrumbs
+  
+%table
+  %thead
+    %tr
+      %th= t(".name")
+      %th= t(".description")
+      %th= t(".educational_method")
+      %th= icon_link_to("#", "edit", class: "inactive")
+      %th= icon_link_to("#", "delete", class: "inactive")
+
+  %tbody
+    - @activity_forms.each do |activity_form|
+      %tr
+        %td= link_to activity_form.name, admin_activity_form_path(activity_form)
+        %td= activity_form.description
+        %td= activity_form.educational_method_name
+        %td= icon_link_to edit_admin_activity_form_path(activity_form), "edit"
+        %td= icon_link_to(admin_activity_form_path(activity_form), "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger")
+
+= paginate @activity_forms

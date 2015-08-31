@@ -1,0 +1,27 @@
+- content_for :title do
+  = t(".title")
+- content_for :action_button do
+  = icon_link_to new_admin_character_trait_path, "add", 
+    class: "action-button waves-effect"
+- content_for :notice do
+  = notice
+- content_for :breadcrumbs do
+  = render_breadcrumbs
+
+%table
+  %thead
+    %tr
+      %th= t(".name")
+      %th= t(".kind")
+      %th= icon_link_to("#", "edit", class: "inactive")
+      %th= icon_link_to("#", "delete", class: "inactive")
+
+  %tbody
+    - @character_traits.each do |character_trait|
+      %tr
+        %td= link_to character_trait.name, admin_character_trait_path(character_trait)
+        %td= character_trait.kind
+        %td= icon_link_to edit_admin_character_trait_path(character_trait), "edit"
+        %td= icon_link_to(admin_character_trait_path(character_trait), "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger")
+
+= paginate @character_traits

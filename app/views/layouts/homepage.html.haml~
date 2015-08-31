@@ -35,11 +35,11 @@
       .floating-button
         = yield :action_button
     
-
-    - if content_for :notice
-      .notice
-        = yield :notice
-    = yield
+    %section      
+      - if content_for :notice
+        .notice
+          = yield :notice
+      = yield
 
   
 %footer.page-footer

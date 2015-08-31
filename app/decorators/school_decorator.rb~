@@ -1,15 +1,19 @@
 class SchoolDecorator < Draper::Decorator
   delegate_all
   
-  decorates_association :officials, :with => ::RelatedPersonDecorator
+  decorates_association :officials, :with => RelatedPersonDecorator
   
   def full_name
-    <<-fullname
-      #{kind}
-      #{number}
-      #{patron},
-      #{model.address.city}
-    fullname
+    if model.present?
+      <<-fullname
+        #{kind}
+        #{number}
+        #{patron},
+        #{model.address.city}
+      fullname
+    else
+      nil
+    end
   end
   
   def short_name

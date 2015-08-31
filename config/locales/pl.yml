@@ -1,11 +1,18 @@
 pl:
   website:
-    title: "Asystent pracy wychowawczej"
+    title: "EWM - Asystent pracy wychowawczej"
+    title_short: "EWM"
+  admin:
+    title: "Manager danych"
   menu:
     registry: "Ewidencja"
     training: "Szkolenie"
     planning: "Planowanie"
     rating: "Ocena"
+    abilities: "Sprawności"
+    character_traits: "Cechy charakteru"
+    educational_methods: "Metodyka"
+    activity_forms: "Formy pracy"
   nav:
     home: "Strona Główna"
     send: "Wyślij"
@@ -26,3 +33,4 @@ pl:
     training_desc: "Planuj zajecia odpowiednie do umiejetnosci druzyny i poznaj nowe metody pracy."
     planning_desc: "Kontroluj swoj terminarz, aby miec pewnosc, ze masz wszystko dopiete na ostatni guzik."
     rating_desc: "Oceniaj osiagniecia harcerzy i nagradzaj ich odpowiednio do czynionych przez nich wysilkow."
+
