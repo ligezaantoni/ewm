@@ -8,6 +8,8 @@ pl:
         deadline: "termin"
         status: "status"
         description: "opis"
+        taskable_name: "wykonujący"
+        taskable_id: "wykonujący"
         
   enumerations:
     task: 
@@ -18,12 +20,17 @@ pl:
       
   tasks:
     index:
-      title: "Zadania indywidualne"
+      title: "Szkolenie"
       confirm_destroy: "Usunąć zadanie?"
+      individual_tasks: "Zadania indywidualne"
+      goals: "Zadania grupowe"
       <<: *task_attributes
     show:
-      title: "Zadanie indywidualne"
+      title: "Zadanie"
       confirm_destroy: "Usunąć zadanie?"
+      pass: "Zalicz"
+      fail: "Anuluj"
+      assign_to_event: "Dopisz do zbiórki"
       <<: *task_attributes
     form:
       <<: *task_attributes
@@ -40,7 +47,7 @@ pl:
       notice: "Zadanie zostało utworzone."
     destroy:
       notice: "Zadanie zostało usunięte."
-    support:
-      title: "Sugerowane formy pracy"
-      instruction: "poniższe formy są najbardziej efektywne przy rozwijaniu pozytywnych oraz zwalczaniu negatywnych cech harcerza."
+    tasks:
+      add: "Dodaj zadanie"
+      confirm_destroy: "Usunąć zadanie?"
       <<: *task_attributes

@@ -11,4 +11,5 @@ class AbilityPolicy < ApplicationPolicy
       end
     attributes
   end
+
 end

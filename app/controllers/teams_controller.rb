@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
 
   def index
     authorize Team
-    @teams = Team.page(params[:page]).per(20)
+    @teams = policy_scope(Team).page(params[:page]).per(20)
     @teams = PaginatingDecorator.decorate(@teams, with: TeamDecorator)
   end
   
@@ -20,6 +20,7 @@ class TeamsController < ApplicationController
   def new
     @team = Team.new
     @team.build_address
+    @team.user = current_user
     authorize @team
     add_breadcrumb t(".title")
   end

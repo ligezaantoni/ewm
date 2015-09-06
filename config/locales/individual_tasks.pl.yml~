@@ -1,0 +1,48 @@
+pl:
+  activerecord:
+    attributes:
+      task:  &task_attributes
+        activity_form: "forma pracy"
+        character_trait: "cecha charakteru"
+        character_traits: "cechy charakteru"
+        deadline: "termin"
+        status: "status"
+        description: "opis"
+        
+  enumerations:
+    task: 
+      status:
+        in_progress: "w toku"
+        accomplished: "wykonane"
+        failed: "nie wykonane"
+      
+  individual_tasks:
+    index:
+      title: "Zadania indywidualne"
+      confirm_destroy: "Usunąć zadanie?"
+      <<: *task_attributes
+    show:
+      title: "Zadanie indywidualne"
+      confirm_destroy: "Usunąć zadanie?"
+      pass: "Zalicz"
+      fail: "Anuluj"
+      <<: *task_attributes
+    form:
+      <<: *task_attributes
+    edit:
+      title: "Edycja zadania"
+    update:
+      notice: "Zadanie zostało zaktualizowane."
+    new:
+      title: "Tworzenie zadania"
+      hint: "Podpowiedź"
+      description: "opis formy pracy"
+      character_traits: "cechy charakteru"
+    create:
+      notice: "Zadanie zostało utworzone."
+    destroy:
+      notice: "Zadanie zostało usunięte."
+    support:
+      title: "Sugerowane formy pracy"
+      instruction: "poniższe formy są najbardziej efektywne przy rozwijaniu pozytywnych oraz zwalczaniu negatywnych cech harcerza."
+      <<: *task_attributes

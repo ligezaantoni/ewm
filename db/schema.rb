@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150828134624) do
+ActiveRecord::Schema.define(version: 20150905185436) do
 
   create_table "abilities", force: :cascade do |t|
     t.string   "name"
@@ -128,6 +128,18 @@ ActiveRecord::Schema.define(version: 20150828134624) do
 
   add_index "execution_reports", ["activity_id"], name: "index_execution_reports_on_activity_id"
 
+  create_table "profiles", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone_number"
+    t.string   "pesel"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
+
   create_table "related_people", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -155,6 +167,17 @@ ActiveRecord::Schema.define(version: 20150828134624) do
   end
 
   add_index "schools", ["team_id"], name: "index_schools_on_team_id"
+
+  create_table "scores", force: :cascade do |t|
+    t.integer "scout_id"
+    t.integer "number"
+    t.string  "reason"
+    t.integer "scorable_id"
+    t.string  "scorable_type"
+  end
+
+  add_index "scores", ["scorable_type", "scorable_id"], name: "index_scores_on_scorable_type_and_scorable_id"
+  add_index "scores", ["scout_id"], name: "index_scores_on_scout_id"
 
   create_table "scouts", force: :cascade do |t|
     t.integer  "team_id"
@@ -191,6 +214,7 @@ ActiveRecord::Schema.define(version: 20150828134624) do
     t.integer "status"
     t.integer "taskable_id"
     t.string  "taskable_type"
+    t.integer "points"
   end
 
   add_index "tasks", ["activity_form_id"], name: "index_tasks_on_activity_form_id"
@@ -205,7 +229,10 @@ ActiveRecord::Schema.define(version: 20150828134624) do
     t.string   "region"
     t.integer  "kind",       default: 0
     t.boolean  "trial"
+    t.integer  "user_id"
   end
+
+  add_index "teams", ["user_id"], name: "index_teams_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

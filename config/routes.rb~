@@ -2,15 +2,18 @@ Rails.application.routes.draw do
   
   # Ewidencja
   resources :teams do
-    resources :goals
     resources :schools do
       resources :officials
     end
     resources :scouts do
       resources :parents
-      resources :tasks
+      resources :individual_tasks
     end
+    resources :goals
   end
+  
+  # Edukacja
+  resources :tasks
   
   # Planowanie
   resources :events do
@@ -19,6 +22,9 @@ Rails.application.routes.draw do
       resources :execution_reports
     end
   end
+  
+  # Ocena
+  resources :scores
   
   # Zarządzanie danymi
   get '/admin', to: 'admin#index'

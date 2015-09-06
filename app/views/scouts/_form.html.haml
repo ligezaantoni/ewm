@@ -79,19 +79,13 @@
       
   %h5 Charakterystyka
   .row
-    .input-field.col.s4
+    .input-field.col.s6
       .success= t(".strengths")
       .collection-check-boxes
         = collection_check_boxes :scout, :character_trait_ids, 
         CharacterTrait.strength.order(:name), :id, :name
         
-    .input-field.col.s4
-      .info= t(".neutrals")
-      .collection-check-boxes
-        = collection_check_boxes :scout, :character_trait_ids, 
-        CharacterTrait.neutral.order(:name), :id, :name
-        
-    .input-field.col.s4
+    .input-field.col.s6
       .danger= t(".weaknesses")
       .collection-check-boxes
         = collection_check_boxes :scout, :character_trait_ids, 

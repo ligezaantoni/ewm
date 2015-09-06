@@ -22,7 +22,7 @@
   - if user_signed_in?    
     %ul#profile-dropdown.dropdown-content
       %li
-        = menu_link_to current_user.email, "#", icon = "account_circle", class: "inactive"
+        = menu_link_to current_user.email, edit_profile_path(current_user.profile), icon = "account_circle"
       %li.divider
       %li
         = menu_link_to t("devise.sign_out"), destroy_user_session_path, 
@@ -40,7 +40,11 @@
             %li
               = menu_link_to t("menu.registry"), teams_path, icon = "group"
             %li
+              = menu_link_to t("menu.training"), tasks_path, icon = "school"
+            %li
               = menu_link_to t("menu.planning"), events_path, icon = "event"
+            %li
+              = menu_link_to t("menu.rating"), scores_path, icon = "star"
             %li
               %a.dropdown-button{"data-activates" => "profile-dropdown", :href => "#!"}
                 %i.material-icons.left
@@ -51,24 +55,31 @@
                 
           %ul#slide-out.side-nav
             %li
-              %a{:href => "#"}
-                Edytuj profil
-                %i.material-icons.left
-                  account_circle
+              = menu_link_to current_user.email, edit_profile_path(current_user.profile), icon = "account_circle"
             %li
               = menu_link_to t("devise.sign_out"), destroy_user_session_path, 
               icon = "power_settings_new", :method => :delete
             %li.divider
             %li
-              %a{:href => "#!"}
+              %a{:href => teams_path}
                 %i.material-icons.left
                   group
-                Ewidencja
+                = t("menu.registry")
             %li
-              %a{:href => "#!"}
+              %a{:href => tasks_path}
+                %i.material-icons.left
+                  school
+                = t("menu.training")
+            %li
+              %a{:href => events_path}
                 %i.material-icons.left
                   event
-                Planowanie
+                = t("menu.planning")
+            %li
+              %a{:href => scores_path}
+                %i.material-icons.left
+                  star
+                = t("menu.rating")
             
           %a.button-collapse{"data-activates" => "slide-out", :href => "#"}
             %i.mdi-navigation-menu
@@ -96,9 +107,15 @@
     .row
       .col.l6.s12
         %h5
+          Asystent Pracy Wychowawczej EWM
+        %b.hint
           Educational Work Management System
         %p
-          Projekt stworzony w ramach pracy magisterskiej.
+          Autorem niniejszego serwisu jest Antoni Ligęza.
+          %br 
+          Serwis ten stanowi integralną część pracy magisterskiej (kierunek: Elektroniczne Przetwarzanie Informacji), przygotowanej pod kierunkiem dr. hab. Janusza Jurka 
+          %br 
+          na Wydziale Zarządzania i Komunikacji Społecznej Uniwersytetu Jagiellońskiego.
       .col.l4.offset-l2.s12
         %h5 Przydatne linki
         %ul

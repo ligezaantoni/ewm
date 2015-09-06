@@ -6,6 +6,8 @@
       %ul
         - @team.errors.full_messages.each do |msg|
           %li= msg
+          
+  = f.input :user_id, as: :hidden
 
   .row
     .input-field.col.s12

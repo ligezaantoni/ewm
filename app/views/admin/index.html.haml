@@ -1,0 +1,36 @@
+- content_for :notice do
+  = notice
+
+.row.valign-wrapper
+  .col.s8.introduction-divider
+    %h5
+      = t("admin.introduction")
+    %ul.introduction
+      %li
+        %i.material-icons.medium.left
+          directions_bike
+        %h6
+          = t("menu.abilities")
+        %p
+          = t("admin.abilities_desc")
+      %li
+        %i.material-icons.medium.left
+          mood
+        %h6
+          = t("menu.character_traits")
+        %p
+          = t("admin.character_traits_desc")
+      %li.last
+        %i.material-icons.medium.left
+          local_library
+        %h6
+          = t("menu.activity_forms")
+        %p
+          = t("admin.activity_forms_desc")
+  .col.s4
+    .center-align
+      %a.waves-effect.waves-light.blue.btn{ href: root_url }
+        Zarządzaj lokalnie
+        %i.material-icons.left
+          keyboard_return
+

@@ -1,9 +1,13 @@
 pl:
   website:
-    title: "EWM - Asystent pracy wychowawczej"
+    title: "Asystent pracy wychowawczej EWM"
     title_short: "EWM"
   admin:
     title: "Manager danych"
+    introduction: "Witaj w panelu globalnego zarządzania danymi systemu."
+    abilities_desc: "Dodawaj nowe sprawności wprowadzając różnorodność pól działania, w których mogą się rozwijać Twoi harcerze."
+    character_traits_desc: "Zapisz cechy najlepiej oddające charakter twoich ludzi, by móc lepiej dostosować zajęcia do ich potrzeb."
+    activity_forms_desc: "Twórz formy pracy najlepiej pomagające w rozwoju pozytywnych lub zwalczaniu negatywnych cech uczestników zbiórek."
   menu:
     registry: "Ewidencja"
     training: "Szkolenie"
@@ -30,7 +34,8 @@ pl:
   home:
     introduction: "Witaj na stronie EWM, systemu wspomagajacego pracę wychowawczą"
     registry_desc: "Zarzadzaj danymi osobowymi swoich podopiecznych i obserwuj czynione przez nich postepy."
-    training_desc: "Planuj zajecia odpowiednie do umiejetnosci druzyny i poznaj nowe metody pracy."
+    training_desc: "Planuj zajecia odpowiednie do umiejetnosci druzyny oraz poznaj nowe metody i formy pracy."
     planning_desc: "Kontroluj swoj terminarz, aby miec pewnosc, ze masz wszystko dopiete na ostatni guzik."
     rating_desc: "Oceniaj osiagniecia harcerzy i nagradzaj ich odpowiednio do czynionych przez nich wysilkow."
+    not_authorized_notice: "Nie możesz wykonać tej czynności. Zaloguj się, stwórz konto lub skontaktuj się z administratorem."
 

@@ -17,7 +17,7 @@
 
   %header.valign-wrapper
     .container
-      .brand-logo
+      .brand-logo.center-align
         = image_tag("lil.png")
         = t("website.title")
       
@@ -47,9 +47,15 @@
     .row
       .col.l6.s12
         %h5
+          Asystent Pracy Wychowawczej EWM
+        %b.hint
           Educational Work Management System
         %p
-          Projekt stworzony w ramach pracy magisterskiej.
+          Autorem niniejszego serwisu jest Antoni Ligęza.
+          %br 
+          Serwis ten stanowi integralną część pracy magisterskiej (kierunek: Elektroniczne Przetwarzanie Informacji), przygotowanej pod kierunkiem dr. hab. Janusza Jurka 
+          %br 
+          na Wydziale Zarządzania i Komunikacji Społecznej Uniwersytetu Jagiellońskiego.
       .col.l4.offset-l2.s12
         %h5 Przydatne linki
         %ul
@@ -57,8 +63,5 @@
             %a{:href => "#!"} Praca magisterska
   .footer-copyright
     .container
-      Antoni Ligęza &nbsp;|&nbsp; Elektroniczne Przetwarzanie Informacji 2015
-      %a.btn-flat.white-text.right{:href => "#!"}
-        Zarządzaj
-        %i.material-icons.left
-          settings
+      .center-align
+        Antoni Ligęza &nbsp;|&nbsp; Elektroniczne Przetwarzanie Informacji 2015

@@ -1,0 +1,47 @@
+- content_for :title do
+  = t(".title")
+- content_for :breadcrumbs do
+  = render_breadcrumbs
+
+= simple_form_for(@profile, html: { class: 'form-horizontal' }) do |f|
+  - if @profile.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@profile.errors.count, "error")} prohibited this profile from being saved:"
+      %ul
+        - @profile.errors.full_messages.each do |msg|
+          %li= msg
+          
+  .row  
+    .input-field.col.s5
+      = f.text_field :first_name
+      = f.label :first_name
+    .input-field.col.s5
+      = f.text_field :last_name
+      = f.label :last_name
+    .input-field.col.s2
+      = f.text_field :pesel
+      = f.label :pesel
+
+  %h5 Informacje kontaktowe
+  .row
+    .input-field.col.s6
+      %i.material-icons.prefix
+        phone
+      = f.text_field :phone_number
+      = f.label :phone_number
+      
+  .row
+    = f.simple_fields_for :address do |fa|
+      .input-field.col.s6
+        %i.material-icons.prefix
+          home
+        = fa.text_field :street_and_number
+        = label_for_nested(:street_and_number, :address, @profile)
+      .input-field.col.s2
+        = fa.text_field :postal_code
+        = label_for_nested(:postal_code, :address, @profile)
+      .input-field.col.s4
+        = fa.text_field :city
+        = label_for_nested(:city, :address, @profile)
+
+  = submit_button_for t("nav.send"), icon="send"

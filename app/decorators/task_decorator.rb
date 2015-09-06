@@ -13,4 +13,12 @@ class TaskDecorator < Draper::Decorator
     h.t("enumerations.task.status.#{model.status}")
   end
   
+  def taskable_name
+    if model.taskable_type == "Scout"
+      "#{model.taskable.first_name} #{model.taskable.last_name}"
+    else
+      model.taskable.name
+    end
+  end
+  
 end

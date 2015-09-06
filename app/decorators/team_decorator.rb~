@@ -1,6 +1,8 @@
 class TeamDecorator < Draper::Decorator
   delegate_all
   
+  decorates_association :scout, :with => ScoutDecorator
+  
   def full_name
     <<-fullname
       #{model.number}
@@ -13,7 +15,7 @@ class TeamDecorator < Draper::Decorator
   end
   
   def patron
-    "#{h.t(".patron_prefix")} #{model.patron}"
+    "#{h.t(".patron_prefix")} #{model.patron}" if model.patron.present?
   end
   
   def short_name

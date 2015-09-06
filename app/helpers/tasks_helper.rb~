@@ -1,8 +1,20 @@
 module TasksHelper
 
   def task_status_options_for_select
-    Task.status.keys.map do |key|
+    Task.statuses.keys.map do |key|
       [I18n.t("enumerations.task.status.#{key}"), key]
+    end
+  end
+  
+  def task_taskable_id_options_for_select(type)
+    if type == "Scout" 
+      Scout.all.map do |scout|
+        ["#{scout.first_name} #{scout.last_name}", scout.id]
+      end
+    else
+      policy_scope(Team).map do |team|
+        [team.name, team.id]
+      end
     end
   end
   

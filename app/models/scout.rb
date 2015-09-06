@@ -9,7 +9,8 @@ class Scout < ActiveRecord::Base
   has_and_belongs_to_many :abilities
   has_and_belongs_to_many :character_traits
   has_many :parents, as: :relatable, class_name: "RelatedPerson"
-  has_many :tasks, as: :taskable
+  has_many :individual_tasks, as: :taskable, class_name: "Task"
+  has_many :scores
   
   has_attached_file :avatar, :styles => { :medium => "400x500>" }
   
@@ -37,6 +38,10 @@ class Scout < ActiveRecord::Base
       years = now.year - born_on.year
       @age ||= years - (born_on.years_since(years) > now ? 1 : 0)
     end
+  end
+  
+  def score_sum
+    scores.pluck(:number).sum
   end
   
 end

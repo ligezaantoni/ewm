@@ -6,20 +6,21 @@
       %ul
         - @activity.errors.full_messages.each do |msg|
           %li= msg
-          
-  = f.association :event, :collection => policy_scope(Event.all), :value_method => :id, as: :hidden
   
   .row
-    .input-field.col.s8
+    .input-field.col.s4
+      = f.association :event, :collection => activity_event_collection, :value_method => :id, label_method: :starts_on, label: false
+      = f.label :event
+    .input-field.col.s4
       = f.text_field :name
       = f.label :name
     .input-field.col.s4
       = f.text_field :estimated_time
       = f.label :estimated_time
       
-  %h5 Charakterystyka
+  %h5 Formy pracy
   .row
-    .input-field.col.s4
+    .input-field.col.s12
       .collection-check-boxes
         = collection_check_boxes :activity, :activity_form_ids, 
         ActivityForm.order(:name), :id, :name

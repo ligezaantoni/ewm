@@ -1,0 +1,20 @@
+pl:
+  activerecord:
+    attributes:
+      profile:  &profile_attributes
+        last_name: "nazwisko"
+        first_name: "imię"
+        pesel: "PESEL"
+        phone_number: "numer telefonu"
+        user: "użytkownik"
+        street_and_number: "ulica i numer"
+        postal_code: "kod pocztowy"
+        city: "miasto"
+      
+  profiles:
+    form:
+    edit:
+      title: "Edycja profilu administratora"
+      <<: *profile_attributes
+    update:
+      notice: "Profil harcerza został zaktualizowany."

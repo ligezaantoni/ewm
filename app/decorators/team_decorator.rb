@@ -1,6 +1,8 @@
 class TeamDecorator < Draper::Decorator
   delegate_all
   
+  decorates_association :scouts, :with => ScoutDecorator
+  
   def full_name
     <<-fullname
       #{model.number}

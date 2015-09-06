@@ -1,0 +1,29 @@
+- content_for :title do
+  = t(".title")
+- content_for :notice do
+  = notice
+- content_for :breadcrumbs do
+  = render_breadcrumbs
+  
+- @teams.each do |team|
+  %h5= team.short_name
+
+  %table
+    %thead
+      %tr
+        %th= t(".scout")
+        %th= t(".score_sum")
+        %th
+        %th
+        %th= icon_link_to("#", "add", class: "inactive")
+
+    %tbody
+      - team.scouts.sort_by(&:score_sum).reverse.each do |scout|
+        %tr
+          %td= scout.full_name
+          %td= scout.score_sum
+          %td
+          %td= menu_link_to t("nav.show"), score_path(scout.id), "assignment"
+          %td= icon_link_to new_score_path(score: {scout_id: scout.id}), "add"
+        
+= paginate @teams

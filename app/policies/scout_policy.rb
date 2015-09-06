@@ -1,5 +1,12 @@
 class ScoutPolicy < ApplicationPolicy
   class Scope < ApplicationPolicy::Scope
+    def resolve
+      if user.admin?
+        scope.all
+      else
+        scope.joins(:teams).where('teams.user_id = ?', user.id)
+      end
+    end
   end
 
   def permitted_attributes
@@ -15,4 +22,11 @@ class ScoutPolicy < ApplicationPolicy
       end
     attributes
   end  
+  
+  private
+  
+  def owner?
+    record.team.user == user
+  end
+  
 end

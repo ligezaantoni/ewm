@@ -1,9 +1,13 @@
 module ActivitiesHelper
 
   def activity_form_options_for_select
-    policy_scope(ActivityForm).map do |key|
-      [I18n.t("enumerations.school.kind.#{key}"), key]
+    ActivityForm.all.map do |af|
+      [af.name, af.id]
     end
+  end
+  
+  def activity_event_collection
+    PaginatingDecorator.decorate(policy_scope(Event), with: EventDecorator)
   end
   
 end

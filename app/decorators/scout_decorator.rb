@@ -2,6 +2,7 @@ class ScoutDecorator < Draper::Decorator
   delegate_all
   
   decorates_association :school, :with => SchoolDecorator
+  decorates_association :scores, :with => ScoreDecorator
   
   def age_with_unit
     "#{model.age} #{h.t('.age_unit')}"

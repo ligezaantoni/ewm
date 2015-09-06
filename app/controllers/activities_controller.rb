@@ -17,7 +17,12 @@ class ActivitiesController < ApplicationController
   end
 
   def new
-    @activity = @event.activities.build
+    @activity = if params[:activity].present?
+      @event.activities.build(activity_params)
+    else
+      @event.activities.build
+    end
+
     @activity.build_execution_report
     authorize @activity
     add_breadcrumb t(".title")

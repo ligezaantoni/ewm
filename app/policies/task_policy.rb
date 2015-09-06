@@ -6,7 +6,7 @@ class TaskPolicy < ApplicationPolicy
     attributes = []
       if user.present?
         attributes += [ 
-          :activity_form_id, :status, :description, :deadline, :taskable_id, :taskable_type
+          :activity_form_id, :status, :description, :deadline, :taskable_id, :taskable_type, :points
         ]
       end
     attributes

@@ -1,0 +1,31 @@
+= simple_form_for(@task, url: url, html: { class: 'form-horizontal' }) do |f|
+
+  - if @task.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@parent.errors.count, "error")} prohibited this parent from being saved:"
+      %ul
+        - @parent.errors.full_messages.each do |msg|
+          %li= msg
+          
+  = f.input :taskable_id, as: :hidden
+  = f.input :taskable_type, as: :hidden
+
+  .row
+    .input-field.col.s4
+      = f.association :activity_form, :collection => policy_scope(ActivityForm.all), :value_method => :id, label: false
+      = f.label :activity_form, active: true
+      
+    .input-field.col.s4
+      = f.text_field :deadline, as: :date, class: 'datepicker'
+      = f.label :deadline
+      
+    .input-field.col.s4
+      = f.select :status, task_status_options_for_select, include_blank: false
+      = f.label :status
+      
+  .row
+    .input-field.col.s8
+      = f.text_area :description, class: "materialize-textarea"
+      = f.label :description
+      
+  = submit_button_for t("nav.send"), icon="send"

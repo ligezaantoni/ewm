@@ -10,6 +10,7 @@ class TeamsController < ApplicationController
   end
   
   def show
+    # TODO: Dodać generowanie planu pracy przez axlsx_rails lub prawn
     @team = TeamDecorator.decorate(@team)
     @scouts = PaginatingDecorator.decorate(@team.scouts, with: ScoutDecorator)
     @schools = PaginatingDecorator.decorate(@team.schools, with: SchoolDecorator)
@@ -19,6 +20,7 @@ class TeamsController < ApplicationController
   def new
     @team = Team.new
     @team.build_address
+    @team.user = current_user
     authorize @team
     add_breadcrumb t(".title")
   end

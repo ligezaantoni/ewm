@@ -24,7 +24,7 @@ class ApplicationPolicy
   end
 
   def show?
-    read?
+    manage?
   end
 
   def create?
@@ -57,15 +57,15 @@ class ApplicationPolicy
     user.present?
   end
   
-#  def owner?
-#  
-#  end
+  def owner?
+    false
+  end
   
   def read?
     signed_in?
   end
   
   def manage?
-    read? && user.admin?
+    read? && (user.admin? || owner?)
   end
 end

@@ -1,0 +1,19 @@
+= simple_form_for(@score, html: { class: 'form-horizontal' }) do |f|
+
+  - if @score.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@event.errors.count, "error")} prohibited this event from being saved:"
+      %ul
+        - @score.errors.full_messages.each do |msg|
+          %li= msg
+
+  = f.association :scout, as: :hidden
+
+  .row
+    .input-field.col.s4
+      = f.input :number
+    .input-field.col.s8
+      = f.text_field :reason
+      = f.label :reason
+
+  = submit_button_for t("nav.send"), icon="send"

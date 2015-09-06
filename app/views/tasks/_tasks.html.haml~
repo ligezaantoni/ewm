@@ -1,0 +1,40 @@
+.right
+  = button_link_to t(".add"), new_task_path(type: taskable_type), "add", true
+
+%table
+  %thead
+    %tr
+      %th= t(".activity_form")
+      %th= t(".taskable_name")
+      %th= t(".status")
+      %th= icon_link_to("#", "check", class: "inactive")
+      %th= icon_link_to("#", "close", class: "inactive")
+      %th= t(".deadline")
+      %th
+      - if taskable_type == "Team"
+        %th= icon_link_to("#", "event_note", class: "inactive")
+      %th= icon_link_to("#", "edit", class: "inactive")
+      %th= icon_link_to("#", "delete", class: "inactive")
+
+  %tbody
+    - tasks.each do |task|
+      %tr
+        %td= link_to task.activity_form_name, task_path(task)
+        %td= link_to task.taskable_name, taskable_type == "Scout" ? team_scout_path(task.taskable.team, task.taskable) : team_path(task.taskable)
+        %td= task.status
+        - if task.in_progress?
+          %td= icon_link_to(task_path(task, task: {taskable: task.taskable, status: "accomplished"}), "check", method: :patch, class: "success")
+          %td= icon_link_to(task_path(task, task: {taskable: task.taskable, status: "failed"}), "close", method: :patch, class: "danger")
+        - else
+          %td
+          %td
+        %td= task.deadline
+        %td
+        - if taskable_type == "Team" && Event.nearest.first.present?
+          %td= icon_link_to(new_event_activity_path(event_id: Event.nearest.first.id, activity: {activity_form_ids: [task.activity_form_id], description: task.description}), "event_note", class: "success")
+        - elsif taskable_type == "Team"
+          
+        %td= icon_link_to(edit_task_path(task), "edit")
+        %td= icon_link_to(task_path(task), "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger")
+        
+= paginate tasks

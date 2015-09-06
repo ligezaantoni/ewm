@@ -1,0 +1,6 @@
+class Score < ActiveRecord::Base
+
+  # Associations
+  belongs_to :scorable, polymorphic: true
+    
+end

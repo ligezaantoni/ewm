@@ -7,10 +7,13 @@ Rails.application.routes.draw do
     end
     resources :scouts do
       resources :parents
-      resources :tasks
+      resources :individual_tasks
     end
     resources :goals
   end
+  
+  # Edukacja
+  resources :tasks
   
   # Planowanie
   resources :events do
@@ -20,7 +23,13 @@ Rails.application.routes.draw do
     end
   end
   
+  # Ocena
+  resources :scores
+  
   # Zarządzanie danymi
+  
+  resources :profiles, only: [:edit, :update]
+  
   get '/admin', to: 'admin#index'
   namespace :admin do
     resources :abilities

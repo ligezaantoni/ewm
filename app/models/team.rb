@@ -7,6 +7,7 @@ class Team < ActiveRecord::Base
   has_many :events
   has_and_belongs_to_many :character_traits
   has_many :goals, as: :taskable, class_name: "Task"
+  belongs_to :user
   
   accepts_nested_attributes_for :address
   

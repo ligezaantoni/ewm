@@ -7,7 +7,7 @@ class ScoutsController < ApplicationController
 
   def index
     authorize Scout
-    @scouts = Scout.page(params[:page]).per(20)
+    @scouts = policy_scope(Scout).page(params[:page]).per(20)
     @scouts = PaginatingDecorator.decorate(@scouts, with: ScoutDecorator)
   end
 

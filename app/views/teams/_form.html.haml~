@@ -42,13 +42,13 @@
     .input-field.col.s6
       .success= t(".opportunities")
       .collection-check-boxes
-        = collection_check_boxes :scout, :character_trait_ids, 
+        = collection_check_boxes :team, :character_trait_ids, 
         CharacterTrait.opportunity.order(:name), :id, :name
         
     .input-field.col.s6
       .danger= t(".threats")
       .collection-check-boxes
-        = collection_check_boxes :scout, :character_trait_ids, 
+        = collection_check_boxes :team, :character_trait_ids, 
         CharacterTrait.threat.order(:name), :id, :name
         
   = submit_button_for t("nav.send"), icon="send"

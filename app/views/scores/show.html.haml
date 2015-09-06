@@ -1,0 +1,25 @@
+- content_for :notice do
+  = notice
+- content_for :action_button do
+  = icon_link_to new_score_path(score: {scout_id: @scout.id}), "add",
+    class: "action-button waves-effect"
+- content_for :breadcrumbs do
+  = render_breadcrumbs
+  
+%h5= @scout.full_name
+
+%table
+  %thead
+    %tr
+      %th= t(".reason")
+      %th= t(".number")
+      %th
+      %th= icon_link_to("#", "delete", class: "inactive")
+
+  %tbody
+    - @scores.each do |score|
+      %tr
+        %td= score.reason
+        %td= score.number
+        %td
+        %td= icon_link_to score, "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger"    

@@ -11,7 +11,7 @@ class EventsController < ApplicationController
 
   def show
     @event = EventDecorator.decorate(@event)
-    @activities = PaginatingDecorator.decorate(@event.activities, with: ::ActivityDecorator)
+    @activities = PaginatingDecorator.decorate(@event.activities.ordered, with: ::ActivityDecorator)
     add_breadcrumb @event.starts_on
   end
 

@@ -1,8 +1,8 @@
 module TeamsHelper
 
-  def position_options_for_select
-    Scout.positions.keys.map do |key|
-      [I18n.t("enumerations.scout.position.#{key}"), key]
+  def kind_options_for_select
+    policy_scope(Team).kinds.keys.map do |key|
+      [I18n.t("enumerations.team.kind.#{key}"), key]
     end
   end
 

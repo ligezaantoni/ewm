@@ -29,6 +29,7 @@ pl:
       title: "Raport"
       confirm_destroy: "Usunąć aktywność?"
       <<: *activity_attributes
+      <<: *event_attributes
     show:
       title: "Aktywność"
       confirm_destroy: "Usunąć aktywność?"

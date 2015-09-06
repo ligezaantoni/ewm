@@ -1,0 +1,34 @@
+.right
+  = button_link_to t(".add"), new_task_path, "add", true
+
+%table
+  %thead
+    %tr
+      %th= t(".activity_form")
+      %th= t(".description")
+      %th= t(".status")
+      %th= icon_link_to("#", "check", class: "inactive")
+      %th= icon_link_to("#", "close", class: "inactive")
+      %th= t(".deadline")
+      %th
+      %th= icon_link_to("#", "edit", class: "inactive")
+      %th= icon_link_to("#", "delete", class: "inactive")
+
+  %tbody
+    - tasks.each do |task|
+      %tr
+        %td= task.activity_form_name
+        %td= task.description
+        %td= task.status
+        - if task.in_progress?
+          %td= icon_link_to(team_scout_individual_task_path(task.taskable.team, task.taskable, task, task: {status: "accomplished"}), "check", method: :patch, class: "success")
+          %td= icon_link_to(team_scout_individual_task_path(task.taskable.team, task.taskable, task, task: {status: "failed"}), "close", method: :patch, class: "danger")
+        - else
+          %td
+          %td
+        %td= task.deadline
+        %td
+        %td= icon_link_to(edit_team_scout_individual_task_path(task.taskable.team, task.taskable, task), "edit")
+        %td= icon_link_to(team_scout_individual_task_path(task.taskable.team, task.taskable, task), "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger")
+        
+= paginate tasks

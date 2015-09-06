@@ -1,35 +1,21 @@
 - content_for :title do
   = t(".title")
 - content_for :action_button do
-  = icon_link_to new_team_scout_task_path(@team, @scout), "playlist_add", 
+  = icon_link_to events_path, "event_note", 
     class: "action-button waves-effect"
 - content_for :notice do
   = notice
 - content_for :breadcrumbs do
   = render_breadcrumbs
   
-%table
-  %thead
-    %tr
-      %th= t(".activity_form")
-      %th= t(".description")
-      %th= t(".status")
-      %th= t(".deadline")
-      %th
-      %th= icon_link_to("#", "edit", class: "inactive")
-      %th= icon_link_to("#", "delete", class: "inactive")
-
-  %tbody
-    - @tasks.each do |task|
-      %tr
-        %td= task.activity_form_name
-        %td= task.description
-        %td= task.status
-        %td= task.deadline
-        %td
-        %td= icon_link_to(edit_team_scout_task_path(@team, @scout, task), "edit")
-        %td= icon_link_to(team_scout_task_path(@team, @scout, task), "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger")
-        
-= paginate @tasks
-
-= render partial: "support", locals: {team: @team, scout: @scout}
+%ul.collapsible{"data-collapsible" => "expandable"}
+  %li
+    .collapsible-header.active
+      %h5= t(".individual_tasks")
+    .collapsible-body
+      = render partial: "tasks", locals: {tasks: @individual_tasks, taskable_type: "Scout"}
+  %li
+    .collapsible-header.active
+      %h5= t(".goals")
+    .collapsible-body
+      = render partial: "tasks", locals: {tasks: @goals, taskable_type: "Team"}

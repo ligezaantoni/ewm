@@ -6,4 +6,16 @@ module TasksHelper
     end
   end
   
+  def task_taskable_id_options_for_select(type)
+    if type == "Scout" 
+      policy_scope(Scout).map do |scout|
+        ["#{scout.first_name} #{scout.last_name}", scout.id]
+      end
+    else
+      policy_scope(Team).map do |team|
+        [team.name, team.id]
+      end
+    end
+  end
+  
 end

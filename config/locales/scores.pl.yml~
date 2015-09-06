@@ -1,0 +1,37 @@
+pl:
+  activerecord:
+    attributes:
+      score:  &score_attributes
+        number: "liczba punktów"
+        reason: "powód przyznania"
+        scout: "harcerz"
+        scorable: "punktowane"
+        
+      team: &team_attributes
+        number_prefix: "nr"
+        patron_prefix: "im."
+      
+  scores:
+    index:
+      title: "Ocena"
+      confirm_destroy: "Usunąć punkty?"
+      <<: *score_attributes
+      <<: *team_attributes
+    show:
+      title: "Punkty"
+      confirm_destroy: "Usunąć punkty?"
+      <<: *score_attributes
+    form:
+      <<: *score_attributes
+    edit:
+      title: "Edycja punktacji"
+    update:
+      notice: "Punktacja została zaktualizowana."
+    new:
+      title: "Tworzenie punktów"
+      character_traits: "cechy charakteru"
+    create:
+      notice: "Punktacja została utworzona."
+    destroy:
+      notice: "Punktacja została usunięta."
+

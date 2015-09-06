@@ -1,0 +1,43 @@
+- content_for :title do
+  = t(".title")
+- content_for :action_button do
+  = icon_link_to new_team_scout_individual_task_path(@team, @scout), "playlist_add", 
+    class: "action-button waves-effect"
+- content_for :notice do
+  = notice
+- content_for :breadcrumbs do
+  = render_breadcrumbs
+  
+%table
+  %thead
+    %tr
+      %th= t(".activity_form")
+      %th= t(".description")
+      %th= t(".status")
+      %th= icon_link_to("#", "check", class: "inactive")
+      %th= icon_link_to("#", "close", class: "inactive")
+      %th= t(".deadline")
+      %th
+      %th= icon_link_to("#", "edit", class: "inactive")
+      %th= icon_link_to("#", "delete", class: "inactive")
+
+  %tbody
+    - @tasks.each do |task|
+      %tr
+        %td= task.activity_form_name
+        %td= menu_link_to task.description, team_scout_individual_task_path(@team, @scout, task)
+        %td= task.status
+        - if task.in_progress?
+          %td= icon_link_to(team_scout_individual_task_path(@team, @scout, task, task: {status: "accomplished"}), "check", method: :patch, class: "success")
+          %td= icon_link_to(team_scout_individual_task_path(@team, @scout, task, task: {status: "failed"}), "close", method: :patch, class: "danger")
+        - else
+          %td
+          %td
+        %td= task.deadline
+        %td
+        %td= icon_link_to(edit_team_scout_individual_task_path(@team, @scout, task), "edit")
+        %td= icon_link_to(team_scout_individual_task_path(@team, @scout, task), "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger")
+        
+= paginate @tasks
+
+= render partial: "support", locals: {activity_forms: @activity_forms}

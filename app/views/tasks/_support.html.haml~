@@ -6,15 +6,15 @@
       %thead
         %tr
           %th= t(".activity_form")
-          %th= t(".character_traits")
           %th= t(".description")
+          %th= t(".character_traits")
           %th
           %th= icon_link_to("#", "add", class: "inactive")
       %tbody
         -activity_forms.each do |activity_form, character_traits|
           %tr
             %td= activity_form.name
-            %td= character_traits.join(", ")
             %td= activity_form.description
+            %td= character_traits.join(", ")
             %td
             %td= icon_link_to(new_team_scout_task_path(@team, @scout, activity_form: activity_form, character_traits: character_traits), "add", class: "success")

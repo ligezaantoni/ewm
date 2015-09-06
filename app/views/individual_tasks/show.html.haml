@@ -1,0 +1,35 @@
+- content_for :notice do
+  = notice
+- content_for :breadcrumbs do
+  = render_breadcrumbs
+  
+.card-panel
+  .right
+    = menu_link_to(t("nav.edit"), edit_team_scout_individual_task_path(@team, @scout, @task), "edit", class: "info btn-flat")
+    = menu_link_to(t("nav.delete"), team_scout_individual_task_path(@team, @scout, @task), "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger btn-flat")
+    
+  %h5= @task.activity_form_name
+  .card-content
+    %ul.contact-information
+      - if @task.activity_form.present?
+        %li.left
+          %i.material-icons.left
+            today
+          = @task.deadline
+      - if @task.status.present?
+        %li.left
+        %i.material-icons.left
+          = "access_time" if @task.in_progress?
+          = "check" if @task.accomplished?
+          = "close" if @task.failed?
+        = @task.status
+  %p
+    .container
+      .row
+        %b.col.s1= t(".description")
+        .col.s11= @task.description
+    .left-align
+      - if @task.in_progress?
+        = menu_link_to(t(".pass"), team_scout_individual_task_path(@team, @scout, @task, task: {status: "accomplished"}), "check", method: :patch, class: "success btn-flat")
+        = menu_link_to(t(".fail"), team_scout_individual_task_path(@team, @scout, @task, task: {status: "failed"}), "close", method: :patch, class: "danger btn-flat")
+

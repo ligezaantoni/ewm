@@ -1,42 +1,26 @@
 class TasksController < ApplicationController
-  before_action :load_and_authorize_team,
-    only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  before_action :load_and_authorize_scout,
-    only: [:index, :show, :new, :create, :edit, :update, :destroy]
   before_action :load_and_authorize_task,
     only: [:show, :edit, :update, :destroy]
   before_filter :set_breadcrumbs
 
   def index
     authorize Task
-    @tasks = @scout.tasks.page(params[:page]).per(20)
-    @tasks = PaginatingDecorator.decorate(@tasks, with: TaskDecorator)
     
-    temp_hash = {}
-    @scout.character_traits.map do |character_trait| 
-      temp_hash[character_trait.name] = character_trait.activity_forms
-    end
+    @individual_tasks = Task.where(taskable_type: "Scout").page(params[:page]).per(20)
+    @individual_tasks = PaginatingDecorator.decorate(@individual_tasks, with: TaskDecorator)
     
-    @activity_forms = {}
-    temp_hash.each do |character_trait_name, activity_forms|
-      activity_forms.each do |activity_form|
-        @activity_forms[activity_form] = [] if @activity_forms[activity_form].nil?
-        @activity_forms[activity_form] << character_trait_name
-      end
-    end
+    @goals = Task.where(taskable_type: "Team").page(params[:page]).per(20)
+    @goals = PaginatingDecorator.decorate(@goals, with: TaskDecorator)
   end
 
   def show
     @task = TaskDecorator.decorate(@task)
-    add_breadcrumb t(".title")
+    add_breadcrumb @task.activity_form_name
   end
 
   def new
-    @task = @scout.tasks.build
-    if params[:activity_form].present? && params[:character_traits].present?
-      @task.activity_form = ActivityForm.find(params[:activity_form])
-      @traits_hint = params[:character_traits]
-    end
+    @task = Task.new
+    @type = params[:type]
     authorize @task
     add_breadcrumb t(".title")
   end
@@ -50,7 +34,7 @@ class TasksController < ApplicationController
     authorize @task
 
     if @task.save
-      redirect_to team_scout_tasks_path(@team, @scout), notice: t(".notice")
+      redirect_to tasks_path, notice: t(".notice")
     else
       render :new
     end
@@ -58,7 +42,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to team_scout_tasks_path(@team, @scout), notice: t(".notice")
+      redirect_to tasks_path, notice: t(".notice")
     else
       render :edit
     end
@@ -66,7 +50,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to team_scout_tasks_path(@team, @scout), notice: t(".notice")
+    redirect_to tasks_path, notice: t(".notice")
   end
 
   private
@@ -93,8 +77,6 @@ class TasksController < ApplicationController
   end
   
   def set_breadcrumbs
-    add_breadcrumb t("menu.registry"), teams_path
-    add_breadcrumb @team.short_name, team_path(@team)
-    add_breadcrumb @scout.full_name, team_scout_path(@team, @scout)
+    add_breadcrumb t("menu.training"), tasks_path
   end
 end

@@ -7,6 +7,8 @@ class Event < ActiveRecord::Base
   # Validations
   validates :starts_at, presence: true
   
+  scope :nearest, Proc.new { |after = DateTime.now, limit = 1| where('starts_on > ?', after).order("starts_on ASC").limit(limit) }
+  
   def duration
     activities.sum(:estimated_time).minutes
   end

@@ -22,7 +22,7 @@
   - if user_signed_in?    
     %ul#profile-dropdown.dropdown-content
       %li
-        = menu_link_to "Edytuj profil", "#", icon = "account_circle"
+        = menu_link_to current_user.email, edit_profile_path(current_user.profile), icon = "account_circle"
       %li.divider
       %li
         = menu_link_to t("devise.sign_out"), destroy_user_session_path, 
@@ -45,6 +45,8 @@
               = menu_link_to t("menu.activity_forms"), admin_activity_forms_path, icon = "local_library"
             %li
               %a.dropdown-button{"data-activates" => "profile-dropdown", :href => "#!"}
+                %i.material-icons.left
+                  account_circle
                 = current_user.email
                 %i.material-icons.right
                   arrow_drop_down
@@ -101,9 +103,15 @@
     .row
       .col.l6.s12
         %h5
+          Asystent Pracy Wychowawczej EWM
+        %b.hint
           Educational Work Management System
         %p
-          Projekt stworzony w ramach pracy magisterskiej.
+          Autorem niniejszego serwisu jest Antoni Ligęza.
+          %br 
+          Serwis ten stanowi integralną część pracy magisterskiej (kierunek: Elektroniczne Przetwarzanie Informacji), przygotowanej pod kierunkiem dr. hab. Janusza Jurka 
+          %br 
+          na Wydziale Zarządzania i Komunikacji Społecznej Uniwersytetu Jagiellońskiego.
       .col.l4.offset-l2.s12
         %h5 Przydatne linki
         %ul

@@ -69,7 +69,7 @@ input
   input, label
     display: inline-block
     float: left
-    width: 155px
+    width: 240px
     height: auto
     
 .image-input-button
@@ -128,26 +128,26 @@ main
   
 .danger
   color: $red
-  background-color: $white
+  @extend .white
 .danger-inverted
-  color: $white
+  @extend .white-text
   background-color: $red
   
 .success
   color: $green
-  background-color: $white
+  @extend .white
 .success-inverted
-  color: $white
+  @extend .white-text
   background-color: $green
 .info
   color: $blue
-  background-color: $white
+  @extend .white
 .info-inverted
-  color: $white
+  @extend .white-text
   background-color: $blue
   
 .blend-in
-  color: $white
+  @extend .white-text
   
 .blend-in-inverted
   color: $black
@@ -193,6 +193,9 @@ main
     
     i
       transform: rotate(90deg)
+.pagination   
+  li.active
+    @extend .green
 
 ul.contact-information
   margin: 0px
@@ -224,8 +227,7 @@ body.homepage
     color: $white
     
     .brand-logo
-      @extend .brand-logo
-      font-size: 36px
+      font-size: 32px
 
   section
     position: relative
@@ -242,7 +244,7 @@ body.homepage
   margin: 25px 0px 0px 0px
   
   li
-    margin-bottom: 20px
+    margin-bottom: 25px
   
     h6
       font-weight: bold
