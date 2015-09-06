@@ -2,7 +2,7 @@
 
   - if @activity_form.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@activity_form.errors.count, "error")} prohibited this activity_form from being saved:"
+      %h5= t("activerecord.errors.message", count: @activity_form.errors.count)
       %ul
         - @activity_form.errors.full_messages.each do |msg|
           %li= msg
@@ -10,7 +10,10 @@
     .input-field.col.s4
       = f.association :educational_method, :collection => policy_scope(EducationalMethod.all), :value_method => :id, label: false, include_blank: false
       = f.label :educational_method, active: true
-    .input-field.col.s8
+    .input-field.col.s4
+      = f.text_field :name
+      = f.label :name
+    .input-field.col.s4
       = f.text_area :description, class: "materialize-textarea"
       = f.label :description
 

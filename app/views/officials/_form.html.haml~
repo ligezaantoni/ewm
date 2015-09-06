@@ -1,10 +1,10 @@
-= simple_form_for(@parent, url: url, html: { class: 'form-horizontal' }) do |f|
+= simple_form_for(@official, url: url, html: { class: 'form-horizontal' }) do |f|
 
-  - if @parent.errors.any?
+  - if @official.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@parent.errors.count, "error")} prohibited this parent from being saved:"
+      %h2= "#{pluralize(@official.errors.count, "error")} prohibited this official from being saved:"
       %ul
-        - @parent.errors.full_messages.each do |msg|
+        - @official.errors.full_messages.each do |msg|
           %li= msg
   = f.input :relatable_id, as: :hidden
   = f.input :relatable_type, as: :hidden
@@ -14,7 +14,7 @@
     .input-field.col.s4
       = f.input :last_name
     .input-field.col.s4
-      = f.select :role, parent_role_options_for_select, include_blank: false
+      = f.select :role, official_role_options_for_select, include_blank: false
       = f.label :role
   .row
     .input-field.col.s6

@@ -1,4 +1,4 @@
-class ActivityFormPolicy < ApplicationPolicy
+class EducationalMethodPolicy < ApplicationPolicy
   class Scope < ApplicationPolicy::Scope
   end
 
@@ -6,7 +6,7 @@ class ActivityFormPolicy < ApplicationPolicy
     attributes = []
       if user.present?
         attributes += [ 
-          :educational_method_id, :description
+          :id, :name
         ]
       end
     attributes

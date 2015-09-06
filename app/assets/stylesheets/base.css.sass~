@@ -42,7 +42,21 @@ section
   .notice
     @extend .card-panel
     @extend .blue.lighten-5
-
+    
+  #error_explanation
+    @extend .card-panel
+    @extend .red.lighten-5
+    margin-bottom: 20px
+    ul
+      margin-left: 25px
+      padding-left: 25px
+      border-left: 1px solid $grey
+      li
+        font-size: 18px
+    
+  .help-block
+    color: $red
+    
 .action-button
   @extend .btn-floating 
   @extend .btn-large 
@@ -69,7 +83,7 @@ input
   input, label
     display: inline-block
     float: left
-    width: 220px
+    width: 240px
     height: auto
     
 .image-input-button
@@ -297,3 +311,7 @@ section.admin
   .notice
     @extend .card-panel
     @extend .green.lighten-5
+    
+  .error
+    @extend .card-panel
+    @extend .red.lighten-5

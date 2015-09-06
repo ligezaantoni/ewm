@@ -2,7 +2,7 @@
 
   - if @task.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@task.errors.count, "error")} prohibited this task from being saved:"
+      %h5= t("activerecord.errors.message", count: @task.errors.count)
       %ul
         - @task.errors.full_messages.each do |msg|
           %li= msg
@@ -12,7 +12,7 @@
 
   .row
     .input-field.col.s4
-      = f.association :activity_form, :collection => policy_scope(ActivityForm.all), :value_method => :id, label: false
+      = f.association :activity_form, :collection => policy_scope(ActivityForm.all), :value_method => :id, label: false, include_blank: false
       = f.label :activity_form, active: true
       
     .input-field.col.s4

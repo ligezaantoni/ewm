@@ -7,7 +7,6 @@ class ActivityForm < ActiveRecord::Base
   has_many :tasks
   
   # Validations
-  # validates :educational_method, presence: true
-  # validates :name, presence: true
+   validates :name, presence: true
   
 end

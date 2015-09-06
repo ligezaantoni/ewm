@@ -2,7 +2,7 @@
 
   - if @official.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@official.errors.count, "error")} prohibited this official from being saved:"
+      %h5= t("activerecord.errors.message", count: @official.errors.count)
       %ul
         - @official.errors.full_messages.each do |msg|
           %li= msg

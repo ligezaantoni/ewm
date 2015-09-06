@@ -2,7 +2,11 @@ class ScoreDecorator < Draper::Decorator
   delegate_all
   
   def reason
-    model.reason.present? ? model.reason : "#{model.scorable.activity_form}"
+    if model.reason.present?
+      model.reason
+    elsif model.scorable.present?
+      "#{model.scorable.activity_form.name}"
+    end
   end
   
 end

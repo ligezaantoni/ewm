@@ -15,7 +15,7 @@
       = f.label :place
     .input-field.col.s3
       = f.text_field :starts_on, as: :date, class: 'datepicker'
-      = f.label :starts_at
+      = f.label :starts_on
     .input-field.col.s3
       = f.text_field :starts_at
       = f.label :starts_at

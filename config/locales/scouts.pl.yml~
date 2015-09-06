@@ -33,6 +33,7 @@ pl:
         street_and_number: "ulica i numer"
         postal_code: "kod pocztowy"
         city: "miasto"
+        avatar_content_type: "rozszerzenie pliku"
         
       school: &school_attributes
         address: "adres"
@@ -70,10 +71,6 @@ pl:
         adjutant: "przyboczny"
       
   scouts:
-    index:
-      title: "Harcerze"
-      confirm_destroy: "Usunąć profil harcerza?"
-      <<: *scout_attributes
     show:
       title: "Profil harcerza"
       confirm_destroy: "Usunąć profil harcerza?"

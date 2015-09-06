@@ -18,3 +18,74 @@ pl:
     destroy: "Usuń"
     back: "Wróć"
 
+  activerecord:
+    errors:
+      message: "Nie udało się zapisać [ błędów: %{count} ]. Popraw następujące pola:"
+      models:
+        ability:
+          attributes:
+            name:
+              blank: "musi zostać podana"
+        activity:
+          attributes:
+            name:
+              blank: "musi zostać podana"
+            estimated_time:
+              blank: "musi zostać podany"
+        activity_form:
+          attributes:
+            name:
+              blank: "musi zostać podana"
+        character_trait:
+          attributes:
+            name:
+              blank: "musi zostać podana"
+        event:
+          attributes:
+            starts_at:
+              blank: "musi zostać podana"
+            starts_on:
+              blank: "musi zostać podana"
+        related_person:
+          attributes:
+            first_name:
+              blank: "musi zostać podane"
+            last_name:
+              blank: "musi zostać podane"
+            email:
+              invalid: "musi mieć odpowiedni format ( np. abc@xyz.com )"
+        school:
+          attributes:
+            number:
+              blank: "musi zostać podany"
+        score:
+          attributes:
+            number:
+              blank: "musi zostać podana"
+        scout:
+          attributes:
+            first_name:
+              blank: "musi zostać podane"
+            last_name:
+              blank: "musi zostać podane"
+            email:
+              invalid: "musi mieć odpowiedni format ( np. abc@xyz.com )"
+            pesel:
+              invalid: "musi mieć odpowiedni format"
+            avatar_content_type:
+              invalid: "musi mieć jedną z następujących form: *.jpg, *.jpeg, *.gif lub *.png"
+        task:
+          attributes:
+            activity_form:
+              blank: "musi zostać podana"
+            description:
+              blank: "musi zostać podany"
+            deadline:
+              blank: "musi zostać podany"
+        team:
+          attributes:
+            name:
+              blank: "musi zostać podana"
+            number:
+              blank: "musi zostać podany"
+

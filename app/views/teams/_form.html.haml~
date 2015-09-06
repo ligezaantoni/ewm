@@ -1,11 +1,13 @@
 = simple_form_for(@team, html: { class: 'form-horizontal' }) do |f|
 
   - if @team.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@team.errors.count, "error")} prohibited this team from being saved:"
+    #error_explanation.error
+      %h5= t("activerecord.errors.message", count: @team.errors.count)
       %ul
         - @team.errors.full_messages.each do |msg|
           %li= msg
+          
+  = f.input :user_id, as: :hidden
 
   .row
     .input-field.col.s12

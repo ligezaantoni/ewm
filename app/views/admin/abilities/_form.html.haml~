@@ -14,7 +14,6 @@
       = f.select :level, ability_level_options_for_select, include_blank: false
       = f.label :level, active: false
 
-
   .row
     .input-field.col.s12
       = f.text_area :requirements, class: "materialize-textarea"

@@ -1,7 +1,7 @@
 = simple_form_for(@scout, url: url, html: { class: 'form-horizontal' }) do |f|
   - if @scout.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@scout.errors.count, "error")} prohibited this scout from being saved:"
+      %h5= t("activerecord.errors.message", count: @scout.errors.count)
       %ul
         - @scout.errors.full_messages.each do |msg|
           %li= msg
@@ -25,7 +25,7 @@
       = f.label :avatar, active: true
   .row
     .input-field.col.s4
-      = f.association :team, :collection => policy_scope(Team.all), :value_method => :id
+      = f.association :team, :collection => policy_scope(Team.all), :value_method => :id, allow_blank: false
       = f.label :team
     .input-field.col.s4
       = f.text_field :patrol
@@ -79,13 +79,13 @@
       
   %h5 Charakterystyka
   .row
-    .input-field.col.s4
+    .input-field.col.s6
       .success= t(".strengths")
       .collection-check-boxes
         = collection_check_boxes :scout, :character_trait_ids, 
         CharacterTrait.strength.order(:name), :id, :name
         
-    .input-field.col.s4
+    .input-field.col.s6
       .danger= t(".weaknesses")
       .collection-check-boxes
         = collection_check_boxes :scout, :character_trait_ids, 

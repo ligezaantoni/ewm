@@ -7,9 +7,9 @@
 
   - if @task.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@parent.errors.count, "error")} prohibited this parent from being saved:"
+      %h5= t("activerecord.errors.message", count: @task.errors.count)
       %ul
-        - @parent.errors.full_messages.each do |msg|
+        - @task.errors.full_messages.each do |msg|
           %li= msg
           
   = f.input :taskable_id, as: :hidden

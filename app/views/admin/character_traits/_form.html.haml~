@@ -11,7 +11,7 @@
     .input-field.col.s8
       = f.text_field :name
       = f.label :name
-  .input-field.col.s4
+    .input-field.col.s4
       = f.select :kind, character_trait_kind_options_for_select, include_blank: false
       = f.label :kind, active: false
 

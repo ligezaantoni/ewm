@@ -21,7 +21,6 @@ class Scout < ActiveRecord::Base
   validates :last_name, presence: true
   validates :email, format: { with: /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}/ }, allow_blank: true
   validates :pesel, pesel: true
-  validates_attachment_content_type :avatar, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
     
   # Enums
   enum rank: %i(youngster scout pioneer eagle_scout scout_of_the_republic )
@@ -41,7 +40,7 @@ class Scout < ActiveRecord::Base
   end
   
   def score_sum
-    scores.sum(&:number)
+    scores.pluck(:number).sum
   end
   
 end

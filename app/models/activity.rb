@@ -8,7 +8,6 @@ class Activity < ActiveRecord::Base
   accepts_nested_attributes_for :execution_report
   
   # Validations
-  validates :event, presence: true
   validates :name, presence: true
   validates :estimated_time, presence: true
   

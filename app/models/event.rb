@@ -5,6 +5,7 @@ class Event < ActiveRecord::Base
   has_many :activities
   
   # Validations
+  validates :starts_on, presence: true
   validates :starts_at, presence: true
   
   scope :nearest, Proc.new { |after = DateTime.now, limit = 1| where('starts_on > ?', after).order("starts_on ASC").limit(limit) }

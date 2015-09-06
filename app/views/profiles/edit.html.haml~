@@ -29,6 +29,7 @@
         phone
       = f.text_field :phone_number
       = f.label :phone_number
+      
   .row
     = f.simple_fields_for :address do |fa|
       .input-field.col.s6

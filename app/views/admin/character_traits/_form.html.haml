@@ -2,7 +2,7 @@
 
   - if @character_trait.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@character_trait.errors.count, "error")} prohibited this character_trait from being saved:"
+      %h5= t("activerecord.errors.message", count: @character_trait.errors.count)
       %ul
         - @character_trait.errors.full_messages.each do |msg|
           %li= msg

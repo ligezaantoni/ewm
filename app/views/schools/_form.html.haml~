@@ -2,11 +2,13 @@
 
   - if @school.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@school.errors.count, "error")} prohibited this school from being saved:"
+      %h5= t("activerecord.errors.message", count: @school.errors.count
       %ul
         - @school.errors.full_messages.each do |msg|
           %li= msg
+          
   = f.association :team, :collection => policy_scope(Team.all), :value_method => :id, as: :hidden
+  
   .row
     .input-field.col.s4
       = f.select :kind, school_kind_options_for_select, include_blank: false
@@ -41,4 +43,4 @@
       = f.text_area :comments, class: "materialize-textarea"
       = f.label :comments
 
-  = f.submit 'Save'
+  = submit_button_for t("nav.send"), icon="send"

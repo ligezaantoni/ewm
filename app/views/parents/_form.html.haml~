@@ -6,8 +6,8 @@
       %ul
         - @parent.errors.full_messages.each do |msg|
           %li= msg
-  = f.input :relatable_id
-  = f.input :relatable_type
+  = f.input :relatable_id, as: :hidden
+  = f.input :relatable_type, as: :hidden
   .row
     .input-field.col.s4
       = f.input :first_name
