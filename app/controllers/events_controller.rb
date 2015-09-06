@@ -22,6 +22,7 @@ class EventsController < ApplicationController
   end
 
   def edit
+    add_breadcrumb EventDecorator.decorate(@event).starts_on, @event
     add_breadcrumb t(".title")
   end
 

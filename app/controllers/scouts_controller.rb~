@@ -1,20 +1,13 @@
 class ScoutsController < ApplicationController
-  before_action :load_and_authorize_team,
-    only: [:show, :new, :create, :edit, :update, :destroy]
+  before_action :load_and_authorize_team
   before_action :load_and_authorize_scout,
     only: [:show, :edit, :update, :destroy]
   before_action :set_breadcrumbs
 
-  def index
-    authorize Scout
-    @scouts = Scout.page(params[:page]).per(20)
-    @scouts = PaginatingDecorator.decorate(@scouts, with: ScoutDecorator)
-  end
-
   def show
     @scout = ScoutDecorator.decorate(@scout)
     @parents = PaginatingDecorator.decorate(@scout.parents, with: RelatedPersonDecorator)
-    add_breadcrumb t(".title")
+    add_breadcrumb @scout.full_name
   end
 
   def new
@@ -25,6 +18,7 @@ class ScoutsController < ApplicationController
   end
 
   def edit
+    add_breadcrumb ScoutDecorator.decorate(@scout).full_name, team_scout_path(@team, @scout)
     add_breadcrumb t(".title")
   end
 

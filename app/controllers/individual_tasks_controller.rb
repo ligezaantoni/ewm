@@ -1,10 +1,8 @@
 class IndividualTasksController < ApplicationController
-  before_action :load_and_authorize_team,
-    only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  before_action :load_and_authorize_scout,
-    only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :load_and_authorize_team
+  before_action :load_and_authorize_scout
   before_action :load_and_authorize_task,
-    only: [:show, :edit, :update, :destroy]
+    only: [:edit, :update, :destroy]
   before_filter :set_breadcrumbs
 
   def index
@@ -26,11 +24,6 @@ class IndividualTasksController < ApplicationController
     end
   end
 
-  def show
-    @task = TaskDecorator.decorate(@task)
-    add_breadcrumb t(".title")
-  end
-
   def new
     @task = @scout.individual_tasks.build
     if params[:activity_form].present? && params[:character_traits].present?
@@ -42,6 +35,7 @@ class IndividualTasksController < ApplicationController
   end
 
   def edit
+    add_breadcrumb @task.activity_form.name, @task
     add_breadcrumb t(".title")
   end
 
@@ -96,5 +90,6 @@ class IndividualTasksController < ApplicationController
     add_breadcrumb t("menu.registry"), teams_path
     add_breadcrumb @team.short_name, team_path(@team)
     add_breadcrumb @scout.full_name, team_scout_path(@team, @scout)
+    add_breadcrumb t("tables.individual_tasks"), team_scout_individual_tasks_path(@team, @scout)
   end
 end

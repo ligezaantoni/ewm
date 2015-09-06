@@ -18,7 +18,7 @@ pl:
       
   goals:
     index:
-      title: "Zadania indywidualne"
+      title: "Cele grupowe"
       confirm_destroy: "Usunąć zadanie?"
       <<: *task_attributes
     show:

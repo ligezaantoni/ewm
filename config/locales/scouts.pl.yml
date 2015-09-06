@@ -70,10 +70,6 @@ pl:
         adjutant: "przyboczny"
       
   scouts:
-    index:
-      title: "Harcerze"
-      confirm_destroy: "Usunąć profil harcerza?"
-      <<: *scout_attributes
     show:
       title: "Profil harcerza"
       confirm_destroy: "Usunąć profil harcerza?"

@@ -15,14 +15,6 @@ pl:
         school_representative: "reprezentant szkoły"
       
   officials:
-    index:
-      title: "Przedstawiciele szkoły"
-      confirm_destroy: "Usunąć przedstawiciela?"
-      <<: *related_person_attributes
-    show:
-      title: "Przedstawiciel szkoły"
-      confirm_destroy: "Usunąć przedstawiciea?"
-      <<: *related_person_attributes
     form:
       <<: *related_person_attributes
     edit:

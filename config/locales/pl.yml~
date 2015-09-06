@@ -4,7 +4,7 @@ pl:
     title_short: "EWM"
   admin:
     title: "Manager danych"
-    introduction: "Witaj w panelu globalnego zarządzania danymi. Wprowadzane tutaj zmiany mają wpływ na cały system."
+    introduction: "Witaj w panelu globalnego zarządzania danymi systemu."
     abilities_desc: "Dodawaj nowe sprawności wprowadzając różnorodność pól działania, w których mogą się rozwijać Twoi harcerze."
     character_traits_desc: "Zapisz cechy najlepiej oddające charakter twoich ludzi, by móc lepiej dostosować zajęcia do ich potrzeb."
     activity_forms_desc: "Twórz formy pracy najlepiej pomagające w rozwoju pozytywnych lub zwalczaniu negatywnych cech uczestników zbiórek."
@@ -26,6 +26,11 @@ pl:
     delete: "Usuń"
     show: "Pokaż"
     add: "Dodaj"
+  tables:
+    abilities: "Sprawności"
+    activities: "Aktywności"
+    activity_forms: "Formy pracy"
+    character_traits: "Charakterystyka"
   views:
     pagination:
       previous: "&lt;"

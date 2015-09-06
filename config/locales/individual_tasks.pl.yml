@@ -22,12 +22,6 @@ pl:
       title: "Zadania indywidualne"
       confirm_destroy: "Usunąć zadanie?"
       <<: *task_attributes
-    show:
-      title: "Zadanie indywidualne"
-      confirm_destroy: "Usunąć zadanie?"
-      pass: "Zalicz"
-      fail: "Anuluj"
-      <<: *task_attributes
     form:
       <<: *task_attributes
     edit:

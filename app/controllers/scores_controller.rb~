@@ -20,11 +20,7 @@ class ScoresController < ApplicationController
   def new
     @score = params[:score].present? ? Score.new(score_params) : Score.new
     authorize @score
-    add_breadcrumb ScoutDecorator.decorate(@score.scout).full_name
-    add_breadcrumb t(".title")
-  end
-
-  def edit
+    add_breadcrumb ScoutDecorator.decorate(@score.scout).full_name, score_path(@score.scout)
     add_breadcrumb t(".title")
   end
 

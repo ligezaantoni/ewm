@@ -16,14 +16,6 @@ pl:
         father: "ojciec"
       
   parents:
-    index:
-      title: "Prawni opiekunowie"
-      confirm_destroy: "Usunąć opiekuna?"
-      <<: *related_person_attributes
-    show:
-      title: "Opiekun prawny"
-      confirm_destroy: "Usunąć opiekuna?"
-      <<: *related_person_attributes
     form:
       <<: *related_person_attributes
     edit:

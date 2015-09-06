@@ -6,9 +6,7 @@
       %ul
         - @score.errors.full_messages.each do |msg|
           %li= msg
-          
-  = f.input :scorable_id, as: :hidden
-  = f.input :scorable_type, as: :hidden
+
   = f.association :scout, as: :hidden
 
   .row

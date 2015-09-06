@@ -17,4 +17,4 @@ pl:
       title: "Edycja profilu administratora"
       <<: *profile_attributes
     update:
-      notice: "Profil harcerza został zaktualizowany."
+      notice: "Profil administratora został zaktualizowany."

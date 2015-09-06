@@ -12,7 +12,7 @@ module Admin
 
     def show
       @activity_form = ActivityFormDecorator.decorate(@activity_form)
-      add_breadcrumb t(".title")
+      add_breadcrumb @activity_form.name
     end
 
     def new
@@ -22,6 +22,7 @@ module Admin
     end
 
     def edit
+      add_breadcrumb @activity_form.name
       add_breadcrumb t(".title")
     end
 
@@ -46,7 +47,7 @@ module Admin
 
     def destroy
       @activity_form.destroy
-      redirect_to admin_aactivity_forms_url, notice: t(".notice")
+      redirect_to admin_activity_forms_url, notice: t(".notice")
     end
 
     private

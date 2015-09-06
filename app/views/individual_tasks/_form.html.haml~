@@ -27,8 +27,5 @@
     .input-field.col.s8
       = f.text_area :description, class: "materialize-textarea"
       = f.label :description
-    .input-field.col.s4
-      = f.input :points
-      = f.label :points
       
   = submit_button_for t("nav.send"), icon="send"

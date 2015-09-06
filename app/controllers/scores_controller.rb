@@ -24,10 +24,6 @@ class ScoresController < ApplicationController
     add_breadcrumb t(".title")
   end
 
-  def edit
-    add_breadcrumb t(".title")
-  end
-
   def create
     @score = Score.new(score_params)
     authorize @score
@@ -36,14 +32,6 @@ class ScoresController < ApplicationController
       redirect_to score_path(@score.scout_id), notice: t(".notice")
     else
       render :new
-    end
-  end
-
-  def update
-    if @score.update(score_params)
-      redirect_to score_path(@score.scout_id), notice: t(".notice")
-    else
-      render :edit
     end
   end
 

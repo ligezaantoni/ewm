@@ -1,8 +1,7 @@
 class GoalsController < ApplicationController
-  before_action :load_and_authorize_team,
-    only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :load_and_authorize_team
   before_action :load_and_authorize_task,
-    only: [:show, :edit, :update, :destroy]
+    only: [:edit, :update, :destroy]
   before_filter :set_breadcrumbs
 
   def index
@@ -24,11 +23,6 @@ class GoalsController < ApplicationController
     end
   end
 
-  def show
-    @task = TaskDecorator.decorate(@task)
-    add_breadcrumb t(".title")
-  end
-
   def new
     @task = @team.goals.build
     if params[:activity_form].present? && params[:character_traits].present?
@@ -40,6 +34,7 @@ class GoalsController < ApplicationController
   end
 
   def edit
+    add_breadcrumb @task.activity_form.name, @task
     add_breadcrumb t(".title")
   end
 
@@ -87,5 +82,6 @@ class GoalsController < ApplicationController
   def set_breadcrumbs
     add_breadcrumb t("menu.registry"), teams_path
     add_breadcrumb @team.short_name, team_path(@team)
+    add_breadcrumb t("tables.goals"), team_goals_path(@team)
   end
 end

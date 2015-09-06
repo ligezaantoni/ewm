@@ -19,6 +19,8 @@ class Task < ActiveRecord::Base
     if accomplished? && score.nil? && taskable_type == "Scout"
       build_score(scout_id: taskable_id, number: points, scorable_id: id, scorable_type: self.class.name)
       save
+    elsif in_progress? && score.present? && taskable_type == "Scout"
+      score.destroy
     end
   end
   

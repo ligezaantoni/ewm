@@ -11,24 +11,20 @@ class ActivitiesController < ApplicationController
     add_breadcrumb t(".title")
   end
 
-  def show
-    @activities = ActivityDecorator.decorate(@activity)
-    add_breadcrumb t(".title")
-  end
-
   def new
     @activity = if params[:activity].present?
       @event.activities.build(activity_params)
     else
       @event.activities.build
     end
-    @activity = @event.activities.build
+
     @activity.build_execution_report
     authorize @activity
     add_breadcrumb t(".title")
   end
 
   def edit
+    add_breadcrumb @activity.name
     add_breadcrumb t(".title")
   end
 

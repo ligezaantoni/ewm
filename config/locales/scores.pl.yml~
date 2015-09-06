@@ -6,6 +6,7 @@ pl:
         reason: "powód przyznania"
         scout: "harcerz"
         scorable: "punktowane"
+        score_sum: "suma punktów"
         
       team: &team_attributes
         number_prefix: "nr"

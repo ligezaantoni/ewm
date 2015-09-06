@@ -13,6 +13,7 @@ pl:
       
   profiles:
     form:
+      <<: *profile_attributes
     edit:
       title: "Edycja profilu administratora"
       <<: *profile_attributes

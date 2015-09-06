@@ -8,19 +8,20 @@
   
 %h5= @scout.full_name
 
+%table
+  %thead
+    %tr
+      %th= t(".reason")
+      %th= t(".number")
+      %th
+      %th= icon_link_to("#", "edit", class: "inactive")
+      %th= icon_link_to("#", "delete", class: "inactive")
 
-  %table
-    %thead
+  %tbody
+    - @scores.each do |score|
       %tr
-        %th= t(".reason")
-        %th= t(".number")
-        %th
-        %th= icon_link_to("#", "delete", class: "inactive")
-
-    %tbody
-      - @scores.each do |score|
-        %tr
-          %td= score.reason
-          %td= score.number
-          %td
-          %td= icon_link_to score, "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger"    
+        %td= score.reason
+        %td= score.number
+        %td
+        %td= icon_link_to edit_score, "edit"
+        %td= icon_link_to score, "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger"    

@@ -22,6 +22,7 @@ module Admin
     end
 
     def edit
+      add_breadcrumb @ability.name, admin_ability_path(@ability)
       add_breadcrumb t(".title")
     end
 
@@ -46,7 +47,7 @@ module Admin
 
     def destroy
       @ability.destroy
-      redirect_to abilities_url, notice: t(".notice")
+      redirect_to admin_abilities_url, notice: t(".notice")
     end
 
     private

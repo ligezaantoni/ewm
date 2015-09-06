@@ -12,7 +12,7 @@ module Admin
 
     def show
       @ability = AbilityDecorator.decorate(@ability)
-      add_breadcrumb t(".title")
+      add_breadcrumb @ability.name
     end
 
     def new
@@ -22,6 +22,7 @@ module Admin
     end
 
     def edit
+      add_breadcrumb @ability.name, admin_ability_path(@ability)
       add_breadcrumb t(".title")
     end
 

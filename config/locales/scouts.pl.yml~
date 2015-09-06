@@ -84,6 +84,7 @@ pl:
       health_information: "Informacje zdrowotne"
       guardians: "opiekunowie"
       <<: *scout_attributes
+      <<: *school_attributes
     form:
       <<: *scout_attributes
       <<: *school_attributes

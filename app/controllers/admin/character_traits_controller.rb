@@ -10,11 +10,6 @@ module Admin
       @character_traits = PaginatingDecorator.decorate(@character_traits, with: CharacterTraitDecorator)
     end
 
-    def show
-      @character_trait = CharacterTraitDecorator.decorate(@character_trait)
-      add_breadcrumb t(".title")
-    end
-
     def new
       @character_trait = CharacterTrait.new
       authorize @character_trait
@@ -22,6 +17,7 @@ module Admin
     end
 
     def edit
+      add_breadcrumb @character_trait.name
       add_breadcrumb t(".title")
     end
 

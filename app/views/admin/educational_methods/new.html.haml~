@@ -1,5 +1,0 @@
-%h1 New educational_method
-
-= render 'form'
-
-= link_to 'Back', educational_methods_path

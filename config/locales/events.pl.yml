@@ -43,7 +43,7 @@ pl:
       <<: *event_attributes
       <<: *team_attributes
     show:
-      title: "Drużyna"
+      title: "Zbiórka"
       confirm_destroy: "Usunąć zbiórkę?"
       show_report: "Pokaż raport"
       <<: *event_attributes
@@ -51,7 +51,7 @@ pl:
     form:
       <<: *event_attributes
     edit:
-      title: "Edycja drużyny"
+      title: "Edycja zbiórki"
     update:
       notice: "Informacje o zbiórce zostały zaktualizowane."
     new:

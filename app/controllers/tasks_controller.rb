@@ -26,6 +26,7 @@ class TasksController < ApplicationController
   end
 
   def edit
+    add_breadcrumb @task.activity_form.name, @task
     add_breadcrumb t(".title")
   end
 

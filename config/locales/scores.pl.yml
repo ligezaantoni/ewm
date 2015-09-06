@@ -24,10 +24,6 @@ pl:
       <<: *score_attributes
     form:
       <<: *score_attributes
-    edit:
-      title: "Edycja punktacji"
-    update:
-      notice: "Punktacja została zaktualizowana."
     new:
       title: "Tworzenie punktów"
       character_traits: "cechy charakteru"

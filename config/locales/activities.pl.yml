@@ -26,15 +26,6 @@ pl:
         hour: "godz."
            
   activities:
-    index:
-      title: "Raport"
-      confirm_destroy: "Usunąć aktywność?"
-      <<: *activity_attributes
-      <<: *event_attributes
-    show:
-      title: "Aktywność"
-      confirm_destroy: "Usunąć aktywność?"
-      <<: *activity_attributes
     form:
       <<: *activity_attributes
       <<: *execution_report_attributes

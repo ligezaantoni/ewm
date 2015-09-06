@@ -21,10 +21,6 @@ pl:
       title: "Cele grupowe"
       confirm_destroy: "Usunąć zadanie?"
       <<: *task_attributes
-    show:
-      title: "Zadanie indywidualne"
-      confirm_destroy: "Usunąć zadanie?"
-      <<: *task_attributes
     form:
       <<: *task_attributes
     edit:

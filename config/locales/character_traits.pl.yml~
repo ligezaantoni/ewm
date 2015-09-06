@@ -19,9 +19,11 @@ pl:
       index:
         title: "Cechy charakteru"
         confirm_destroy: "Usunąć cechę?"
+        <<: *character_trait_attributes
       show:
         title: "Sprawność"
         confirm_destroy: "Usunąć cechę?"
+        <<: *character_trait_attributes
       form:
         <<: *character_trait_attributes
       new:

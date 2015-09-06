@@ -15,7 +15,7 @@ class TasksController < ApplicationController
 
   def show
     @task = TaskDecorator.decorate(@task)
-    add_breadcrumb @task.
+    add_breadcrumb @task.activity_form_name
   end
 
   def new
@@ -26,6 +26,7 @@ class TasksController < ApplicationController
   end
 
   def edit
+    add_breadcrumb @task.activity_form_name, @task
     add_breadcrumb t(".title")
   end
 

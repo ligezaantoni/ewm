@@ -5,7 +5,7 @@
   = @activity.event
 %p
   %b Activity form:
-  = @activity.activity_form
+  = @activity.activity_forms
 %p
   %b Description:
   = @activity.description

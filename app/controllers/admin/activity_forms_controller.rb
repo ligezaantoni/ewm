@@ -12,7 +12,7 @@ module Admin
 
     def show
       @activity_form = ActivityFormDecorator.decorate(@activity_form)
-      add_breadcrumb t(".title")
+      add_breadcrumb @activity_form.name
     end
 
     def new
@@ -22,6 +22,7 @@ module Admin
     end
 
     def edit
+      add_breadcrumb @activity_form.name, admin_activity_form_path(@activity_form)
       add_breadcrumb t(".title")
     end
 

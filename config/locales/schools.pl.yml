@@ -34,14 +34,6 @@ pl:
         high_school: "LO"
         
   schools:
-    index:
-      title: "Szkoły"
-      confirm_destroy: "Usunąć szkołę?"
-      <<: *school_attributes
-    show:
-      title: "Szkoła"
-      confirm_destroy: "Usunąć szkołę?"
-      <<: *school_attributes
     form:
       <<: *school_attributes
     edit:

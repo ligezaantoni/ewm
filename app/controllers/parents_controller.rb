@@ -7,17 +7,6 @@ class ParentsController < ApplicationController
     only: [:show, :edit, :update, :destroy]
   before_filter :set_breadcrumbs
 
-  def index
-    authorize RelatedPerson
-    @parents = RelatedPerson.page(params[:page]).per(20)
-    @parents = PaginatingDecorator.decorate(@parents, with: RelatedPersonDecorator)
-  end
-
-  def show
-    @parent = RelatedPersonDecorator.decorate(@parent)
-    add_breadcrumb t(".title")
-  end
-
   def new
     @parent = @scout.parents.build
     authorize @parent
@@ -25,6 +14,7 @@ class ParentsController < ApplicationController
   end
 
   def edit
+    add_breadcrumb RelatedPersonDecorator.decorate(@parent).full_name_with_role
     add_breadcrumb t(".title")
   end
 

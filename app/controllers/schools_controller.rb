@@ -1,20 +1,8 @@
 class SchoolsController < ApplicationController
-  before_action :load_and_authorize_team,
-    only: [:show, :new, :create, :edit, :update, :destroy]
+  before_action :load_and_authorize_team
   before_action :load_and_authorize_school,
-    only: [:show, :edit, :update, :destroy]
+    only: [:edit, :update, :destroy]
   before_filter :set_breadcrumbs
-
-  def index
-    authorize School
-    @schools = School.page(params[:page]).per(20)
-    @schools = PaginatingDecorator.decorate(@schools, with: SchoolDecorator)
-  end
-
-  def show
-    @school = SchoolDecorator.decorate(@school)
-    add_breadcrumb t(".title")
-  end
 
   def new
     @school = @team.schools.build
@@ -24,6 +12,7 @@ class SchoolsController < ApplicationController
   end
 
   def edit
+    add_breadcrumb SchoolDecorator.decorate(@school).short_name
     add_breadcrumb t(".title")
   end
 

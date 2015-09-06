@@ -10,11 +10,11 @@ class ParentsController < ApplicationController
   def index
     authorize RelatedPerson
     @parents = RelatedPerson.page(params[:page]).per(20)
-    @parents = PaginatingDecorator.decorate(@parents, with: ParentDecorator)
+    @parents = PaginatingDecorator.decorate(@parents, with: RelatedPersonDecorator)
   end
 
   def show
-    @parent = ParentDecorator.decorate(@parent)
+    @parent = RelatedPersonDecorator.decorate(@parent)
     add_breadcrumb t(".title")
   end
 
@@ -25,6 +25,7 @@ class ParentsController < ApplicationController
   end
 
   def edit
+    add_breadcrumb RelatedPersonDecorator.decorate(@parent).full_name_with_role
     add_breadcrumb t(".title")
   end
 

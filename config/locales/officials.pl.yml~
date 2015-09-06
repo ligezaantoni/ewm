@@ -14,7 +14,7 @@ pl:
         school_principal: "dyrektor szkoły"
         school_representative: "reprezentant szkoły"
       
-  parents:
+  officials:
     index:
       title: "Przedstawiciele szkoły"
       confirm_destroy: "Usunąć przedstawiciela?"

@@ -1,22 +1,9 @@
 class OfficialsController < ApplicationController
-  before_action :load_and_authorize_team,
-    only: [:show, :new, :create, :edit, :update, :destroy]
-  before_action :load_and_authorize_school,
-    only: [:show, :new, :create, :edit, :update, :destroy]
+  before_action :load_and_authorize_team
+  before_action :load_and_authorize_school
   before_action :load_and_authorize_official,
     only: [:show, :edit, :update, :destroy]
   before_filter :set_breadcrumbs
-
-  def index
-    authorize RelatedPerson
-    @officials = RelatedPerson.page(params[:page]).per(20)
-    @officials = PaginatingDecorator.decorate(@officials, with: RelatedPersonDecorator)
-  end
-
-  def show
-    @official = RelatedPersonDecorator.decorate(@official)
-    add_breadcrumb t(".title")
-  end
 
   def new
     @official = @school.officials.build
@@ -25,6 +12,7 @@ class OfficialsController < ApplicationController
   end
 
   def edit
+    add_breadcrumb RelatedPersonDecorator.decorate(@official).full_name_with_role
     add_breadcrumb t(".title")
   end
 
@@ -77,7 +65,6 @@ class OfficialsController < ApplicationController
   def set_breadcrumbs
     add_breadcrumb t("menu.registry"), teams_path
     add_breadcrumb @team.short_name, team_path(@team)
-    school = SchoolDecorator.decorate(@school)
-    add_breadcrumb school.short_name, team_school_path(@team, @school)
+    add_breadcrumb SchoolDecorator.decorate(@school).short_name
   end
 end

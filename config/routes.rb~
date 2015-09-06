@@ -2,14 +2,14 @@ Rails.application.routes.draw do
   
   # Ewidencja
   resources :teams do
-    resources :schools do
-      resources :officials
+    resources :schools, only: [:edit, :update, :new, :create, :destroy] do
+      resources :officials, only: [:edit, :update, :new, :create, :destroy]
     end
-    resources :scouts do
-      resources :parents
-      resources :individual_tasks
+    resources :scouts, only: [:show, :edit, :update, :new, :create, :destroy] do
+      resources :parents, only: [:edit, :update, :new, :create, :destroy]
+      resources :individual_tasks, only: [:index, :edit, :update, :new, :create, :destroy]
     end
-    resources :goals
+    resources :goals, only: [:index, :edit, :update, :new, :create, :destroy]
   end
   
   # Edukacja
@@ -18,20 +18,20 @@ Rails.application.routes.draw do
   # Planowanie
   resources :events do
     resource :sort_activities_order, only: [:edit, :update], controller: 'activities/sort_order'
-    resources :activities do
-      resources :execution_reports
-    end
+    resources :activities, only: [:edit, :update, :new, :create, :destroy]
   end
   
   # Ocena
-  resources :scores
+  resources :scores, only: [:index, :show, :new, :create, :destroy]
   
   # Zarządzanie danymi
+  
+  resources :profiles, only: [:edit, :update]
+  
   get '/admin', to: 'admin#index'
   namespace :admin do
     resources :abilities
     resources :activity_forms
-    resources :educational_methods
     resources :character_traits
   end
   

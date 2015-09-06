@@ -26,6 +26,7 @@ class TeamsController < ApplicationController
   end
 
   def edit
+    add_breadcrumb TeamDecorator.decorate(@team).short_name, @team
     add_breadcrumb t(".title")
   end
 

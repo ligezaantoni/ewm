@@ -9,6 +9,7 @@ pl:
         estimated_time_short: "czas"
         execution_report: "opis wykonania"
         plan_description: "plan"
+        event: "zbiórka"
         
       execution_report:  &execution_report_attributes
         activity: "aktywność"

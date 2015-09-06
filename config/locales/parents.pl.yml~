@@ -9,7 +9,7 @@ pl:
         role: "rola"
         
   enumerations:
-    parent: 
+    related_person: 
       role:
         educator: "opiekun/ wychowawca"
         mother: "matka"

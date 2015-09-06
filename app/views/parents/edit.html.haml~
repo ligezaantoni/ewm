@@ -3,4 +3,4 @@
 - content_for :breadcrumbs do
   = render_breadcrumbs
   
-= render 'form', url: team_school_official_path(@team, @school, @official)
+= render 'form', url: edit_team_scout_parent_path(@team, @school, @official)

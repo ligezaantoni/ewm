@@ -7,7 +7,7 @@
         - @parent.errors.full_messages.each do |msg|
           %li= msg
           
-  = f.input :scout_id, as: :hidden
+  = f.input :taskable_id, as: :hidden
   = f.input :taskable_type, as: :hidden
 
   .row

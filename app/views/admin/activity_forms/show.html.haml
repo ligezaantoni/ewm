@@ -8,7 +8,8 @@
     = menu_link_to(t("nav.edit"), edit_admin_activity_form_path(@activity_form), "edit", class: "info btn-flat")
     = menu_link_to(t("nav.delete"), admin_activity_form_path(@activity_form), "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger btn-flat")
 
-  %h5= @activity_form.description
+  %h5= @activity_form.name
   .card-content
     %ul.contact-information
       %li= @activity_form.educational_method_name
+      %li= @activity_form.description
