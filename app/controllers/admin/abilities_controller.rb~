@@ -6,13 +6,13 @@ module Admin
 
     def index
       authorize Ability
-      @abilities = Ability.page(params[:page]).per(20)
+      @abilities = Ability.page(params[:page]).per(1)
       @abilities = PaginatingDecorator.decorate(@abilities, with: AbilityDecorator)
     end
 
     def show
       @ability = AbilityDecorator.decorate(@ability)
-      add_breadcrumb t(".title")
+      add_breadcrumb @ability.name
     end
 
     def new

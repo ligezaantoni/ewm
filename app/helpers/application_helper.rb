@@ -8,6 +8,7 @@ module ApplicationHelper
   end
   
   def icon_link_to(url, icon, options={})
+    puts options
     options[:class] ||= ""
     send :link_to, url, options do
       icon_tag(icon)

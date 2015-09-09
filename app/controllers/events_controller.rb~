@@ -5,7 +5,7 @@ class EventsController < ApplicationController
 
   def index
     authorize Event
-    @events = Event.page(params[:page]).per(20)
+    @events = Event.page(params[:page]).per(1)
     @events = PaginatingDecorator.decorate(@events, with: EventDecorator)
   end
 
@@ -22,6 +22,7 @@ class EventsController < ApplicationController
   end
 
   def edit
+    add_breadcrumb EventDecorator.decorate(@event).starts_on, @event
     add_breadcrumb t(".title")
   end
 

@@ -6,7 +6,7 @@ module Admin
 
     def index
       authorize ActivityForm
-      @activity_forms = ActivityForm.page(params[:page]).per(20)
+      @activity_forms = ActivityForm.page(params[:page]).per(1)
       @activity_forms = PaginatingDecorator.decorate(@activity_forms, with: ActivityFormDecorator)
     end
 
@@ -22,7 +22,7 @@ module Admin
     end
 
     def edit
-      add_breadcrumb @activity_form.name
+      add_breadcrumb @activity_form.name, admin_activity_form_path(@activity_form)
       add_breadcrumb t(".title")
     end
 

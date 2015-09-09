@@ -36,6 +36,7 @@ pl:
           attributes:
             name:
               blank: "musi zostać podana"
+              taken: "już istnieje"
         character_trait:
           attributes:
             name:
@@ -73,7 +74,7 @@ pl:
             pesel:
               invalid: "musi mieć odpowiedni format"
             avatar_content_type:
-              invalid: "musi mieć postać .jpg, .jpeg, .gif lub .png"
+              invalid: "musi mieć jedną z następujących form: *.jpg, *.jpeg, *.gif lub *.png"
         task:
           attributes:
             activity_form:

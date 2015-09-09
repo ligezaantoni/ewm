@@ -26,6 +26,7 @@ pl:
           attributes:
             name:
               blank: "musi zostać podana"
+              taken: "już istnieje"
         activity:
           attributes:
             name:
@@ -36,10 +37,12 @@ pl:
           attributes:
             name:
               blank: "musi zostać podana"
+              taken: "już istnieje"
         character_trait:
           attributes:
             name:
               blank: "musi zostać podana"
+              taken: "już istnieje"
         event:
           attributes:
             starts_at:

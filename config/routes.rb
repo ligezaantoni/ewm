@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   # Planowanie
   resources :events do
     resource :sort_activities_order, only: [:edit, :update], controller: 'activities/sort_order'
-    resources :activities, only: [:edit, :update, :new, :create, :destroy]
+    resources :activities, only: [:index, :edit, :update, :new, :create, :destroy]
+    resources :execution_reports, only: [:index]
   end
   
   # Ocena

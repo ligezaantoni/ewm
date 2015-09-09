@@ -16,7 +16,7 @@
       %th= icon_link_to("#", "delete", class: "inactive")
 
   %tbody
-    - @teams.each do |team|
+    - @teams.sort_by(&:number).each do |team|
       %tr
         %td= link_to team.full_name, team
         %td= icon_link_to(edit_team_path(team), "edit")

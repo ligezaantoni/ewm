@@ -3,7 +3,8 @@ pl:
     attributes:
       execution_report:  &execution_report_attributes
         activity: "aktywność"
-        execution_report_form: "forma pracy"
+        content: "zawartość"
+        hour: "godz."
            
   execution_reports:
     index:

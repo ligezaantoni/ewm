@@ -1,16 +1,26 @@
 class ActivitiesController < ApplicationController
   before_action :load_and_authorize_event
   before_action :load_and_authorize_activity,
-    only: [:show, :edit, :update, :destroy]
+    only: [:edit, :update, :destroy]
   before_action :set_breadcrumbs
-
+  
   def index
     authorize Activity
     @activities = @event.activities.ordered.page(params[:page]).per(20)
     @activities = PaginatingDecorator.decorate(@activities, with: ActivityDecorator)
     add_breadcrumb t(".title")
+    
+    respond_to do |format|
+      format.html do
+        @order = Admin::OrderDecorator.decorate(@order)
+      end
+      format.pdf do
+        @order = PrawnOrderDecorator.decorate(@order)
+        render action: "show"
+      end
+    end
   end
-
+  
   def new
     @activity = if params[:activity].present?
       @event.activities.build(activity_params)

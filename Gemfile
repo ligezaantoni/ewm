@@ -23,6 +23,10 @@ gem "carrierwave"
 gem "mini_magick"
 gem "paperclip", "~> 4.3"
 
+# Downloads
+gem 'prawn'
+gem 'prawn-table'
+
 # Javascripts
 gem 'jquery-rails'
 gem 'jquery-ui-rails'

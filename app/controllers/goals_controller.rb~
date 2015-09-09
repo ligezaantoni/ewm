@@ -1,13 +1,12 @@
 class GoalsController < ApplicationController
-  before_action :load_and_authorize_team,
-    only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  before_action :load_and_authorize_team
   before_action :load_and_authorize_task,
-    only: [:show, :edit, :update, :destroy]
+    only: [:edit, :update, :destroy]
   before_filter :set_breadcrumbs
 
   def index
     authorize Task
-    @tasks = @team.goals.page(params[:page]).per(20)
+    @tasks = @team.goals.page(params[:page]).per(1)
     @tasks = PaginatingDecorator.decorate(@tasks, with: TaskDecorator)
     
     temp_hash = {}

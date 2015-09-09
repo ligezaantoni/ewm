@@ -6,10 +6,10 @@ class TasksController < ApplicationController
   def index
     authorize Task
     
-    @individual_tasks = Task.where(taskable_type: "Scout").page(params[:page]).per(20)
+    @individual_tasks = Task.where(taskable_type: "Scout").page(params[:page]).per(1)
     @individual_tasks = PaginatingDecorator.decorate(@individual_tasks, with: TaskDecorator)
     
-    @goals = Task.where(taskable_type: "Team").page(params[:page]).per(20)
+    @goals = Task.where(taskable_type: "Team").page(params[:page]).per(1)
     @goals = PaginatingDecorator.decorate(@goals, with: TaskDecorator)
   end
 
@@ -26,7 +26,7 @@ class TasksController < ApplicationController
   end
 
   def edit
-    add_breadcrumb @task.activity_form_name, @task
+    add_breadcrumb @task.activity_form.name, @task
     add_breadcrumb t(".title")
   end
 

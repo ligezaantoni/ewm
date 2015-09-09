@@ -18,7 +18,7 @@
       %th= icon_link_to("#", "delete", class: "inactive")
 
   %tbody
-    - @events.each do |event|
+    - @events.sort_by(&:start_time).each do |event|
       %tr
         %td= link_to event.start_time, event_path(event)
         %td= link_to event.team.short_name, team_path(event.team)

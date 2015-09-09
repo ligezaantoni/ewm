@@ -21,7 +21,7 @@
     - @events.each do |event|
       %tr
         %td= link_to event.start_time, event_path(event)
-        %td= event.team.short_name
+        %td= link_to event.team.short_name, team_path(event.team)
         %td
         %td= icon_link_to(edit_event_path(event), "edit")
         %td= icon_link_to(event, "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger")

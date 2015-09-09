@@ -17,7 +17,7 @@ module ApplicationHelper
   def button_link_to(name, url, icon=nil, flat=false, options={})
     link_icon_tag = icon_tag(icon, align = "left") if icon
     options[:class] ||= ""
-    options[:class] += flat ? " btn" : " btn-flat"
+    options[:class] += flat ? " btn-flat" : " btn"
     send :link_to, url, options do
       safe_join([link_icon_tag, name], " ")
     end

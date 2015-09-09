@@ -16,7 +16,7 @@
       %th= icon_link_to("#", "delete", class: "inactive")
 
   %tbody
-    - @scouts.each_with_index do |scout, i|
+    - @scouts.sort_by(&:full_name).each_with_index do |scout, i|
       %tr
         %td= i+1
         %td= link_to scout.full_name_reversed, team_scout_path(team, scout)

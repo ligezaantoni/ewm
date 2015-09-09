@@ -33,7 +33,7 @@
         - if taskable_type == "Team" && Event.nearest.first.present?
           %td= icon_link_to(new_event_activity_path(event_id: Event.nearest.first.id, activity: {activity_form_ids: [task.activity_form_id], description: task.description}), "event_note", class: "success")
         - elsif taskable_type == "Team"
-          
+          %td
         %td= icon_link_to(edit_task_path(task), "edit")
         %td= icon_link_to(task_path(task), "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger")
         

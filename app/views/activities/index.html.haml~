@@ -1,8 +1,11 @@
 - content_for :title do
   = t(".title")
-- content_for :action_button do
 - content_for :notice do
   = notice
+- content_for :action_button do
+  %a.action-button.waves-effect{:href => event_execution_reports_path(event_id: @event.id, format: :pdf)}
+    %i.material-icons 
+      file_download
 - content_for :breadcrumbs do
   = render_breadcrumbs
   

@@ -3,6 +3,14 @@ class ActivitiesController < ApplicationController
   before_action :load_and_authorize_activity,
     only: [:edit, :update, :destroy]
   before_action :set_breadcrumbs
+  
+  def index
+    authorize Activity
+    @activities = @event.activities.ordered.page(params[:page]).per(20)
+    @activities = PaginatingDecorator.decorate(@activities, with: ActivityDecorator)
+    add_breadcrumb t(".title")
+  end
+  
   def new
     @activity = if params[:activity].present?
       @event.activities.build(activity_params)

@@ -1,83 +1,63 @@
 class ExecutionReportsController < ApplicationController
-  before_action :load_and_authorize_event
-  before_action :load_and_authorize_activity,
-    only: [:show, :edit, :update, :destroy]
-  before_action :load_and_authorize_execution_report,
-    only: [:show, :edit, :update, :destroy]
-  before_action :set_breadcrumbs, except: :index
+  require "prawn"
 
   def index
-    authorize ExecutionReport
-    @execution_reports = ExecutionReport.page(params[:page]).per(20)
-    @execution_reports = PaginatingDecorator.
-      decorate(@execution_reports, with: ExecutionReportDecorator)
-  end
-
-  def show
-    @execution_reports = ExecutionReportDecorator.decorate(@execution_report)
-    add_breadcrumb t(".title")
-  end
-
-  def new
-    @execution_report = @activity.build_execution_report
-    authorize @execution_report
-    add_breadcrumb t(".title")
-  end
-
-  def edit
-  add_breadcrumb t(".title")
-  end
-
-  def create
-    @execution_report = ExecutionReport.new(execution_report_params)
-    authorize @execution_report
-
-    if @execution_report.save
-      redirect_to event_path(@event), notice: t(".notice")
-    else
-      render :new
-    end
-  end
-
-  def update
-    if @execution_report.update(execution_report_params)
-      redirect_to event_path(@event), notice: t(".notice")
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @execution_report.destroy
-    redirect_to event_path(@event), notice: t(".notice")
-  end
-
-  private
-  
-  def load_and_authorize_activity
-    @activity = Activity.find(params[:id])
-    @activity = ActivityDecorator.decorate(@activity)
-    authorize @activity
-  end
-  
-  def load_and_authorize_event
     @event = Event.find(params[:event_id])
     @event = EventDecorator.decorate(@event)
     authorize @event
-  end
+   
 
-  def load_and_authorize_execution_report
-    @execution_report = ExecutionReport.find(params[:id])
-    authorize @execution_report
-  end
-
-  def execution_report_params
-    params.require(:execution_report).permit(*policy(@execution_report || ExecutionReport).permitted_attributes)
+    respond_to do |format|
+      format.pdf do 
+        pdf = Prawn::Document.new
+        
+        pdf.font_size 24
+        pdf.text "Raport zbiórki #{TeamDecorator.decorate(@event.team).short_name.gsub(/[\s\n\t]+/, " ")}"
+        
+        pdf.font_size 20
+        pdf.text duration_time
+        
+        pdf.move_down 20
+        
+        activities = [["Plan","opis", "wykonanie"]]
+        
+        pdf.font_size 12
+        @event.activities.each do |activity|
+          activities << [
+            activity.name,
+            activity.description,
+            activity.execution_report.content
+          ]
+        end
+        
+        pdf.table(activities) do
+          row(0).font_style = :bold
+        end
+        
+        pdf.font_size 16
+        pdf.text "Uwagi:"
+        
+        send_data pdf.render, filename: "report_#{@event.start_on}.pdf", type: 'application/pdf'
+      end
+    end
   end
   
-  def set_breadcrumbs
-    add_breadcrumb t("menu.planning"), events_path
-    add_breadcrumb @event.starts_on, event_path(@event)
-    add_breadcrumb @activity.name, event_activity_path(@event, @activity)
+  def duration_time
+    "#{start_time} - #{end_time}"
   end
+  
+  def start_time
+    "#{@event.starts_on.to_s} #{@event.starts_at}".to_time.
+    strftime("%d.%m.%Y godz. %k:%M")
+  end
+  
+  def end_time
+    end_time = "#{@event.starts_on.to_s} #{@event.starts_at}".to_time + @event.duration
+    end_time.strftime("%k:%M")
+  end
+  
+#  def activity_params
+#    params.require(:activity).permit(*policy(@activity || Activity).permitted_attributes)
+#  end
+
 end

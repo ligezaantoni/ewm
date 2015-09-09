@@ -6,13 +6,8 @@ module Admin
 
     def index
       authorize CharacterTrait
-      @character_traits = CharacterTrait.page(params[:page]).per(20)
+      @character_traits = CharacterTrait.page(params[:page]).per(1)
       @character_traits = PaginatingDecorator.decorate(@character_traits, with: CharacterTraitDecorator)
-    end
-
-    def show
-      @character_trait = CharacterTraitDecorator.decorate(@character_trait)
-      add_breadcrumb t(".title")
     end
 
     def new

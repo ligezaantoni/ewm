@@ -26,6 +26,11 @@ pl:
         hour: "godz."
            
   activities:
+    index:
+      title: "Raport"
+      <<: *activity_attributes
+      <<: *event_attributes
+      <<: *execution_report_attributes      
     form:
       <<: *activity_attributes
       <<: *execution_report_attributes

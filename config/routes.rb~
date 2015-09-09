@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   # Planowanie
   resources :events do
     resource :sort_activities_order, only: [:edit, :update], controller: 'activities/sort_order'
-    resources :activities, only: [:edit, :update, :new, :create, :destroy]
+    resources :activities, only: [:index, :edit, :update, :new, :create, :destroy]
+    resources :execution_report, only: [:index]
   end
   
   # Ocena
@@ -32,7 +33,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :abilities
     resources :activity_forms
-    resources :character_traits
+    resources :character_traits, only: [:index, :edit, :update, :new, :create, :destroy]
   end
   
   root to: 'home#index'

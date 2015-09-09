@@ -17,4 +17,4 @@
             %td= activity_form.description
             %td= character_traits.join(", ")
             %td
-            %td= icon_link_to(new_team_scout_task_path(@team, @scout, activity_form: activity_form, character_traits: character_traits), "add", class: "success")
+            %td= icon_link_to(new_team_scout_individual_task_path(@team, @scout, activity_form: activity_form, character_traits: character_traits), "add", class: "success")

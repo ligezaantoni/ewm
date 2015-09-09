@@ -17,7 +17,7 @@
       %th= icon_link_to("#", "delete", class: "inactive")
 
   %tbody
-    - tasks.each do |task|
+    - tasks.sort_by(&:deadline).each do |task|
       %tr
         %td= link_to task.activity_form_name, task_path(task)
         %td= link_to task.taskable_name, taskable_type == "Scout" ? team_scout_path(task.taskable.team, task.taskable) : team_path(task.taskable)
