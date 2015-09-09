@@ -2,3 +2,8 @@
 
 # Add new mime types for use in respond_to blocks:
 # Mime::Type.register "text/richtext", :rtf
+<<<<<<< Updated upstream
+#Mime::Type.register "application/pdf", :pdf
+=======
+Mime::Type.register "application/pdf", :pdf
+>>>>>>> Stashed changes
