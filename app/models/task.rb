@@ -1,6 +1,7 @@
 class Task < ActiveRecord::Base
 
   after_save :set_score
+  before_save :default_values
 
   # Associations
   belongs_to :activity_form
@@ -22,6 +23,10 @@ class Task < ActiveRecord::Base
     elsif in_progress? && score.present? && taskable_type == "Scout"
       score.destroy
     end
+  end
+  
+  def default_values
+    self.points ||= 0
   end
   
 end

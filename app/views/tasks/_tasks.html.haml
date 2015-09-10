@@ -10,6 +10,8 @@
       %th= icon_link_to("#", "check", class: "inactive")
       %th= icon_link_to("#", "close", class: "inactive")
       %th= t(".deadline")
+      - if taskable_type == "Scout"
+        %th= t(".points")
       %th
       - if taskable_type == "Team"
         %th= icon_link_to("#", "event_note", class: "inactive")
@@ -29,6 +31,8 @@
           %td
           %td
         %td= task.deadline
+        - if taskable_type == "Scout"
+          %td= task.points
         %td
         - if taskable_type == "Team" && Event.nearest.first.present?
           %td= icon_link_to(new_event_activity_path(event_id: Event.nearest.first.id, activity: {activity_form_ids: [task.activity_form_id], description: task.description}), "event_note", class: "success")

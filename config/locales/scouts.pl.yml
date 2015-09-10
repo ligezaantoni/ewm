@@ -57,6 +57,7 @@ pl:
   enumerations:
     scout: 
       rank:
+        no_rank: "bez stopnia"
         youngster: "młodzik"
         scout: "wywiadowca"
         pioneer: "ćwik"

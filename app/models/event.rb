@@ -1,5 +1,7 @@
 class Event < ActiveRecord::Base
 
+  after_create :set_activities
+
   # Associations
   belongs_to :team
   has_many :activities
@@ -12,6 +14,15 @@ class Event < ActiveRecord::Base
   
   def duration
     activities.sum(:estimated_time).minutes
+  end
+  
+  private
+  
+  def set_activities
+    activities.build(name: "Rozpoczęcie", estimated_time: 5)
+    activities.build(name: "Gra terenowa", estimated_time: 30, activity_form_ids: [ActivityForm.find_by(name: "gra terenowa").id])
+    activities.build(name: "Ognisko", estimated_time: 30, activity_form_ids: [ActivityForm.find_by(name: "ognisko/ kominek").id])
+    activities.build(name: "Zakończenie", estimated_time: 5)
   end
   
 end

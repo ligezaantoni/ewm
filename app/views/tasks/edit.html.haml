@@ -19,6 +19,7 @@
     - if @task.taskable_type == "Scout"
       .input-field.col.s6
         = f.input :points, input_html: {value: '0'}
+        = f.label :points, active: true
   .row
     .input-field.col.s4
       = f.association :activity_form, :collection => policy_scope(ActivityForm.all), :value_method => :id, label: false, include_blank: false
@@ -27,6 +28,7 @@
     .input-field.col.s4
       = f.text_field :deadline, as: :date, class: 'datepicker'
       = f.label :deadline
+      = f.hint "Wybierz datę ponownie"
       
     .input-field.col.s4
       = f.select :status, task_status_options_for_select, include_blank: false

@@ -9,6 +9,7 @@ pl:
         status: "status"
         description: "opis"
         points: "liczba punktów przyznanych po wykonaniu zadania"
+        points_short: "punkty"
         
   enumerations:
     task: 

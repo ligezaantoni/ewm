@@ -2,7 +2,7 @@
 
   - if @school.errors.any?
     #error_explanation
-      %h5= t("activerecord.errors.message", count: @school.errors.count
+      %h5= t("activerecord.errors.message", count: @school.errors.count)
       %ul
         - @school.errors.full_messages.each do |msg|
           %li= msg

@@ -17,6 +17,7 @@
       %th= icon_link_to("#", "check", class: "inactive")
       %th= icon_link_to("#", "close", class: "inactive")
       %th= t(".deadline")
+      %th= t(".points_short")
       %th
       %th= icon_link_to("#", "edit", class: "inactive")
       %th= icon_link_to("#", "delete", class: "inactive")
@@ -34,6 +35,7 @@
           %td
           %td
         %td= task.deadline
+        %td= task.points
         %td
         %td= icon_link_to(edit_team_scout_individual_task_path(@team, @scout, task), "edit")
         %td= icon_link_to(team_scout_individual_task_path(@team, @scout, task), "delete", method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger")

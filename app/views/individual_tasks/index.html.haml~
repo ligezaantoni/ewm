@@ -17,12 +17,13 @@
       %th= icon_link_to("#", "check", class: "inactive")
       %th= icon_link_to("#", "close", class: "inactive")
       %th= t(".deadline")
+      %th= t(".points_short")
       %th
       %th= icon_link_to("#", "edit", class: "inactive")
       %th= icon_link_to("#", "delete", class: "inactive")
 
   %tbody
-    - @tasks.each do |task|
+    - @tasks.sort_by(&:deadline).each do |task|
       %tr
         %td= link_to task.activity_form_name, task
         %td= task.description

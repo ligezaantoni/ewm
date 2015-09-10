@@ -5,7 +5,8 @@
   
 = form_tag event_sort_activities_order_path, method: :patch do |f|
   .text-content
-    %p Przeciągaj elementy aby ustawić ich kolejność.
+    .hint 
+      = t(".hint")
   
     %ul.sortable-list{ data: { role: "sortable-list" } }
       - @activities.each do |a|
@@ -17,3 +18,17 @@
           
   .form-actions   
     = submit_button_for t("nav.send"), icon="send"
+  .row.rules
+    .col.s6.offset-s3
+      .card.blue
+        .card-content.white-text
+          %b Pamiętaj o zasadach dobrej zbiórki:
+          %ol
+            %li Logicznego ciągu
+            %li Przemienności elementów
+            %li Tempa
+            %li Coś starego, coś nowego
+            %li Zaskoczenia
+            %li Podziału pracy
+            %li Inicjatywy
+            %li Drużynowy też się bawi 

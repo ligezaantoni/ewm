@@ -5,7 +5,7 @@ class ScoutDecorator < Draper::Decorator
   decorates_association :scores, :with => ScoreDecorator
   
   def age_with_unit
-    "#{model.age} #{h.t('.age_unit')}"
+    model.age.present? ? "#{model.age} #{h.t('.age_unit')}" : ""
   end
   
   def full_name
@@ -37,6 +37,18 @@ class ScoutDecorator < Draper::Decorator
         model.address.city
       ].reject(&:nil?).join(', ')
     end
+  end
+  
+  def allergies
+    model.allergies.present? ? model.allergies : "brak"
+  end
+  
+  def vaccinations
+    model.vaccinations.present? ? model.vaccinations : "brak"
+  end
+  
+  def past_diseases
+    model.past_diseases.present? ? model.past_diseases : "brak"
   end
   
 end

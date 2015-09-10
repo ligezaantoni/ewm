@@ -9,10 +9,15 @@
           
   = f.input :taskable_id, as: :hidden
   = f.input :taskable_type, as: :hidden
-
+  
+  .row 
+    - if @task.taskable_type == "Scout"
+      .input-field.col.s6
+        = f.input :points, label: false
+        = f.label :points, active: true
   .row
     .input-field.col.s4
-      = f.association :activity_form, :collection => policy_scope(ActivityForm.all), :value_method => :id, label: false
+      = f.association :activity_form, :collection => policy_scope(ActivityForm.all), :value_method => :id, label: false, include_blank: false
       = f.label :activity_form, active: true
       
     .input-field.col.s4

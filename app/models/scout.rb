@@ -24,7 +24,7 @@ class Scout < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
     
   # Enums
-  enum rank: %i(youngster scout pioneer eagle_scout scout_of_the_republic )
+  enum rank: %i(no_rank youngster scout pioneer eagle_scout scout_of_the_republic )
   enum position: %i(no_position songster chronicler photographer pennant_bearer
   patrol_leader adjutant)
   

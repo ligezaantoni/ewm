@@ -34,6 +34,7 @@ pl:
         postal_code: "kod pocztowy"
         city: "miasto"
         avatar_content_type: "rozszerzenie pliku"
+        avatar: "avatar"
         
       school: &school_attributes
         address: "adres"

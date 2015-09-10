@@ -26,7 +26,7 @@ pl:
       goals: "Zadania grupowe"
       <<: *task_attributes
     show:
-      title: "Zadanie indywidualne"
+      title: "Zadanie"
       confirm_destroy: "Usunąć zadanie?"
       pass: "Zalicz"
       fail: "Anuluj"

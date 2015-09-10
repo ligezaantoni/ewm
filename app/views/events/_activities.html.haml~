@@ -1,3 +1,4 @@
+- if event.activities.present?
 .right
   = menu_link_to(t(".sort_order"), edit_event_sort_activities_order_path(event), "sort", class: "btn-flat info")
 %h5= t(".title")
@@ -19,7 +20,7 @@
           - activity.activity_forms.each do |af|
             .tile.info-inverted= af.name
         %td= activity.description
-        %td= activity.estimated_time_short
+        %td= activity.estimated_time
         %td= icon_link_to(edit_event_activity_path(event, activity), "edit")
         %td= icon_link_to(event_activity_path(event, activity), "delete", method: :delete, 
           data: { confirm: t(".confirm_destroy") }, class: "danger")

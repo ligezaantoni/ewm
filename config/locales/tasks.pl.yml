@@ -10,6 +10,7 @@ pl:
         description: "opis"
         taskable_name: "wykonujący"
         taskable_id: "wykonujący"
+        points: "punkty"
         
   enumerations:
     task: 
