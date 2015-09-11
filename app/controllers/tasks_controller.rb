@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   def index
     authorize Task
     
-    @individual_tasks = policy_scope(Task).where(taskable_type: "Scout").page(params[:page]).per(20)
+    @individual_tasks = policy_scope(Task.where(taskable_type: "Scout")).page(params[:page]).per(20)
     @individual_tasks = PaginatingDecorator.decorate(@individual_tasks, with: TaskDecorator)
     
     @goals = policy_scope(Task).where(taskable_type: "Team").page(params[:page]).per(20)
