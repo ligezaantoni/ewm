@@ -4,8 +4,9 @@ class TaskPolicy < ApplicationPolicy
       if user.admin?
         scope.all
       else
-        scope.joins(:team).where(teams: {user_id: user.id}) + 
-        scope.joins(:scout).where(scouts: {team_id: Team.where(user_id: user.id)})
+        scope_ids = ( scope.joins(:team).where(teams: {user_id: user.id}) + 
+        scope.joins(:scout).where(scouts: {team_id: Team.where(user_id: user.id)}) ).map(&:id)
+        scope.where(id: scope_ids)
       end
     end
   end
