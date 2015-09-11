@@ -5,8 +5,10 @@ class Task < ActiveRecord::Base
 
   # Associations
   belongs_to :activity_form
-  belongs_to :taskable, polymorphic: true
   has_one :score, as: :scorable, dependent: :destroy
+  belongs_to :taskable, polymorphic: true
+  belongs_to :team, -> { where(tasks: {taskable_type: 'Team'}) }, foreign_key: 'taskable_id'
+  belongs_to :scout, -> { where(tasks: {taskable_type: 'Scout'}) }, foreign_key: 'taskable_id'
   
   # Validations
   validates :activity_form, presence: true

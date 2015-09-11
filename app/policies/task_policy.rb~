@@ -1,5 +1,13 @@
 class TaskPolicy < ApplicationPolicy
   class Scope < ApplicationPolicy::Scope
+    def resolve
+      if user.admin?
+        scope.all
+      else
+        scope.joins(:team).where(teams: {user_id: 9}) + 
+        scope.joins(:scout).where(scouts: {team_id: Team.where(user_id: 9)})
+      end
+    end
   end
 
   def permitted_attributes
@@ -11,4 +19,15 @@ class TaskPolicy < ApplicationPolicy
       end
     attributes
   end
+    
+  private
+  
+  def owner?
+    if record.taskable_type == "Team"
+      record.taskable.user == user
+    elsif record.taskable_type == "Scout"
+      record.taskable.team.user == user
+    end
+  end
+  
 end

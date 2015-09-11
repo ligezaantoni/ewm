@@ -6,12 +6,16 @@ class SchoolPolicy < ApplicationPolicy
     attributes = []
       if user.present?
         attributes += [ 
-          :team_id, :name, :number, :patron, :activity_room, 
+          :team_id, :kind, :number, :patron, :activity_room, 
           :equipment_storage, :comments, address_attributes: [
             :street_and_number, :postal_code, :city
           ]
         ]
       end
     attributes
+  end
+  
+  def owner?
+  
   end
 end

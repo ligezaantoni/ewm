@@ -1,11 +1,14 @@
 class Task < ActiveRecord::Base
 
   after_save :set_score
+  before_save :default_values
 
   # Associations
   belongs_to :activity_form
-  belongs_to :taskable, polymorphic: true
   has_one :score, as: :scorable, dependent: :destroy
+  belongs_to :taskable, polymorphic: true
+  belongs_to :teams, -> { where(tasks: {taskable_type: 'Team'}) }, foreign_key: 'taskable_id'
+  belongs_to :scouts, -> { where(tasks: {taskable_type: 'Scout'}) }, foreign_key: 'taskable_id'
   
   # Validations
   validates :activity_form, presence: true
@@ -22,6 +25,10 @@ class Task < ActiveRecord::Base
     elsif in_progress? && score.present? && taskable_type == "Scout"
       score.destroy
     end
+  end
+  
+  def default_values
+    self.points ||= 0
   end
   
 end
