@@ -5,7 +5,7 @@ class EventsController < ApplicationController
 
   def index
     authorize Event
-    @events = Event.page(params[:page]).per(20)
+    @events = policy_scope(Event).page(params[:page]).per(20)
     @events = PaginatingDecorator.decorate(@events, with: EventDecorator)
   end
 

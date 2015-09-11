@@ -1,12 +1,21 @@
 class EventPolicy < ApplicationPolicy
   class Scope < ApplicationPolicy::Scope
+    def resolve
+      if user.admin?
+        scope.all
+      else
+        scope_ids = ( scope.joins(:team).where(teams: {user_id: user.id}) + 
+        scope.joins(:scout).where(scouts: {team_id: Team.where(user_id: user.id)}) ).map(&:id)
+        scope.where(id: scope_ids)
+      end
+    end
   end
 
   def permitted_attributes
     attributes = []
       if user.present?
         attributes += [ 
-          :team_id, :starts_at, :place
+          :team_id, :starts_at, :starts_on, :place
         ]
       end
     attributes
