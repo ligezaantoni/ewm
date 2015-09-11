@@ -14,5 +14,7 @@
     .input-field.col.s4
       = f.select :kind, character_trait_kind_options_for_select, include_blank: false
       = f.label :kind, active: false
+      = f.hint "'zaleta', 'wada' dla cechy HARCERZA"
+      = f.hint "'szansa', 'zagrożenie' dla cechy DRUŻYNY"
 
   = submit_button_for t("nav.send"), icon="send"

@@ -9,6 +9,7 @@ class Event < ActiveRecord::Base
   # Validations
   validates :starts_on, presence: true
   validates :starts_at, presence: true
+  validates :starts_at, format: { with: /[0-9]{1,2}:[0-9]{1,2}/ }
   
   scope :nearest, Proc.new { |after = DateTime.now, limit = 1| where('starts_on > ?', after).order("starts_on ASC").limit(limit) }
   

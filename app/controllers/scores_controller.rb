@@ -39,6 +39,12 @@ class ScoresController < ApplicationController
     @score.destroy
     redirect_to score_path(@score.scout_id), notice: t(".notice")
   end
+  
+  def clear 
+    @team = policy_scope(Team).find(params[:team_id])
+    @team.scouts.map(&:scores).map(&:delete_all)
+    redirect_to scores_path, notice: t(".notice")
+  end
 
   private
 

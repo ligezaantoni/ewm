@@ -6,6 +6,8 @@
   = render_breadcrumbs
   
 - @teams.each do |team|
+  .right
+    = button_link_to t(".clear"), new_team_school_path(team), "delete", true, method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger"
   %h5= team.short_name
 
   %table
@@ -20,7 +22,7 @@
     %tbody
       - team.scouts.sort_by(&:score_sum).reverse.each do |scout|
         %tr
-          %td= scout.full_name
+          %td= ScoutDecorator.decorate(scout).full_name
           %td= scout.score_sum
           %td
           %td= menu_link_to t("nav.show"), score_path(scout.id), "assignment"

@@ -6,10 +6,22 @@ class ExecutionReportsController < ApplicationController
     @event = EventDecorator.decorate(@event)
     authorize @event
    
+#        pdf.font Rails.root.join('app', 'assets', 'fonts', 'ubuntu.ttf')
 
     respond_to do |format|
       format.pdf do 
         pdf = Prawn::Document.new
+        
+        pdf.font_families.update(
+          "UbuntuFontFamily" => {
+                  :bold        => Rails.root.join('app', 'assets', 'fonts',"font/Ubuntu-B.ttf"),
+                  :italic      => Rails.root.join('app', 'assets', 'fonts',"font/Ubuntu-LI.ttf"),
+                  :bold_italic => Rails.root.join('app', 'assets', 'fonts',"font/Ubuntu-BI.ttf"),
+                  :normal      => Rails.root.join('app', 'assets', 'fonts',"font/Ubuntu-R.ttf")
+          }
+        )
+        
+        pdf.font "UbuntuFontFamily"
         
         pdf.font_size 24
         pdf.text "Raport zbiórki #{TeamDecorator.decorate(@event.team).short_name.gsub(/[\s\n\t]+/, " ")}"
@@ -26,7 +38,7 @@ class ExecutionReportsController < ApplicationController
           activities << [
             activity.name,
             activity.description,
-            activity.execution_report.content
+            (activity.execution_report.content if activity.execution_report.present? && activity.execution_report.content.present?)
           ]
         end
         
@@ -35,9 +47,10 @@ class ExecutionReportsController < ApplicationController
         end
         
         pdf.font_size 16
+        pdf.move_down 20
         pdf.text "Uwagi:"
         
-        send_data pdf.render, filename: "report_#{@event.start_on}.pdf", type: 'application/pdf'
+        send_data pdf.render, filename: "report_#{@event.starts_on}.pdf", type: 'application/pdf'
       end
     end
   end

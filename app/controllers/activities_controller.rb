@@ -18,7 +18,6 @@ class ActivitiesController < ApplicationController
       @event.activities.build
     end
 
-    @activity.build_execution_report
     authorize @activity
     add_breadcrumb t(".title")
   end

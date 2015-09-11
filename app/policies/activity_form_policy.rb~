@@ -6,7 +6,7 @@ class ActivityFormPolicy < ApplicationPolicy
     attributes = []
       if user.present?
         attributes += [ 
-          :educational_method_id, :description
+          :educational_method_id, :description, :name, character_trait_ids: []
         ]
       end
     attributes

@@ -10,5 +10,5 @@ class CharacterTrait < ActiveRecord::Base
   validates :name, uniqueness: true
   
   # Enums
-  enum kind: %i(neutral strength weakness opportunity threat)
+  enum kind: %i(strength weakness opportunity threat)
 end

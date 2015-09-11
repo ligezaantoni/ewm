@@ -16,6 +16,7 @@ pl:
     index:
       title: "Ocena"
       confirm_destroy: "Usunąć punkty?"
+      clear: "Wyczyść punktację"
       <<: *score_attributes
       <<: *team_attributes
     show:
@@ -24,10 +25,6 @@ pl:
       <<: *score_attributes
     form:
       <<: *score_attributes
-    edit:
-      title: "Edycja punktacji"
-    update:
-      notice: "Punktacja została zaktualizowana."
     new:
       title: "Tworzenie punktów"
       character_traits: "cechy charakteru"
@@ -35,4 +32,6 @@ pl:
       notice: "Punktacja została utworzona."
     destroy:
       notice: "Punktacja została usunięta."
+    clear:
+      notice: "Punktacja została usunięta"
 

@@ -19,10 +19,11 @@ Rails.application.routes.draw do
   resources :events do
     resource :sort_activities_order, only: [:edit, :update], controller: 'activities/sort_order'
     resources :activities, only: [:index, :edit, :update, :new, :create, :destroy]
-    resources :execution_report, only: [:index]
+    resources :execution_reports, only: [:index]
   end
   
   # Ocena
+  DELETE "scores/:team_id", to: "scores#clear", as: "clear_scores"
   resources :scores, only: [:index, :show, :new, :create, :destroy]
   
   # Zarządzanie danymi

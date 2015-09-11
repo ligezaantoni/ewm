@@ -38,13 +38,13 @@
         - if user_signed_in?  
           %ul#nav-mobile.right.hide-on-med-and-down
             %li
-              = menu_link_to t("menu.abilities"), admin_abilities_path, icon = "directions_bike"
-            %li
               = menu_link_to t("menu.character_traits"), admin_character_traits_path, icon = "mood"
             %li
               = menu_link_to t("menu.activity_forms"), admin_activity_forms_path, icon = "local_library"
             %li
               %a.dropdown-button{"data-activates" => "profile-dropdown", :href => "#!"}
+                %i.material-icons.left
+                  account_circle
                 = current_user.email
                 %i.material-icons.right
                   arrow_drop_down

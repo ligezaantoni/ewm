@@ -9,7 +9,7 @@
   
   .row
     .input-field.col.s4
-      = f.association :event, :collection => activity_event_collection, :value_method => :id, label_method: :starts_on, label: false
+      = f.association :event, :collection => activity_event_collection, :value_method => :id, label_method: :starts_on, label: false, include_blank: false
       = f.label :event
     .input-field.col.s4
       = f.text_field :name

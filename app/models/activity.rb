@@ -1,5 +1,7 @@
 class Activity < ActiveRecord::Base
 
+  before_validation :set_execution_report
+
   # Associations
   belongs_to :event
   has_and_belongs_to_many :activity_forms, join_table: "activity_forms_activities"
@@ -13,5 +15,11 @@ class Activity < ActiveRecord::Base
   
   # Scopes
   scope :ordered, -> { order("position") }
+  
+  private
+  
+  def set_execution_report
+    build_execution_report if execution_report.nil?
+  end
   
 end

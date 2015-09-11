@@ -6,6 +6,8 @@
   = render_breadcrumbs
   
 - @teams.each do |team|
+  .right
+    = button_link_to t(".clear"), clear_scores_path(team), "delete", true, method: :delete, data: { confirm: t(".confirm_destroy") }, class: "danger"
   %h5= team.short_name
 
   %table

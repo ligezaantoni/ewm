@@ -9,14 +9,15 @@
   .row
     .input-field.col.s3
       = f.association :team
-      = f.label :team
+      = f.label :team, active: true
     .input-field.col.s3
       = f.text_field :place
       = f.label :place
     .input-field.col.s3
       = f.text_field :starts_on, as: :date, class: 'datepicker'
       = f.label :starts_on
-      = f.hint "Wybierz datę ponownie" if action_name == 'edit'
+      - if action_name == 'edit'
+        = f.hint "Wybierz datę ponownie"
     .input-field.col.s3
       = f.text_field :starts_at
       = f.label :starts_at

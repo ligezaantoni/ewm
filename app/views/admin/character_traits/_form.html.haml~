@@ -2,7 +2,7 @@
 
   - if @character_trait.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@character_trait.errors.count, "error")} prohibited this character_trait from being saved:"
+      %h5= t("activerecord.errors.message", count: @character_trait.errors.count)
       %ul
         - @character_trait.errors.full_messages.each do |msg|
           %li= msg
@@ -14,5 +14,7 @@
     .input-field.col.s4
       = f.select :kind, character_trait_kind_options_for_select, include_blank: false
       = f.label :kind, active: false
+      = f.hint "'zaleta', 'wada' dla cechy harcerza"
+      = f.hint "'szansa', 'zagrożenie' dla *cechy drużyny*"
 
   = submit_button_for t("nav.send"), icon="send"

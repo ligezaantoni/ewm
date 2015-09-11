@@ -6,13 +6,7 @@
     %h5
       = t("admin.introduction")
     %ul.introduction
-      %li
-        %i.material-icons.medium.left
-          directions_bike
-        %h6
-          = t("menu.abilities")
-        %p
-          = t("admin.abilities_desc")
+
       %li
         %i.material-icons.medium.left
           mood
@@ -29,7 +23,7 @@
           = t("admin.activity_forms_desc")
   .col.s4
     .center-align
-      %a.waves-effect.waves-light.btn{ href: root_url }
+      %a.waves-effect.waves-light.blue.btn{ href: root_url }
         Zarządzaj lokalnie
         %i.material-icons.left
           keyboard_return

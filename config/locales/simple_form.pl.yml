@@ -51,6 +51,8 @@ pl:
           attributes:
             starts_at:
               blank: "musi zostać podana"
+            starts_at:
+              invalid: "musi mieć odpowiedni format ( np. 12:00 )"
             starts_on:
               blank: "musi zostać podana"
         related_person:

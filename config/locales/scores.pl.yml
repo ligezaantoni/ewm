@@ -16,6 +16,7 @@ pl:
     index:
       title: "Ocena"
       confirm_destroy: "Usunąć punkty?"
+      clear: "Wyczyść punktację"
       <<: *score_attributes
       <<: *team_attributes
     show:
@@ -30,5 +31,7 @@ pl:
     create:
       notice: "Punktacja została utworzona."
     destroy:
+      notice: "Punktacja została usunięta."
+    clear:
       notice: "Punktacja została usunięta."
 

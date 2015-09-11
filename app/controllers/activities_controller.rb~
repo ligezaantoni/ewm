@@ -29,7 +29,6 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    puts "\n\n>>#{activity_params}\n\n"
     @activity = Activity.new(activity_params)
     set_position
     authorize @activity

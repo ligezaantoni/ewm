@@ -10,11 +10,19 @@
     .input-field.col.s4
       = f.association :educational_method, :collection => policy_scope(EducationalMethod.all), :value_method => :id, label: false, include_blank: false
       = f.label :educational_method, active: true
-    .input-field.col.s4
+    .input-field.col.s8
       = f.text_field :name
       = f.label :name
-    .input-field.col.s4
+  .row
+    .input-field.col.s12
       = f.text_area :description, class: "materialize-textarea"
       = f.label :description
+      
+  %h5 Cechy charakteru
+  .row
+    .input-field.col.s12
+      .collection-check-boxes
+        = collection_check_boxes :activity_form, :character_trait_ids, 
+        CharacterTrait.order(:kind, :name), :id, :name
 
   = submit_button_for t("nav.send"), icon="send"

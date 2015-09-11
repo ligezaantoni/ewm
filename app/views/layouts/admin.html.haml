@@ -38,8 +38,6 @@
         - if user_signed_in?  
           %ul#nav-mobile.right.hide-on-med-and-down
             %li
-              = menu_link_to t("menu.abilities"), admin_abilities_path, icon = "directions_bike"
-            %li
               = menu_link_to t("menu.character_traits"), admin_character_traits_path, icon = "mood"
             %li
               = menu_link_to t("menu.activity_forms"), admin_activity_forms_path, icon = "local_library"
@@ -61,11 +59,6 @@
               = menu_link_to t("devise.sign_out"), destroy_user_session_path, 
               icon = "power_settings_new", :method => :delete
             %li.divider
-            %li
-              %a{:href => admin_abilities_path}
-                %i.material-icons.left
-                  directions_bike
-                t("menu.abilities")
             %li
               %a{:href => admin_character_traits_path}
                 %i.material-icons.left

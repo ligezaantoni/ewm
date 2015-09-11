@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   end
   
   # Ocena
+  delete "scores/:team_id", to: "scores#clear", as: "clear_scores"
   resources :scores, only: [:index, :show, :new, :create, :destroy]
   
   # Zarządzanie danymi

@@ -8,8 +8,8 @@
           %li= msg
   .row
     .input-field.col.s3
-      = f.association :team
-      = f.label :team
+      = f.association :team, label: false
+      = f.label :team, active: true
     .input-field.col.s3
       = f.text_field :place
       = f.label :place
