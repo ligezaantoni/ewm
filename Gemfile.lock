@@ -53,6 +53,7 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    choice (0.2.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.7)
@@ -154,6 +155,11 @@ GEM
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
+    rails-erd (1.4.2)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
+      choice (~> 0.2.0)
+      ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
     railties (4.2.1)
@@ -166,6 +172,7 @@ GEM
     request_store (1.2.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    ruby-graphviz (1.2.2)
     ruby_parser (3.7.0)
       sexp_processor (~> 4.1)
     sass (3.4.14)
@@ -228,6 +235,7 @@ DEPENDENCIES
   prawn-table
   pundit
   rails (= 4.2.1)
+  rails-erd
   sass-rails (~> 5.0)
   simple_form
   sqlite3

@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
 
   # Associations
   belongs_to :team
-  has_many :activities
+  has_many :activities, dependent: :destroy
   
   # Validations
   validates :starts_on, presence: true

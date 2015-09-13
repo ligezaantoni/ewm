@@ -1,9 +1,9 @@
 class School < ActiveRecord::Base
 
   # Associations
-  has_one :address, as: :addressable, dependent: :destroy
   belongs_to :team
-  has_many :officials, as: :relatable, class_name: "RelatedPerson"
+  has_one :address, as: :addressable, dependent: :destroy
+  has_many :officials, as: :relatable, class_name: "RelatedPerson", dependent: :destroy
   has_many :scouts
   
   accepts_nested_attributes_for :address

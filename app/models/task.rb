@@ -4,8 +4,8 @@ class Task < ActiveRecord::Base
   before_save :default_values
 
   # Associations
+  has_one :score, as: :scorable, dependent: :destroy, dependent: :destroy
   belongs_to :activity_form
-  has_one :score, as: :scorable, dependent: :destroy
   belongs_to :taskable, polymorphic: true
   belongs_to :team, -> { where(tasks: {taskable_type: 'Team'}) }, foreign_key: 'taskable_id'
   belongs_to :scout, -> { where(tasks: {taskable_type: 'Scout'}) }, foreign_key: 'taskable_id'

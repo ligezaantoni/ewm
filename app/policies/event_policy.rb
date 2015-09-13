@@ -18,4 +18,11 @@ class EventPolicy < ApplicationPolicy
       end
     attributes
   end
+    
+  private
+  
+  def owner?
+    record.team.user == user
+  end
+  
 end

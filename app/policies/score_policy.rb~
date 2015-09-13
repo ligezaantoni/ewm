@@ -6,9 +6,16 @@ class ScorePolicy < ApplicationPolicy
     attributes = []
       if user.present?
         attributes += [ 
-          :scout_id, :reason, :number, :taskable_id, :taskable_type
+          :scout_id, :reason, :number, :scorable_id, :scorable_type
         ]
       end
     attributes
   end
+    
+  private
+  
+  def owner?
+    record.scout.team.user == user
+  end
+  
 end

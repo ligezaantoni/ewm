@@ -11,4 +11,11 @@ class RelatedPersonPolicy < ApplicationPolicy
       end
     attributes
   end
+    
+  private
+  
+  def owner?
+    record.relatable.team.user == user
+  end
+  
 end

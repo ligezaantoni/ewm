@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   after_create :create_profile
   
   #Associations
-  has_many :teams
+  has_many :teams, dependent: :destroy
   has_one :profile
   
   # Enums
@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
   private
   
   def create_profile
-    build_profile.save
+    build_profile
+    save
   end
   
 end

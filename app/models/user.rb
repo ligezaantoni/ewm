@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   after_create :create_profile
   
   #Associations
-  has_many :teams
-  has_one :profile
+  has_many :teams, dependent: :destroy
+  has_one :profile, dependent: :destroy
   
   # Enums
   enum role: %i(scoutmaster admin)

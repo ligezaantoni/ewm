@@ -11,4 +11,5 @@ class ActivityFormPolicy < ApplicationPolicy
       end
     attributes
   end
+
 end

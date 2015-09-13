@@ -11,4 +11,11 @@ class ExecutionReportPolicy < ApplicationPolicy
       end
     attributes
   end
+    
+  private
+  
+  def owner?
+    record.activity.event.team.user == user
+  end
+  
 end

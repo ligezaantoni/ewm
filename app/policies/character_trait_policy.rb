@@ -11,4 +11,5 @@ class CharacterTraitPolicy < ApplicationPolicy
       end
     attributes
   end
+  
 end

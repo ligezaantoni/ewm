@@ -11,23 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150905185436) do
-
-  create_table "abilities", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "level",        default: 0
-    t.text     "requirements"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
-  create_table "abilities_scouts", id: false, force: :cascade do |t|
-    t.integer "ability_id"
-    t.integer "scout_id"
-  end
-
-  add_index "abilities_scouts", ["ability_id"], name: "index_abilities_scouts_on_ability_id"
-  add_index "abilities_scouts", ["scout_id"], name: "index_abilities_scouts_on_scout_id"
+ActiveRecord::Schema.define(version: 20150913171432) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "event_id"

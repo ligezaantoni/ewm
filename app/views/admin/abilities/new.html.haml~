@@ -1,6 +1,0 @@
-- content_for :title do
-  = t(".title")
-- content_for :breadcrumbs do
-  = render_breadcrumbs
-
-= render 'form', url: admin_abilities_path]

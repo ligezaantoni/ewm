@@ -11,4 +11,5 @@ class EducationalMethodPolicy < ApplicationPolicy
       end
     attributes
   end
+    
 end

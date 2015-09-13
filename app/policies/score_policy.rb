@@ -11,4 +11,11 @@ class ScorePolicy < ApplicationPolicy
       end
     attributes
   end
+    
+  private
+  
+  def owner?
+    record.scout.team.user == user
+  end
+  
 end

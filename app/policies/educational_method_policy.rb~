@@ -1,4 +1,4 @@
-class CharacterTraitPolicy < ApplicationPolicy
+class EducationalMethodPolicy < ApplicationPolicy
   class Scope < ApplicationPolicy::Scope
   end
 
@@ -11,4 +11,11 @@ class CharacterTraitPolicy < ApplicationPolicy
       end
     attributes
   end
+    
+  private
+  
+  def owner?
+    record.user == user
+  end
+  
 end

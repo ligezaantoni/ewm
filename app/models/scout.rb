@@ -6,11 +6,10 @@ class Scout < ActiveRecord::Base
   belongs_to :team
   belongs_to :school
   has_one :address, as: :addressable, dependent: :destroy
-  has_and_belongs_to_many :abilities
   has_and_belongs_to_many :character_traits
-  has_many :parents, as: :relatable, class_name: "RelatedPerson"
-  has_many :individual_tasks, as: :taskable, class_name: "Task"
-  has_many :scores
+  has_many :parents, as: :relatable, class_name: "RelatedPerson", dependent: :destroy
+  has_many :individual_tasks, as: :taskable, class_name: "Task", dependent: :destroy
+  has_many :scores, dependent: :destroy
   
   has_attached_file :avatar, :styles => { :medium => "400x500>" }
   
