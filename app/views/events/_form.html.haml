@@ -8,7 +8,7 @@
           %li= msg
   .row
     .input-field.col.s3
-      = f.association :team, label: false
+      = f.association :team, :collection => policy_scope(Team.all), :value_method => :id, include_blank: false, label: false
       = f.label :team, active: true
     .input-field.col.s3
       = f.text_field :place

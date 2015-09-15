@@ -4,7 +4,7 @@ class ScoutPolicy < ApplicationPolicy
       if user.admin?
         scope.all
       else
-        scope.joins(:teams).where('teams.user_id = ?', user.id)
+        scope.joins(:team).where('teams.user_id = ?', user.id)
       end
     end
   end

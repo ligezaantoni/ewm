@@ -23,12 +23,13 @@ Rails.application.routes.draw do
   end
   
   # Ocena
-  DELETE "scores/:team_id", to: "scores#clear", as: "clear_scores"
+  delete "scores/:team_id", to: "scores#clear", as: "clear_scores"
   resources :scores, only: [:index, :show, :new, :create, :destroy]
   
   # Zarządzanie danymi
   
   resources :profiles, only: [:edit, :update]
+  
   
   get '/admin', to: 'admin#index'
   namespace :admin do

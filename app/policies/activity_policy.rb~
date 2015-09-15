@@ -17,4 +17,11 @@ class ActivityPolicy < ApplicationPolicy
   def sort_order?
     manage?
   end
+    
+  private
+  
+  def owner?
+    record.event.team.user == user
+  end
+  
 end
