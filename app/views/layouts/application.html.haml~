@@ -30,7 +30,7 @@
     
   %nav
     .container
-      .nav-wrapper.col.s8.offset-s4
+      .nav-wrapper
         %a.brand-logo{:href => root_path}
           = image_tag("lil.png")
           = t("website.title_short")
@@ -120,7 +120,9 @@
         %h5 Przydatne linki
         %ul
           %li
-            %a{:href => "#!"} Praca magisterska
+            = link_to "Elektroniczne Przetwarzanie Informacji", "http://www.epi.uj.edu.pl/"
+          %li
+            = link_to "Praca magisterska", home_download_pdf_url
   .footer-copyright
     .container
       Antoni Ligęza &nbsp;|&nbsp; Elektroniczne Przetwarzanie Informacji 2015

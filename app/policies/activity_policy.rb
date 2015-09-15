@@ -15,7 +15,7 @@ class ActivityPolicy < ApplicationPolicy
   end
   
   def sort_order?
-    manage?
+    true
   end
     
   private

@@ -32,7 +32,7 @@ class ApplicationPolicy
   end
 
   def new?
-    user.present?
+    signed_in?
   end
 
   def update?

@@ -19,7 +19,7 @@ class Activity < ActiveRecord::Base
   private
   
   def set_execution_report
-    build_execution_report if execution_report.nil
+    build_execution_report if execution_report.nil?
   end
   
 end

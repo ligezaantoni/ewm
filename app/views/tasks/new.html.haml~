@@ -17,7 +17,8 @@
       = f.label :taskable_id, active: false
     - if @type == "Scout"
       .input-field.col.s6
-        = f.input :points, input_html: {value: '0'}
+        = f.input :points, input_html: {value: '0'}, label: false
+        = f.label :points, active: true
   .row
     .input-field.col.s4
       = f.association :activity_form, :collection => policy_scope(ActivityForm.all), :value_method => :id, label: false, include_blank: false

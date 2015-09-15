@@ -1,6 +1,6 @@
 class Activity < ActiveRecord::Base
 
-  before_validation :set_execution_report
+  after_initialize :set_execution_report
 
   # Associations
   belongs_to :event

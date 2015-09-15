@@ -120,11 +120,14 @@
         %h5 Przydatne linki
         %ul
           %li
-            %a{:href => "#!"} Praca magisterska
+            = link_to "Elektroniczne Przetwarzanie Informacji", "http://www.epi.uj.edu.pl/"
+          %li
+            = link_to "Praca magisterska", home_download_pdf_url
   .footer-copyright
     .container
       Antoni Ligęza &nbsp;|&nbsp; Elektroniczne Przetwarzanie Informacji 2015
-      %a.btn-flat.white-text.right{:href => admin_path}
-        Zarządzaj globalnie
-        %i.material-icons.left
-          settings
+      - if current_user.admin?
+        %a.btn-flat.white-text.right{:href => admin_path}
+          Zarządzaj globalnie
+          %i.material-icons.left
+            settings

@@ -15,6 +15,12 @@
     .input-field.col.s6     
       = f.select :taskable_id, task_taskable_id_options_for_select(@type), include_blank: false
       = f.label :taskable_id, active: false
+    
+    - if @type == "Scout"
+      = f.input :taskable_type, as: :hidden, input_html: {value: 'Scout'}
+    - elsif @type == "Team"
+      = f.input :taskable_type, as: :hidden, input_html: {value: 'Team'}
+      
     - if @type == "Scout"
       .input-field.col.s6
         = f.input :points, input_html: {value: '0'}, label: false

@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   
   resources :profiles, only: [:edit, :update]
   
+  get "home/download_pdf"
+  
   get '/admin', to: 'admin#index'
   namespace :admin do
     resources :abilities

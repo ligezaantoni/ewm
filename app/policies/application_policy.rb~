@@ -24,7 +24,7 @@ class ApplicationPolicy
   end
 
   def show?
-    read?
+    manage?
   end
 
   def create?
