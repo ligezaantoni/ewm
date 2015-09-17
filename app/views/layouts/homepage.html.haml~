@@ -63,5 +63,4 @@
             %a{:href => "#!"} Praca magisterska
   .footer-copyright
     .container
-      .center-align
-        Antoni Ligęza &nbsp;|&nbsp; Elektroniczne Przetwarzanie Informacji 2015
+      Antoni Ligęza &nbsp;|&nbsp; Elektroniczne Przetwarzanie Informacji 2015

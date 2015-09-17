@@ -60,11 +60,6 @@
               icon = "power_settings_new", :method => :delete
             %li.divider
             %li
-              %a{:href => admin_abilities_path}
-                %i.material-icons.left
-                  directions_bike
-                t("menu.abilities")
-            %li
               %a{:href => admin_character_traits_path}
                 %i.material-icons.left
                   mood

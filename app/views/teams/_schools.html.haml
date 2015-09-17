@@ -12,9 +12,10 @@
             = icon_link_to(edit_team_school_path(team, school), "edit")
             = icon_link_to(team_school_path(team, school), "delete", method: :delete, 
               data: { confirm: t(".confirm_destroy") }, class: "danger")
-          %i.material-icons.left
-            arrow_drop_down
-          = school.full_name
+          .header-content
+            %i.material-icons.left
+              arrow_drop_down
+            = school.full_name
         .collapsible-body
           %ul.contact-information
             %li

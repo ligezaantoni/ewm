@@ -126,7 +126,8 @@
   .footer-copyright
     .container
       Antoni Ligęza &nbsp;|&nbsp; Elektroniczne Przetwarzanie Informacji 2015
-      %a.btn-flat.white-text.right{:href => admin_path}
-        Zarządzaj globalnie
-        %i.material-icons.left
-          settings
+      - if current_user.present? && current_user.admin?
+        %a.btn-flat.white-text.right{:href => admin_path}
+          Zarządzaj globalnie
+          %i.material-icons.left
+            settings
