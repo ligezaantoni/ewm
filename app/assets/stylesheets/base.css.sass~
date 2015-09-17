@@ -17,6 +17,11 @@
 @media only screen and (min-width : 1400px)
   nav a.button-collapse
     display: none
+    
+.side-nav
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
   
 body
   @extend .green.lighten-4
@@ -124,10 +129,10 @@ input
 
 .collapsible-header
   .header-content
-  max-width: 600px
-  white-space: nowrap
-  overflow: hidden
-  text-overflow: ellipsis
+    max-width: 600px
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
 
 .pagination
   height: 25px
