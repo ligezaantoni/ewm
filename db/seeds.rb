@@ -13,67 +13,67 @@ puts "Tworzenie metod i form pracy."
 
 {
   "ruch/ przyroda" => {
-    "zwiad" => "",
-    "zawody sportowe" => "",
-    "bieg na orientacje" => "",
-    "wędrówka" => "",
-    "złaz" => "",
-    "zlot" => "",
-    "biwak" => "",
-    "rajd" => ""
+    "zwiad" => "zdobywanie informacji na temat określonego miejsca lub regionu",
+    "zawody sportowe" => "rywalizacja jeśli chodzi o dyscypliny indywidualne, współpraca przy dyscyplinach grupowych",
+    "bieg na orientacje" => "aktywność wymagająca kondycji fizycznej oraz umiejętności szybkiego i trafnego wyboru trasy",
+    "wędrówka" => "rozwija kondycję fizyczną",
+    "złaz" => "piesze dojście grup harcerzy na miejsce zbiórki, gdzie odbywa się rywalizacja",
+    "zlot" => "wspólne biwakowanie grup harcerzy rywalizujących ze sobą",
+    "biwak" => "życie pod namiotem na łonie przyrody przez kilka dni",
+    "rajd" => "dłuższa zbiórka, gdzie aktywności są przerywane dłuższymi odcinkami wędrówki pieszej"
   },
   "dobrowolność/ samowychowanie" => {
-    "harc/ próba charakteru" => "",
-    "rozmowa" => "",
-    "warty" => "",
-    "wyczyn" => "",
-    "służba" => ""
+    "harc/ próba charakteru" => "zadanie wymagające inwencji, dostosowywane do indywidualnych potrzeb",
+    "rozmowa" => "próba bezpośredniego dotarcia do harcerza poprzez poruszanie określonych tematów",
+    "warty" => "stanie na straży obiektu, wymagające czujności i wytrwałości",
+    "wyczyn" => "zadanie wymagające szczególnego wysiłku, zwykle jednorazowe",
+    "służba" => "regularna pomoc osobom potrzebującym"
   },
   "hierarchia/ karność" => {
-    "kurs" => "",
-    "pełnienie funkcji" => "",
-    "musztra/ defilada" => "",
-    "apel" => "",
-    "zaciąg" => ""
+    "kurs" => "przygotowanie harcerza na pełnienie funkcji lub poprawienie wiedzy i umiejętności",
+    "pełnienie funkcji" => "wywiązywanie się z określonego zestawu obowiązków",
+    "musztra/ defilada" => "ćwiczenie karności i zgrania z zespołem",
+    "apel" => "ćwiczenie karności, kultywacja zwyczajów",
+    "zaciąg" => "zachęcenie młodych ludzi do wstępowania do drużyny"
   },
   "współpraca/ rywalizacja" => {
-    "podchody" => "",
-    "bieg" => "",
-    "gra terenowa" => "",
-    "gra miejska" => "",
-    "rywalizacja/ punktacja" => "",
-    "alarm" => "",
-    "zbiórka łączona" => ""
+    "podchody" => "aktywność wymagająca czujności oraz sprawnego i niezauważalnego poruszania się w terenie",
+    "bieg" => "forma sprawdzająca poziom wiedzy, umiejętności i sprawności fizycznej",
+    "gra terenowa" => "zestaw aktywności zaplanowany na łonie przyrody",
+    "gra miejska" => "zestaw aktywności zaplanowany w mieście",
+    "rywalizacja/ punktacja" => "wyłanianie lepszych w danych aktywnościach",
+    "alarm" => "ćwiczy gotowość harcerzy do akcji",
+    "zbiórka łączona" => "zbiórka zorganizowana z inną jednostką harcerską"
   },
   "wzajemne oddziaływanie" => {
-    "pionierka" => "",
-    "warsztaty" => "",
-    "ognisko/ kominek" => "",
-    "gawęda" => "",
-    "dyskusja" => "",
-    "obrzędowość" => "",
-    "modlitwa" => ""
+    "pionierka" => "projektowanie i budowanie konstrukcji",
+    "warsztaty" => "zajęcia grupowe rozszerzające umiejętności w danej dziedzinie",
+    "ognisko/ kominek" => "aktywności mające miejsce w grupie przy ognisku, zwykle przerywane piosenkami",
+    "gawęda" => "opowieść metaforycznie reprezentująca rzeczywistość, zwykle z morałem",
+    "dyskusja" => "rozszerzanie poglądów na dany temat",
+    "obrzędowość" => "zwyczaje pogłębiające więzi w grupie",
+    "modlitwa" => "spotkanie z Bogiem w rozmowie lub czuwaniu"
   },
   "pośrednie oddziaływanie" => {
-    "gazetka" => "",
-    "wystawka" => "",
-    "krzyżówka" => "",
-    "KIM" => "",
-    "akcje zarobkowe" => "",
-    "gra gospodarcza" => "",
-    "pląs" => "",
-    "śpiewogranie" => "",
-    "teatrzyk" => "",
-    "film" => ""
+    "gazetka" => "regularnie redagowana wymaga konsekwencji w prowadzeniu",
+    "wystawka" => "przygotowywana na dany temat wymaga pogłębienia prezentowanego tematu",
+    "krzyżówka" => "sprawdza wiedzę rozwiązującym",
+    "KIM" => "sprawdzian dla wrażliwości zmysłów",
+    "akcje zarobkowe" => "sposób na zapewnienie pieniędzy potrzebnych do innych aktywności",
+    "gra gospodarcza" => "zestaw aktywności uczący ekonomii",
+    "pląs" => "przerywnik ruchowy angażujący grupę harcerzy",
+    "śpiewogranie" => "grupowe śpiewanie piosenek",
+    "teatrzyk" => "artystyczna forma wymagająca spontaniczności",
+    "film" => "artystyczna forma, ćwiczy organizację i przygotowanie"
   },
   "stopniowanie trudności" => {
-    "quiz" => "",
-    "stopnie i sprawności" => "",
-    "turniej" => "",
-    "kat. próbna" => "",
-    "kat. polowa" => "",
-    "kat. leśna" => "",
-    "kat. puszczańska" => ""
+    "quiz" => "sprawdzian wiedzy",
+    "stopnie i sprawności" => "przyznawane za osiągnięcia w danych dziedzinach",
+    "turniej" => "odzaj rywalizacji w systemie 'drabinki'",
+    "kat. próbna" => "spełnienie wymagań, by sprawdzić czy drużyna znajduje się na danym poziomie",
+    "kat. polowa" => "spełnienie wymagań, by sprawdzić czy drużyna znajduje się na danym poziomie",
+    "kat. leśna" => "spełnienie wymagań, by sprawdzić czy drużyna znajduje się na danym poziomie",
+    "kat. puszczańska" => "spełnienie wymagań, by sprawdzić czy drużyna znajduje się na danym poziomie"
   }
 }.each do |key, values|
   method = EducationalMethod.create(name: key)

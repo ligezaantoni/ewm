@@ -144,7 +144,7 @@ puts "Tworzenie powiązań cech z formami pracy."
   "leniwy" => ["pełnienie funkcji", "warty", "służba", "kurs"],
   "słaby" => ["bieg", "bieg na orientacje", "zawody sportowe", "wyczyn"],
   "tchórzliwy" => ["harc/ próba charakteru", "wyczyn"],
-  "pesymista" => [],
+  "pesymista" => ["harc/ próba charakteru", "rozmowa", "warsztaty"],
   "ostrożny" => ["podchody"],
   "oszczędny" => ["harc/ próba charakteru", "gra gospodarcza", "akcje zarobkowe"],
   "pobożny" => ["rozmowa", "warsztaty", "służba"],
